@@ -1233,35 +1233,6 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
  });
 })();
 </script>
-
-
-<script id="mobile-autosave-v043">
-(function(){
-  let saveTimer43=null;
-  function mobile43(){return matchMedia('(max-width:700px)').matches}
-  function commit43(){
-    if(!mobile43() || !document.body.classList.contains('writing-focus')) return;
-    const active=document.activeElement;
-    if(active && active.classList && active.classList.contains('mobilePageBody')){
-      active.dispatchEvent(new Event('input',{bubbles:true}));
-    }
-    /* Existing app persistence is driven by its normal input handler/save path. */
-  }
-  document.addEventListener('input',function(e){
-    if(!mobile43() || !e.target.closest || !e.target.closest('.mobilePageBody')) return;
-    clearTimeout(saveTimer43);
-    saveTimer43=setTimeout(commit43,450);
-  },true);
-  document.addEventListener('compositionend',function(e){
-    if(mobile43() && e.target.closest && e.target.closest('.mobilePageBody')){
-      clearTimeout(saveTimer43); saveTimer43=setTimeout(commit43,60);
-    }
-  },true);
-  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')commit43()});
-  window.addEventListener('pagehide',commit43);
-})();
-</script>
-
 <script id="mobile-snippets-right-only-v050">
 (function(){
  document.addEventListener('click',function(e){
