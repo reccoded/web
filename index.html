@@ -739,6 +739,63 @@ body.story-focus .main{max-width:none;width:100%}.storyHead22{display:flex;align
 }
 </style>
 
+
+<style id="continuous-manuscript-v053">
+/* Continuous manuscript: preserve the paper-like writing surface without automatic page splitting. */
+body.writing-focus .editorStage:not(.wide) .paperWrap{
+  display:flex!important; width:100%!important; min-width:0!important; justify-content:center!important; align-items:flex-start!important;
+}
+body.writing-focus .editorStage:not(.wide) .paper{
+  display:block!important; width:430px!important; min-width:430px!important; max-width:100%!important;
+  height:auto!important; min-height:calc(100vh - 94px)!important; overflow:visible!important;
+  background:#fff!important; border:1px solid #cfc9c0!important; box-shadow:0 3px 16px rgba(30,25,20,.09)!important;
+  padding:28px 34px 80px!important; box-sizing:border-box!important;
+}
+body.writing-focus .editorStage:not(.wide) .manuscriptEditor{
+  display:block!important; width:100%!important; min-height:calc(100vh - 205px)!important;
+  overflow:hidden!important; resize:none!important; white-space:pre-wrap!important; word-break:break-word!important;
+  font-family:"Noto Sans KR",system-ui,sans-serif!important; font-size:17px!important; line-height:1.85!important; letter-spacing:-.01em!important;
+}
+/* The old page-splitting display stays disabled; the textarea remains the single source/editor. */
+body.writing-focus .mobilePagesWrap,
+body.writing-focus .twoPagesWrap{display:none!important}
+@media(max-width:700px){
+  body.writing-focus #writingRoom>.editorStage{padding:0!important;overflow:auto!important;background:#e9e5dd!important}
+  body.writing-focus .editorStage:not(.wide) .paperWrap{padding:0!important;align-items:stretch!important}
+  body.writing-focus .editorStage:not(.wide) .paper{
+    width:100%!important; min-width:0!important; max-width:none!important; min-height:calc(100dvh - 54px)!important;
+    margin:0!important; padding:28px 20px 42px!important; border:0!important; border-radius:0!important; box-shadow:none!important;
+  }
+  body.writing-focus .editorStage:not(.wide) .manuscriptEditor{
+    min-height:calc(100dvh - 150px)!important; font-size:16px!important; line-height:1.9!important;
+  }
+  body.writing-focus .paperHeader{margin-bottom:18px!important}
+}
+</style>
+
+<style id="continuous-manuscript-fix-v054">
+/* v0.54: true continuous manuscript + explicit manual save. */
+body.writing-focus .editorStage:not(.wide) .paperWrap{display:flex!important;min-height:100%!important;height:auto!important;overflow:visible!important;align-items:flex-start!important}
+body.writing-focus .editorStage:not(.wide) .paper{display:block!important;height:auto!important;min-height:calc(100vh - 94px)!important;max-height:none!important;overflow:visible!important}
+/* Do NOT force height:auto!important here: updateInfo() writes the real scrollHeight inline. */
+body.writing-focus .editorStage:not(.wide) .manuscriptEditor{min-height:calc(100vh - 205px)!important;max-height:none!important;overflow:hidden!important;resize:none!important}
+body.writing-focus .mobilePagesWrap,body.writing-focus .twoPagesWrap{display:none!important}
+.writingSaveTop54{height:34px!important;min-height:34px!important;padding:5px 13px!important;white-space:nowrap;font-weight:800}
+.writingSaveTop54.saved{background:#4f7658!important;border-color:#4f7658!important}
+@media(max-width:700px){
+ body.writing-focus #writingRoom>.editorStage{overflow:auto!important}
+ body.writing-focus .editorStage:not(.wide) .paperWrap{height:auto!important;min-height:100%!important;overflow:visible!important}
+ body.writing-focus .editorStage:not(.wide) .paper{height:auto!important;min-height:calc(100dvh - 54px)!important;max-height:none!important;overflow:visible!important}
+ body.writing-focus .editorStage:not(.wide) .manuscriptEditor{min-height:calc(100dvh - 150px)!important;max-height:none!important}
+ .writingSaveTop54{display:inline-flex!important;align-items:center!important;justify-content:center!important;height:34px!important;min-height:34px!important;padding:5px 10px!important}
+}
+</style>
+
+<style id="writing-scroll-stability-v055">
+/* Never collapse/re-expand the live manuscript while typing. JS only grows its height. */
+body.writing-focus .manuscriptEditor{overflow:hidden!important;overflow-anchor:none!important}
+body.writing-focus .paper{overflow-anchor:none!important}
+</style>
 </head><body><div class="app"><aside class="side"><div class="nav" id="nav"></div></aside><main class="main"><div id="view"></div></main></div>
 <style id="v025-ai-studio">
 body.ai-focus .main,body.prompt-focus .main{max-width:none;width:100%}.promptLayout25{display:grid;grid-template-columns:320px minmax(0,1fr);gap:14px}.promptList25{max-height:76vh;overflow:auto}.promptItem25{padding:11px;border-bottom:1px solid var(--line);cursor:pointer}.promptItem25:hover,.promptItem25.active{background:var(--soft)}.promptBody25{min-height:520px}.aiGrid25{display:grid;grid-template-columns:minmax(340px,.72fr) minmax(520px,1.28fr);gap:14px;align-items:start}.aiSection25{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.aiSection25:first-child{border-top:0;padding-top:0;margin-top:0}.aiSection25 h3{margin:0 0 8px}.aiModes25{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.aiModes25 .btn{min-height:34px;padding:6px 10px}.aiModes25 .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}.aiRange25{display:grid;grid-template-columns:100px 26px 100px 1fr;gap:7px;align-items:center}.aiChecks25{display:flex;gap:14px;flex-wrap:wrap}.aiChecks25 label{font-weight:500;margin:3px 0;display:flex;gap:6px;align-items:center}.aiPick25{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.aiPickBox25{border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff;max-height:230px;overflow:auto}.aiPickBox25 label{font-weight:500;margin:0;padding:4px 2px;display:flex;gap:6px;align-items:flex-start}.aiPickHead25{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:5px}.aiPickHead25 b{font-size:13px}.aiStoryList25{border:1px solid var(--line);border-radius:9px;padding:8px;max-height:230px;overflow:auto;background:#fff}.aiStoryList25 label{font-weight:500;margin:0;padding:5px 2px;display:flex;gap:7px}.aiPreview25{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:9px;padding:14px;min-height:520px;max-height:72vh;overflow:auto}.aiTop25{display:grid;grid-template-columns:minmax(320px,1fr) auto auto;gap:8px;align-items:end}.aiMeta25{font-size:12px;color:var(--muted);margin-top:7px}.aiNote25{font-size:12px;color:var(--muted);line-height:1.5}.aiCore25{color:#245b86}@media(max-width:1050px){.promptLayout25,.aiGrid25,.aiPick25{grid-template-columns:1fr}.aiTop25,.aiRange25{grid-template-columns:1fr}}
@@ -799,7 +856,7 @@ async function episodes(){
  let target=wantedId?es.find(e=>e.id===wantedId):es.at(-1);window.__openEpisodeId=null;
  if(target)window.__activeEpisodeId=target.id;
  if(!target&&es.length)target=es[0];
- document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><button class="btn menuToggle mobileEpisodeData42" id="mobileEpisodeData42" title="이번 화 정보" aria-label="이번 화 정보"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 13.2 12.2 21a2 2 0 0 1-2.8 0L3 14.6V4h10.6L20 10.4a2 2 0 0 1 0 2.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.35" fill="currentColor"/></svg></button><button class="btn menuToggle mobileSnippets42" id="mobileSnippets42" title="상용구" aria-label="상용구">✎</button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="btn menuToggle" id="mobileSnippetsRight48" title="상용구" aria-label="상용구">✎</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="페이지 보기" aria-label="페이지 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
+ document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><button class="btn menuToggle mobileEpisodeData42" id="mobileEpisodeData42" title="이번 화 정보" aria-label="이번 화 정보"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 13.2 12.2 21a2 2 0 0 1-2.8 0L3 14.6V4h10.6L20 10.4a2 2 0 0 1 0 2.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.35" fill="currentColor"/></svg></button><button class="btn menuToggle mobileSnippets42" id="mobileSnippets42" title="상용구" aria-label="상용구">✎</button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="btn menuToggle" id="mobileSnippetsRight48" title="상용구" aria-label="상용구">✎</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><button class="btn primary writingSaveTop54" id="saveEpisodeTop54" type="button">저장</button><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="원고 보기" aria-label="원고 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
  if(!target){let e={id:id(),projectId:currentProject,number:1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',e);target=e;es=[e]}
  await editEpisode(target,es);
  const openWritingReference=async(kind)=>{
@@ -820,7 +877,7 @@ async function episodes(){
    if(panel) panel.classList.toggle('mobileOpen41');
  };
 
- document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));let st=$('#editorStage'),room=$('#writingRoom');if(st.classList.contains('mobile-paged'))window.__syncFromMobilePages&&window.__syncFromMobilePages();st.classList.remove('two','wide','mobile-paged');room.classList.remove('wide-room');if(b.dataset.mode==='mobile'){st.classList.add('mobile-paged');window.__renderPages&&window.__renderPages()}if(b.dataset.mode==='wide'){st.classList.add('wide');room.classList.add('wide-room');requestAnimationFrame(()=>window.__updateWritingInfo&&window.__updateWritingInfo(false))}});
+ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));let st=$('#editorStage'),room=$('#writingRoom');if(st.classList.contains('mobile-paged'))window.__syncFromMobilePages&&window.__syncFromMobilePages();st.classList.remove('two','wide','mobile-paged');room.classList.remove('wide-room');if(b.dataset.mode==='mobile'){requestAnimationFrame(()=>window.__updateWritingInfo&&window.__updateWritingInfo(false))}if(b.dataset.mode==='wide'){st.classList.add('wide');room.classList.add('wide-room');requestAnimationFrame(()=>window.__updateWritingInfo&&window.__updateWritingInfo(false))}});
 }
 function normalizeNewlines(text){return (text||'').replace(/\r\n?/g,'\n')}
 function indentText(text){let lines=normalizeNewlines(text).split('\n');return lines.map(line=>{if(line==='')return '';let core=line.replace(/^[\t \u3000]+/,'');return core?'　'+core:''}).join('\n')}
@@ -834,7 +891,7 @@ async function editEpisode(e,esArg){
  let appSettings=await all('settings'), snippetRec=appSettings.find(x=>x.id==='writingSnippets'), snippets=(snippetRec?.value||['……','······','―','* * *','“”','‘’']);
  $('#writingRoom').innerHTML=`<section class="wrPanel"><div class="wrPanelHead"><span>회차</span><button class="miniBtn" id="addE">+ 추가</button></div><div class="wrPanelBody" id="elist">${es.map(x=>`<div class="episodeNavItem ${x.id===e.id?'sel':''}" data-id="${x.id}"><div><span class="epNum">${x.number}화</span> ${esc(x.title||'')}</div></div>`).join('')}</div></section>
  <section class="wrPanel planPanel"><div class="wrPanelHead"><span>이번 화</span><button class="miniBtn planSaveBtn" id="saveEpisodeNow">저장</button></div><div class="wrPanelBody"><div class="wrField"><label>회차 요약</label><textarea id="es">${esc(e.summary||'')}</textarea></div><div class="wrField"><label>캐릭터</label><div class="linkField" id="charLinkField"><div class="linkChips" id="charChips"></div><input id="charSearch" autocomplete="off"><div class="linkSuggest" id="charSuggest"></div></div></div><div class="wrField"><label>설정</label><div class="linkField" id="loreLinkField"><div class="linkChips" id="loreChips"></div><input id="loreSearch" autocomplete="off"><div class="linkSuggest" id="loreSuggest"></div></div></div><div class="wrField"><label>떡밥</label><div class="linkField" id="foreshadowLinkField"><div class="linkChips" id="foreshadowChips"></div><input id="foreshadowSearch" autocomplete="off"><div class="linkSuggest" id="foreshadowSuggest"></div></div></div><div class="wrField"><label>태그</label><input id="etag" type="text" value="${esc(e.tags||'')}"></div><div class="wrField"><label>메모</label><textarea id="episodeMemo">${esc(e.memo||'')}</textarea></div></div></section>
- <section class="editorStage mobile-paged" id="editorStage"><div class="paperWrap"><div class="paper"><div class="paperHeader"><input id="en" type="number" value="${e.number}" title="회차"><input id="et" value="${esc(e.title||'')}" placeholder="회차 제목"></div><textarea id="em" class="manuscriptEditor" spellcheck="false">${esc(indentText(e.manuscript||'　'))}</textarea></div></div><div class="mobilePagesWrap" id="mobilePagesWrap"></div></section>
+ <section class="editorStage" id="editorStage"><div class="paperWrap"><div class="paper"><div class="paperHeader"><input id="en" type="number" value="${e.number}" title="회차"><input id="et" value="${esc(e.title||'')}" placeholder="회차 제목"></div><textarea id="em" class="manuscriptEditor" spellcheck="false">${esc(e.manuscript||'　')}</textarea></div></div><div class="mobilePagesWrap" id="mobilePagesWrap"></div></section>
  <section class="wrPanel memoryPanel"><div class="wrPanelHead">연결 정보</div><div class="wrPanelBody"><div class="memoryBlock"><h4>캐릭터</h4>${relChars.length?relChars.map(c=>`<div class="memoryItem"><b>${esc(c.name)}${c.role?' · '+esc(c.role):''}</b><div>${esc(c.state||c.description||'')}</div></div>`).join(''):'<div class="emptyMini">없음</div>'}</div><div class="memoryBlock"><h4>설정</h4>${relLore.length?relLore.map(l=>`<div class="memoryItem"><b>${esc(l.title)}</b><div>${esc((l.content||'').slice(0,110))}</div></div>`).join(''):'<div class="emptyMini">없음</div>'}</div><div class="memoryBlock"><h4>떡밥</h4>${relFs.length?relFs.map(f=>`<div class="memoryItem"><b>${esc(f.name)}</b><div>${esc(f.status||'미회수')} · ${esc((f.description||'').slice(0,100))}</div></div>`).join(''):'<div class="emptyMini">없음</div>'}</div></div></section>
  <section class="wrPanel toolsPanel"><div class="wrPanelHead">집필 도구</div><div class="wrPanelBody"><div class="memoryBlock"><div class="snippetHead"><h4>상용구</h4><button class="miniBtn" id="editSnippets">수정</button></div><div class="snippetGrid">${snippets.map(x=>`<button class="miniBtn snippet" data-snippet="${esc(x)}">${esc(x)}</button>`).join('')}</div></div><div class="writingInfo">글자 수 <b id="count">0</b>자<br>문단 수 <b id="paraCount">0</b><br><span id="saveState" class="statusSaved">저장됨 ✓</span></div><button class="miniBtn dangerTiny" id="delE" style="width:100%;margin-top:8px">이 회차 삭제</button></div></section>`;
  let em=$('#em'), saveTimer=null, saving=false;
@@ -913,7 +970,7 @@ async function editEpisode(e,esArg){
    wrap.innerHTML=pageCache.map((txt,i)=>`<div class="mobilePage" data-page="${i}"><div class="mobilePageBody" contenteditable="true" spellcheck="false">${esc(txt)}</div><div class="mobilePageNo">${i+1} / ${pageCache.length}</div></div>`).join('');
    const bodies=[...wrap.querySelectorAll('.mobilePageBody')];
    bodies.forEach((body,i)=>{
-     body.addEventListener('input',()=>{syncOnePage(body);updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh()});
+     body.addEventListener('input',()=>{syncOnePage(body);updateInfo(false);queueSave();scheduleSearchRefresh()});
      body.addEventListener('paste',ev=>{
        ev.preventDefault();const raw=(ev.clipboardData||window.clipboardData).getData('text/plain');const text=indentText(raw);
        const sel=window.getSelection();if(!sel?.rangeCount)return;let r=sel.getRangeAt(0);
@@ -922,7 +979,7 @@ async function editEpisode(e,esArg){
          syncFromMobilePages();const src=em.value;em.value=indentText(src);renderPages();return;
        }
        r.deleteContents();const node=document.createTextNode(text);r.insertNode(node);r.setStartAfter(node);r.collapse(true);sel.removeAllRanges();sel.addRange(r);
-       syncOnePage(body);updateInfo(false);queueSave();schedulePageRender(1100);scheduleSearchRefresh();
+       syncOnePage(body);updateInfo(false);queueSave();scheduleSearchRefresh();
      });
      body.addEventListener('blur',()=>{syncOnePage(body);schedulePageRender(80)});
      body.addEventListener('keydown',ev=>{
@@ -961,15 +1018,19 @@ async function editEpisode(e,esArg){
  function moveSearch(step){if(!searchMatches.length){rebuildSearch();if(!searchMatches.length)return}else{searchPos=(searchPos+step+searchMatches.length)%searchMatches.length;showSearchMatch(true)}}
  const searchInput=$('#manuscriptSearch');if(searchInput){searchInput.addEventListener('input',()=>rebuildSearch(true));searchInput.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();moveSearch(ev.shiftKey?-1:1)}})}
  $('#searchNext')?.addEventListener('click',()=>moveSearch(1));$('#searchPrev')?.addEventListener('click',()=>moveSearch(-1));
- function updateInfo(doRender=true){let v=em.value;$('#count').textContent=v.length.toLocaleString();$('#paraCount').textContent=v.split(/\n+/).filter(x=>x.trim()).length;em.style.height='auto';em.style.height=Math.max(em.scrollHeight,window.innerHeight-220)+'px';if(doRender)renderPages()}
- let savePromise=null; async function save(){clearTimeout(saveTimer);if(savePromise)return savePromise;savePromise=(async()=>{saving=true;let ss=$('#saveState');if(ss){ss.textContent='저장 중…';ss.className='statusSaving'}Object.assign(e,{number:+$('#en').value||e.number,title:$('#et').value,manuscript:indentText(em.value),summary:$('#es').value,characterIds:[...selectedCharIds],loreIds:[...selectedLoreIds],foreshadowIds:[...selectedForeshadowIds],characters:cs.filter(c=>selectedCharIds.has(c.id)).map(c=>c.name).join(', '),lore:ls.filter(l=>selectedLoreIds.has(l.id)).map(l=>l.title).join(', '),foreshadows:fs.filter(f=>selectedForeshadowIds.has(f.id)).map(f=>f.name).join(', '),tags:$('#etag').value,memo:$('#episodeMemo').value,updatedAt:now()});await put('episodes',e);let nav=document.querySelector(`#elist [data-id="${e.id}"]`);if(nav){nav.querySelector('div:first-child').innerHTML=`<span class="epNum">${e.number}화</span> ${esc(e.title||'')}`}if(ss){ss.textContent='저장됨 ✓';ss.className='statusSaved'}saving=false;updateInfo(false);})().finally(()=>{savePromise=null});return savePromise}
- function queueSave(){clearTimeout(saveTimer);$('#saveState').textContent='저장 중…';$('#saveState').className='statusSaving';saveTimer=setTimeout(save,1000)}
- em.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();let a=em.selectionStart,b=em.selectionEnd,v=em.value;em.value=v.slice(0,a)+'\n　'+v.slice(b);em.selectionStart=em.selectionEnd=a+2;updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh()}});
- em.addEventListener('paste',ev=>{ev.preventDefault();let text=indentText((ev.clipboardData||window.clipboardData).getData('text'));let a=em.selectionStart,b=em.selectionEnd;em.setRangeText(text,a,b,'end');updateInfo(false);queueSave();schedulePageRender(1100);scheduleSearchRefresh()});
- em.oninput=()=>{updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh()};['en','et','es','etag'].forEach(id=>{let x=$('#'+id);if(x)x.addEventListener('input',()=>{updateInfo(false);queueSave()})});window.__updateWritingInfo=updateInfo;updateInfo();if(document.fonts?.ready)document.fonts.ready.then(()=>{if(document.body.contains(em)&&$('#editorStage')?.classList.contains('mobile-paged'))renderPages()});
-$('#saveEpisodeNow').onclick=async()=>{let btn=$('#saveEpisodeNow');btn.disabled=true;btn.classList.add('saving');btn.textContent='저장 중…';syncFromMobilePages();await save();btn.classList.remove('saving');btn.classList.add('saved');btn.textContent='저장됨 ✓';window.__activeEpisodeId=e.id;window.__openEpisodeId=e.id;setTimeout(async()=>{await episodes();},280)};
-$('#addE').onclick=async()=>{syncFromMobilePages();await save();let fresh={id:id(),projectId:currentProject,number:(es.at(-1)?.number||0)+1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',fresh);window.__activeEpisodeId=fresh.id;window.__openEpisodeId=fresh.id;await episodes()};
- document.querySelectorAll('#elist [data-id]').forEach(x=>x.onclick=async(ev)=>{ev.preventDefault();ev.stopPropagation();const nextId=x.dataset.id;if(nextId===e.id)return;document.querySelectorAll('#elist [data-id]').forEach(n=>n.classList.toggle('sel',n===x));if($('#editorStage')?.classList.contains('mobile-paged'))syncFromMobilePages();window.__activeEpisodeId=nextId;window.__openEpisodeId=nextId;await save();await episodes()});
+ function updateInfo(doRender=true){let v=em.value;$('#count').textContent=v.length.toLocaleString();$('#paraCount').textContent=v.split(/\n+/).filter(x=>x.trim()).length;const minH=Math.max(320,window.innerHeight-220);const need=Math.max(em.scrollHeight,minH);const current=parseFloat(em.style.height)||em.getBoundingClientRect().height||0;if(need>current+1)em.style.height=need+'px'}
+ let savePromise=null; async function save(){clearTimeout(saveTimer);if(savePromise)return savePromise;savePromise=(async()=>{saving=true;let ss=$('#saveState');if(ss){ss.textContent='저장 중…';ss.className='statusSaving'}Object.assign(e,{number:+$('#en').value||e.number,title:$('#et').value,manuscript:em.value,summary:$('#es').value,characterIds:[...selectedCharIds],loreIds:[...selectedLoreIds],foreshadowIds:[...selectedForeshadowIds],characters:cs.filter(c=>selectedCharIds.has(c.id)).map(c=>c.name).join(', '),lore:ls.filter(l=>selectedLoreIds.has(l.id)).map(l=>l.title).join(', '),foreshadows:fs.filter(f=>selectedForeshadowIds.has(f.id)).map(f=>f.name).join(', '),tags:$('#etag').value,memo:$('#episodeMemo').value,updatedAt:now()});await put('episodes',e);let nav=document.querySelector(`#elist [data-id="${e.id}"]`);if(nav){nav.querySelector('div:first-child').innerHTML=`<span class="epNum">${e.number}화</span> ${esc(e.title||'')}`}if(ss){ss.textContent='저장됨 ✓';ss.className='statusSaved'}writingDirty=false;let top=$('#saveEpisodeTop54');if(top){top.textContent='저장됨 ✓';top.classList.add('saved');setTimeout(()=>{if(!writingDirty&&document.body.contains(top)){top.textContent='저장';top.classList.remove('saved')}},900)}saving=false;updateInfo(false);})().finally(()=>{savePromise=null});return savePromise}
+ let writingDirty=false;
+ function markDirty(){writingDirty=true;let ss=$('#saveState');if(ss){ss.textContent='저장 필요';ss.className='statusSaving'}let top=$('#saveEpisodeTop54');if(top){top.textContent='저장';top.classList.remove('saved')}}
+ function queueSave(){markDirty()}
+ em.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();let a=em.selectionStart,b=em.selectionEnd,v=em.value;em.value=v.slice(0,a)+'\n　'+v.slice(b);em.selectionStart=em.selectionEnd=a+2;updateInfo(false);queueSave();scheduleSearchRefresh()}});
+ em.addEventListener('paste',ev=>{ev.preventDefault();let text=indentText((ev.clipboardData||window.clipboardData).getData('text'));let a=em.selectionStart,b=em.selectionEnd;em.setRangeText(text,a,b,'end');updateInfo(false);queueSave();scheduleSearchRefresh()});
+ em.oninput=()=>{updateInfo(false);queueSave();scheduleSearchRefresh()};['en','et','es','etag'].forEach(id=>{let x=$('#'+id);if(x)x.addEventListener('input',()=>{updateInfo(false);queueSave()})});window.__updateWritingInfo=updateInfo;updateInfo();if(document.fonts?.ready)document.fonts.ready.then(()=>{if(document.body.contains(em)&&$('#editorStage')?.classList.contains('mobile-paged'))renderPages()});
+async function manualSave(btn){if(!btn)return;btn.disabled=true;btn.classList.add('saving');btn.textContent='저장 중…';await save();btn.disabled=false;btn.classList.remove('saving');btn.classList.add('saved');btn.textContent='저장됨 ✓';setTimeout(()=>{if(!writingDirty&&document.body.contains(btn)){btn.textContent='저장';btn.classList.remove('saved')}},900)}
+ $('#saveEpisodeNow').onclick=()=>manualSave($('#saveEpisodeNow'));
+ $('#saveEpisodeTop54').onclick=()=>manualSave($('#saveEpisodeTop54'));
+$('#addE').onclick=async()=>{if(writingDirty&&!confirm('저장하지 않은 변경사항이 있습니다. 저장하지 않고 새 회차를 만들까요?'))return;clearTimeout(saveTimer);let fresh={id:id(),projectId:currentProject,number:(es.at(-1)?.number||0)+1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',fresh);window.__activeEpisodeId=fresh.id;window.__openEpisodeId=fresh.id;await episodes()};
+ document.querySelectorAll('#elist [data-id]').forEach(x=>x.onclick=async(ev)=>{ev.preventDefault();ev.stopPropagation();const nextId=x.dataset.id;if(nextId===e.id)return;if(writingDirty&&!confirm('저장하지 않은 변경사항이 있습니다. 저장하지 않고 다른 회차로 이동할까요?'))return;clearTimeout(saveTimer);document.querySelectorAll('#elist [data-id]').forEach(n=>n.classList.toggle('sel',n===x));window.__activeEpisodeId=nextId;window.__openEpisodeId=nextId;await episodes()});
  let lastPageRange=null,lastPageBody=null;
  function rememberPageCaret(){
    const sel=window.getSelection();if(!sel?.rangeCount)return;
@@ -992,9 +1053,9 @@ $('#addE').onclick=async()=>{syncFromMobilePages();await save();let fresh={id:id
        let r=lastPageRange?.cloneRange();
        if(!r||!lastPageBody.contains(r.commonAncestorContainer)){r=document.createRange();r.selectNodeContents(lastPageBody);r.collapse(false)}
        sel.addRange(r);r.deleteContents();const n=document.createTextNode(text);r.insertNode(n);r.setStartAfter(n);r.collapse(true);sel.removeAllRanges();sel.addRange(r);
-       lastPageRange=r.cloneRange();syncOnePage(lastPageBody);updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh();
+       lastPageRange=r.cloneRange();syncOnePage(lastPageBody);updateInfo(false);queueSave();scheduleSearchRefresh();
      }else{
-       let a=em.selectionStart||0,z=em.selectionEnd||a;em.setRangeText(text,a,z,'end');em.focus();updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh();
+       let a=em.selectionStart||0,z=em.selectionEnd||a;em.setRangeText(text,a,z,'end');em.focus();updateInfo(false);queueSave();scheduleSearchRefresh();
      }
      const drawer=document.getElementById('mobileSnippetsDrawer42');if(drawer)drawer.classList.remove('open');
    };
