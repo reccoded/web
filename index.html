@@ -697,6 +697,35 @@ body.story-focus .main{max-width:none;width:100%}.storyHead22{display:flex;align
 @media(min-width:701px){#mobileSnippetsRight48{display:none!important}}
 </style>
 
+
+<style id="mobile-workdb-head-v051">
+@media(max-width:700px){
+  /* 작품 DB 모바일 상단 탭 카드만: 화면 높이를 늘려 먹지 않도록 내용 높이에 고정 */
+  .workDbHead51{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    flex:none!important;
+    align-self:auto!important;
+    padding-bottom:10px!important;
+  }
+  .workDbHead51 .tabs{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin-bottom:0!important;
+    align-items:center!important;
+    align-content:flex-start!important;
+    flex:none!important;
+  }
+  .workDbHead51 .tabs .btn{
+    height:auto!important;
+    min-height:36px!important;
+    flex:0 0 auto!important;
+  }
+}
+</style>
+
 </head><body><div class="app"><aside class="side"><div class="nav" id="nav"></div></aside><main class="main"><div id="view"></div></main></div>
 <style id="v025-ai-studio">
 body.ai-focus .main,body.prompt-focus .main{max-width:none;width:100%}.promptLayout25{display:grid;grid-template-columns:320px minmax(0,1fr);gap:14px}.promptList25{max-height:76vh;overflow:auto}.promptItem25{padding:11px;border-bottom:1px solid var(--line);cursor:pointer}.promptItem25:hover,.promptItem25.active{background:var(--soft)}.promptBody25{min-height:520px}.aiGrid25{display:grid;grid-template-columns:minmax(340px,.72fr) minmax(520px,1.28fr);gap:14px;align-items:start}.aiSection25{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.aiSection25:first-child{border-top:0;padding-top:0;margin-top:0}.aiSection25 h3{margin:0 0 8px}.aiModes25{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.aiModes25 .btn{min-height:34px;padding:6px 10px}.aiModes25 .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}.aiRange25{display:grid;grid-template-columns:100px 26px 100px 1fr;gap:7px;align-items:center}.aiChecks25{display:flex;gap:14px;flex-wrap:wrap}.aiChecks25 label{font-weight:500;margin:3px 0;display:flex;gap:6px;align-items:center}.aiPick25{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.aiPickBox25{border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff;max-height:230px;overflow:auto}.aiPickBox25 label{font-weight:500;margin:0;padding:4px 2px;display:flex;gap:6px;align-items:flex-start}.aiPickHead25{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:5px}.aiPickHead25 b{font-size:13px}.aiStoryList25{border:1px solid var(--line);border-radius:9px;padding:8px;max-height:230px;overflow:auto;background:#fff}.aiStoryList25 label{font-weight:500;margin:0;padding:5px 2px;display:flex;gap:7px}.aiPreview25{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:9px;padding:14px;min-height:520px;max-height:72vh;overflow:auto}.aiTop25{display:grid;grid-template-columns:minmax(320px,1fr) auto auto;gap:8px;align-items:end}.aiMeta25{font-size:12px;color:var(--muted);margin-top:7px}.aiNote25{font-size:12px;color:var(--muted);line-height:1.5}.aiCore25{color:#245b86}@media(max-width:1050px){.promptLayout25,.aiGrid25,.aiPick25{grid-template-columns:1fr}.aiTop25,.aiRange25{grid-template-columns:1fr}}
@@ -1020,7 +1049,7 @@ const characters=()=>generic('characters','캐릭터',[
  $('#addF').onclick=()=>edit({id:id(),projectId:currentProject,name:'',status:'심기 전',createdAt:now()});document.querySelectorAll('[data-fid]').forEach(el=>el.onclick=()=>edit(xs.find(x=>x.id===el.dataset.fid)));
 }
 function showSimpleHelp40(title,body){let old=$('#simpleHelp40');if(old)old.remove();let d=document.createElement('div');d.id='simpleHelp40';d.className='helpOverlay';d.innerHTML=`<div class="helpModal"><button class="btn helpClose" id="closeSimpleHelp40">닫기</button><h2>${title}</h2>${body}</div>`;document.body.appendChild(d);$('#closeSimpleHelp40').onclick=()=>d.remove();d.onclick=e=>{if(e.target===d)d.remove()};let onKey=e=>{if(e.key==='Escape'){d.remove();document.removeEventListener('keydown',onKey)}};document.addEventListener('keydown',onKey)}
-async function workdb(){let tabs=[['characters','캐릭터'],['lore','세계관·설정'],['foreshadows','떡밥']];let fn={characters,lore,foreshadows}[workDbTab]||characters;await fn();let v=$('#view');v.insertAdjacentHTML('afterbegin',`<div class="card"><h2 style="margin-top:0">작품 DB <button class="helpIcon" id="workDbHelp" title="작품 DB 사용법">?</button></h2><div class="tabs">${tabs.map(([k,n])=>`<button class="btn ${workDbTab===k?'active':''}" data-dbtab="${k}">${n}</button>`).join('')}</div></div>`);document.querySelectorAll('[data-dbtab]').forEach(b=>b.onclick=()=>{workDbTab=b.dataset.dbtab;workdb()});$('#workDbHelp').onclick=()=>showWorkDbHelp();if(workDbTab==='foreshadows'&&window.__openForeshadowId){let target=document.querySelector(`[data-fid="${window.__openForeshadowId}"]`);window.__openForeshadowId=null;if(target)target.click()}}
+async function workdb(){let tabs=[['characters','캐릭터'],['lore','세계관·설정'],['foreshadows','떡밥']];let fn={characters,lore,foreshadows}[workDbTab]||characters;await fn();let v=$('#view');v.insertAdjacentHTML('afterbegin',`<div class="card workDbHead51"><h2 style="margin-top:0">작품 DB <button class="helpIcon" id="workDbHelp" title="작품 DB 사용법">?</button></h2><div class="tabs">${tabs.map(([k,n])=>`<button class="btn ${workDbTab===k?'active':''}" data-dbtab="${k}">${n}</button>`).join('')}</div></div>`);document.querySelectorAll('[data-dbtab]').forEach(b=>b.onclick=()=>{workDbTab=b.dataset.dbtab;workdb()});$('#workDbHelp').onclick=()=>showWorkDbHelp();if(workDbTab==='foreshadows'&&window.__openForeshadowId){let target=document.querySelector(`[data-fid="${window.__openForeshadowId}"]`);window.__openForeshadowId=null;if(target)target.click()}}
 function showWorkDbHelp(){let wrap=document.createElement('div');wrap.className='helpOverlay';wrap.innerHTML=`<div class="helpModal"><button class="btn helpClose" id="closeWorkDbHelp">닫기</button><h2>작품 DB 도움말</h2>
 <p><b>작품 DB는 실제로 집필된 작품의 사실을 정리하는 곳</b>입니다. 캐릭터, 세계관·설정, 떡밥을 필요한 회차와 연결해 두면 집필 중 내용을 다시 찾기 쉽고, AI 작업실에서도 필요한 정보만 골라 전달할 수 있습니다.</p>
 <p><b>스토리와 역할이 다릅니다.</b> 스토리는 앞으로 바뀔 수 있는 계획과 시뮬레이션이고, 작품 DB는 현재까지 작품 안에서 확정된 정보와 계속 지켜야 할 사실을 중심으로 관리합니다. 계획과 실제 원고가 달라졌다면 실제 원고와 회차 요약, 작품 DB를 우선합니다.</p>
