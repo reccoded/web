@@ -1,0 +1,1063 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#24211d"><link rel="manifest" href="manifest.webmanifest"><title>WEB</title><style>
+:root{--bg:#f3efe6;--panel:#fffdf8;--ink:#28251f;--muted:#756f64;--line:#d8d0c2;--accent:#755d3d;--soft:#e9e0d2;--danger:#9a3e38}*{box-sizing:border-box}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.side{background:#292620;color:#f8f3e9;padding:18px;position:sticky;top:0;height:100vh}.brand{font-size:19px;font-weight:800;margin-bottom:20px}.brand small{display:block;font-size:11px;color:#bdb5a8;font-weight:500}.nav button{display:block;width:100%;text-align:left;border:0;background:transparent;color:#ddd4c7;padding:10px 11px;border-radius:8px;margin:3px 0}.nav button.active,.nav button:hover{background:#423c33;color:#fff}.main{padding:18px 34px 28px;max-width:1500px;width:100%;margin:0 auto}.top{display:flex;justify-content:flex-end;gap:12px;align-items:center;margin-bottom:8px}.projectSelect{display:none}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px #0000000a}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat b{font-size:24px;display:block}.muted{color:var(--muted)}.btn{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:9px;min-height:40px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.btn.danger{color:var(--danger)}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center}.split{display:grid;grid-template-columns:290px 1fr;gap:14px}.list{max-height:70vh;overflow:auto}.item{padding:10px;border-bottom:1px solid var(--line);cursor:pointer}.item:hover,.item.sel{background:var(--soft)}label{display:block;font-weight:700;margin:10px 0 5px}input[type=text],input[type=number],textarea,select{width:100%;border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 11px;color:var(--ink);min-height:42px}textarea{min-height:110px;resize:vertical}.manuscript{min-height:360px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{background:var(--soft);padding:5px 8px;border-radius:999px}.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.fieldHelp{font-size:12px;color:var(--muted);margin:4px 0 7px;line-height:1.45}.settingsGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.settingsAction{width:100%;min-height:48px}.dangerZone{border-color:#d9b6b1;background:#fffafa}.projectRow{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.projectRow:last-child{border-bottom:0}.currentBadge{font-size:11px;background:var(--soft);border-radius:999px;padding:3px 7px;margin-left:7px}.selectProject{min-width:90px}.hidden{display:none!important}.sectionTitle{font-size:20px;font-weight:800;margin:0 0 12px}.small{font-size:12px}.contextPreview{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px;max-height:55vh;overflow:auto}.help h3{margin-top:22px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tabs .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}.hero{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.hero h1{margin:0 0 4px;font-size:28px}.quick{display:flex;gap:8px;flex-wrap:wrap}.dash2{display:grid;grid-template-columns:1.3fr .7fr;gap:14px}.recentEpisode{padding:10px 0;border-bottom:1px solid var(--line)}.recentEpisode:last-child{border-bottom:0}.storyArea{min-height:180px}@media(max-width:800px){.app{grid-template-columns:1fr}.side{height:auto;position:relative}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}.main{padding:12px}.grid{grid-template-columns:1fr 1fr}.split,.row,.settingsGrid{grid-template-columns:1fr}.side .brand{margin-bottom:8px}}
+
+/* v0.27 Prompt Lab compact layout */
+body.prompt-focus #view{padding-top:8px}
+body.prompt-focus #view>.card:first-child{padding:10px 14px;margin-bottom:8px}
+body.prompt-focus #view>.card:first-child .hero{min-height:0;align-items:center}
+body.prompt-focus .promptLayout25{grid-template-columns:500px minmax(0,1fr);gap:10px}
+body.prompt-focus .promptList25{max-height:82vh;padding:8px}
+body.prompt-focus .promptToolbar26{margin-bottom:6px;gap:6px}
+body.prompt-focus .promptToolbar26 label{font-size:12px}
+body.prompt-focus .promptItem25{grid-template-columns:22px minmax(0,1fr);gap:6px;align-items:center;padding:7px 8px;min-height:34px;border-bottom:1px solid var(--line)}
+body.prompt-focus .promptItem25 input[type=checkbox]{margin:0}
+body.prompt-focus .promptItem25 b{font-size:13px;line-height:1.25}
+body.prompt-focus .unfiledPrompts27{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:7px;background:#fff}
+body.prompt-focus .folder26{border-radius:8px;margin-bottom:6px}
+body.prompt-focus .folderHead26{min-height:34px;padding:5px 8px;gap:5px}
+body.prompt-focus .folderHead26 .folderToggle26{font-size:12px;padding:2px 4px}
+body.prompt-focus .folderHead26 b{font-size:13px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.prompt-focus .folderHead26 .btn.small{padding:3px 7px;min-height:25px;font-size:11px}
+body.prompt-focus #prEdit25>.card{padding:12px 14px}
+body.prompt-focus .promptEditTop26{grid-template-columns:minmax(680px,1fr) 220px;gap:8px;margin:0 0 6px}
+body.prompt-focus .promptEditTop26 label,body.prompt-focus #prEdit25> .card>label{margin-top:0;margin-bottom:4px}
+body.prompt-focus .promptName26{height:36px}
+body.prompt-focus .promptBody25{min-height:500px}
+body.prompt-focus #prEdit25 .toolbar{margin-top:8px!important}
+@media(max-width:1050px){body.prompt-focus .promptLayout25,body.prompt-focus .promptEditTop26{grid-template-columns:1fr}}
+
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+
+/* v0.37: 현재 회차 임시 설계판 + 문체 참고 */
+.episodePlanGrid36{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;gap:14px}
+.styleRefCard37{margin-top:14px}.styleRefCard37 textarea{min-height:280px;line-height:1.65}.styleRefCard37 h3{margin:0 0 4px}
+.aiStoryActions37{display:flex;gap:7px;align-items:center;margin-left:auto}
+.aiEpisodeChoice37{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.aiEpisodeChoice37 .btn{min-height:34px;padding:6px 10px}.aiEpisodeChoice37 .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.aiEpisodeInputs37{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}.aiEpisodeInputs37 input{width:88px;min-height:34px}
+@media(max-width:900px){.episodePlanGrid36{grid-template-columns:1fr!important}}
+
+/* v0.40 final polish */
+.homeLineIcon40{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.writingTitle #writingHome{width:32px;height:32px;min-width:32px;padding:6px!important;display:inline-flex;align-items:center;justify-content:center}.pageTitleHelp40{display:flex;align-items:center;gap:8px}.pageTitleHelp40 h2{margin:0}.episodePlanHead36{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.aiTop25 .aiHelp40{margin-left:auto}.aiTop25{align-items:end}
+</style>
+<style id="web-final-polish">
+:root{
+  --bg:#f5f2ec; --panel:#fffdf9; --panel2:#f9f6f0; --line:#ddd7cd;
+  --text:#24221f; --muted:#777168; --accent:#292724; --soft:#ebe6dd;
+  --danger:#a64238; --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)!important;color:var(--text)!important}
+body{letter-spacing:-.012em}
+button,input,select,textarea{font:inherit}
+button{min-height:38px;border-radius:9px!important;font-weight:650;cursor:pointer}
+input,select,textarea{
+  border:1px solid var(--line)!important;border-radius:9px!important;
+  background:#fff!important;color:var(--text)!important;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(41,39,36,.13);border-color:#8f887e!important}
+textarea{line-height:1.65}
+::placeholder{color:#aaa39a!important;opacity:1}
+.sidebar,aside{background:#292724!important;color:#f7f3ed!important}
+.sidebar button,aside button{border-radius:9px!important}
+.card,.panel,.box,.stat,.form-card{
+  border-radius:var(--radius)!important;border-color:var(--line)!important;
+  box-shadow:0 1px 2px rgba(30,25,20,.035)!important;
+}
+main,.main,.content{max-width:1440px}
+h1,h2,h3{letter-spacing:-.035em}
+h1{font-size:26px!important}
+h2{font-size:21px!important}
+h3{font-size:16px!important}
+small,.hint,.muted{color:var(--muted)!important;line-height:1.45}
+.danger,.danger-zone{border-color:#dfbbb6!important}
+.danger button,.danger-zone button{background:var(--danger)!important;color:white!important}
+@media(min-width:1000px){
+  .sidebar,aside{width:210px!important;min-width:210px!important}
+}
+@media(max-width:760px){
+  .sidebar,aside{width:100%!important;min-width:0!important}
+}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+
+<style id="compact-field-fix">
+/* 설치 UI 제거 후 상단 공간을 회수하고 짧은 필드는 설명과 값을 분리한다. */
+.main > #view{margin-top:0}
+.row > div{min-width:0}
+.row input,.row select{width:100%;min-width:0}
+.fieldHelp{max-width:none;width:100%;white-space:normal}.helpIcon{width:28px;height:28px;min-width:28px;min-height:28px;aspect-ratio:1/1;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-weight:800;display:inline-flex;align-items:center;justify-content:center;padding:0;margin-left:8px;vertical-align:2px;line-height:1}.helpIcon:hover{background:var(--soft);color:var(--ink)}.helpOverlay{position:fixed;inset:0;background:#0006;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px}.helpModal{width:min(1180px,94vw);max-height:88vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 30px;box-shadow:0 18px 60px #0004}.helpModal h2{margin:0 0 12px}.helpModal h3{margin:20px 0 7px}.helpModal p{margin:6px 0}.helpModal table{width:100%;border-collapse:collapse;margin:10px 0}.helpModal th,.helpModal td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}.helpModal th{white-space:nowrap}.helpClose{float:right}
+@media(min-width:1000px){
+  .main{padding-top:18px!important}
+  #view>.toolbar:first-child{margin-top:0}
+}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="writing-room-v04">
+.main{max-width:none!important;margin:0!important;padding:14px 18px 24px!important;overflow:hidden}
+.dashboardHead{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}.dashboardHead h1{margin:0}.dashboardMeta{color:var(--muted);font-size:13px}
+.dashStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}.dashStat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px}.dashStat b{font-size:22px;display:block;margin-top:2px}
+.dashMain{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(320px,.75fr);gap:14px}.episodeTable{width:100%;border-collapse:collapse}.episodeTable th,.episodeTable td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.episodeTable th{font-size:12px;color:var(--muted);font-weight:700}.episodeRow{cursor:pointer}.episodeRow:hover{background:var(--soft)}.episodeSummary{max-width:620px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dashMemo{min-height:220px;resize:vertical}.saveHint{font-size:12px;color:var(--muted);min-height:18px}.foreshadowMini{padding:9px 0;border-bottom:1px solid var(--line)}
+.writingTop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.writingTitle{display:flex;align-items:baseline;gap:10px}.writingTitle h2{margin:0}.viewModes{display:flex;gap:6px}.viewModes .btn{padding:7px 10px;min-height:34px}.viewModes .active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.writingRoom{height:calc(100vh - 82px);min-height:680px;display:grid;grid-template-columns:210px 250px minmax(470px,1fr) 260px 210px;gap:10px}.wrPanel{background:var(--panel);border:1px solid var(--line);border-radius:12px;min-width:0;overflow:hidden;display:flex;flex-direction:column}.wrPanelHead{padding:11px 12px;border-bottom:1px solid var(--line);font-weight:800;display:flex;justify-content:space-between;align-items:center}.wrPanelBody{padding:10px;overflow:auto;min-height:0}.episodeNavItem{padding:9px 8px;border-radius:8px;cursor:pointer;margin-bottom:3px}.episodeNavItem:hover,.episodeNavItem.sel{background:var(--soft)}.episodeNavItem .epNum{font-weight:800}.episodeNavItem .epMeta{font-size:11px;color:var(--muted);margin-top:2px}.miniBtn{border:1px solid var(--line);background:#fff;border-radius:8px!important;min-height:30px!important;padding:4px 8px;font-size:12px}
+.wrField{margin-bottom:10px}.wrField label{font-size:12px;margin:0 0 4px}.wrField textarea{min-height:92px}.wrField input{min-height:38px;padding:8px}.wrHelp{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}.memoryBlock{margin-bottom:12px}.memoryBlock h4{margin:0 0 6px;font-size:12px}.memoryItem{border:1px solid var(--line);border-radius:8px;padding:8px;margin-bottom:6px;background:#fff}.memoryItem b{font-size:12px}.memoryItem div{font-size:11px;color:var(--muted);margin-top:3px}.emptyMini{font-size:12px;color:var(--muted);padding:5px 0}
+.editorStage{background:#e9e5dd;border-radius:12px;overflow:auto;display:flex;justify-content:center;align-items:flex-start;padding:16px 22px}.paperWrap{width:100%;display:flex;justify-content:center}.paper{width:430px;min-width:430px;min-height:calc(100vh - 120px);background:#fff;border:1px solid #d9d4cb;box-shadow:0 3px 18px rgba(40,34,28,.08);padding:28px 34px 80px}.paperHeader{display:grid;grid-template-columns:72px 1fr;gap:8px;margin-bottom:14px}.paperHeader input{border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;background:transparent!important;padding:5px 2px;min-height:34px}.paperHeader input:first-child{text-align:center;font-weight:800}.manuscriptEditor{width:100%;min-height:calc(100vh - 220px);border:0!important;border-radius:0!important;padding:0!important;resize:none;background:transparent!important;font-family:"Noto Sans KR",system-ui,sans-serif;font-size:17px;line-height:1.85;letter-spacing:-.01em;overflow:hidden}.manuscriptEditor:focus{outline:0!important}.editorStage.wide .paper{width:min(980px,92%);min-width:650px}.editorStage.wide .manuscriptEditor{font-size:16px;line-height:1.75}.editorStage.two .paperWrap{gap:18px;align-items:flex-start}.editorStage.two .paper{width:430px;min-width:430px}.twoPreview{display:none;width:430px;min-width:430px;min-height:calc(100vh - 120px);background:#fff;border:1px solid #d9d4cb;box-shadow:0 3px 18px rgba(40,34,28,.08);padding:28px 34px 80px;white-space:pre-wrap;font-size:17px;line-height:1.85}.editorStage.two .twoPreview{display:block}
+.snippetGrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.snippet{min-height:34px!important;padding:5px 7px}.writingInfo{font-size:12px;line-height:1.8}.statusSaved{color:#55725a}.statusSaving{color:#9a7440}.dangerTiny{color:var(--danger)}
+@media(max-width:1500px){.writingRoom{grid-template-columns:190px 220px minmax(430px,1fr) 230px}.toolsPanel{display:none}}@media(max-width:1150px){.writingRoom{grid-template-columns:180px minmax(430px,1fr) 230px}.planPanel{display:none}}@media(max-width:800px){.main{overflow:auto!important}.dashMain,.dashStats{grid-template-columns:1fr}.writingRoom{height:auto;display:block}.wrPanel,.editorStage{margin-bottom:10px;min-height:300px}.memoryPanel{display:none}.paper{min-width:0;width:100%}.editorStage.two .twoPreview{display:none}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="writing-room-v05">
+/* 집필실은 설명보다 원고와 작업 정보를 우선한다. */
+body.writing-focus .app{grid-template-columns:1fr}
+body.writing-focus .side{display:none}
+body.writing-focus .main{width:100%;max-width:none!important;padding:10px 12px 18px!important}
+.writingTop{height:42px;margin-bottom:8px}
+.writingTitle h2{font-size:18px!important}
+.writingRoom{height:calc(100vh - 68px);min-height:720px;grid-template-columns:190px 230px minmax(520px,1fr) 245px 190px;gap:8px}
+.wrPanelHead{padding:9px 10px}.wrPanelBody{padding:9px}.wrField{margin-bottom:9px}.wrField label{font-size:12px;margin:0 0 4px}
+.wrField textarea{min-height:105px}.wrField input{min-height:36px}
+.editorStage{padding:12px 18px}.paper,.twoPreview{width:430px;min-width:430px;min-height:calc(100vh - 94px);padding:28px 34px 80px}
+.twoPreview{display:none;box-sizing:border-box}.twoPreviewInner{white-space:pre-wrap}.twoPreviewHeader{height:49px;margin-bottom:14px;border-bottom:1px solid transparent}
+.editorStage.two .twoPreview{display:block}.editorStage.two .paperWrap{align-items:stretch}.editorStage.two .paper,.editorStage.two .twoPreview{min-height:calc(100vh - 94px)}
+.memoryBlock h4{font-size:12px}.snippetHead{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:7px}.snippetHead h4{margin:0}.toolsPanel .wrPanelBody{display:flex;flex-direction:column}.writingInfo{margin-top:auto}
+.menuToggle{min-height:32px!important;padding:5px 9px!important}.fieldCompact{font-size:12px}
+@media(max-width:1700px){.writingRoom{grid-template-columns:175px 215px minmax(480px,1fr) 225px 175px}.paper,.twoPreview{width:410px;min-width:410px}}
+@media(max-width:1250px){.writingRoom{grid-template-columns:170px 210px minmax(440px,1fr) 220px}.toolsPanel{display:none}}
+
+/* v0.20 작품 DB 보완 */
+.loreDbSplit{grid-template-columns:240px minmax(0,1fr)!important}
+.dbLinkField{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 9px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-height:42px;position:relative}
+.dbLinkField input{border:0!important;outline:0!important;box-shadow:none!important;padding:4px 2px!important;min-height:28px!important;flex:1 1 160px;width:auto!important}
+.dbLinkChip{display:inline-flex;align-items:center;gap:5px;background:var(--soft);border-radius:999px;padding:3px 8px;font-size:12px}
+.dbLinkChip button{border:0;background:transparent;padding:0;line-height:1;color:var(--muted)}
+.dbSuggest{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:30;background:#fff;border:1px solid var(--line);border-radius:9px;box-shadow:0 8px 24px #0002;max-height:220px;overflow:auto;display:none}
+.dbSuggest.open{display:block}.dbSuggestItem{padding:8px 10px;cursor:pointer;border-bottom:1px solid #eee}.dbSuggestItem:last-child{border-bottom:0}.dbSuggestItem:hover{background:var(--soft)}
+.foreshadowGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.foreshadowGrid .full{grid-column:1/-1}
+@media(max-width:900px){.foreshadowGrid{grid-template-columns:1fr}.foreshadowGrid .full{grid-column:auto}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="writing-room-v06-fixed-columns">
+/* v0.6: 집필실은 울트라와이드에서 반드시 좌→우 5열로 유지한다. */
+body.writing-focus{overflow:hidden}
+body.writing-focus .app{display:grid!important;grid-template-columns:1fr!important;height:100vh!important;min-height:0!important;overflow:hidden!important}
+body.writing-focus .side{display:none!important}
+body.writing-focus .main{width:100%!important;max-width:none!important;height:100vh!important;min-height:0!important;padding:8px 10px 10px!important;overflow:hidden!important}
+body.writing-focus #view{height:100%!important;min-height:0!important;display:grid!important;grid-template-rows:42px minmax(0,1fr)!important;overflow:hidden!important}
+body.writing-focus .writingTop{height:36px!important;min-height:36px!important;margin:0 0 6px!important}
+body.writing-focus #writingRoom,
+body.writing-focus .writingRoom{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:grid!important;
+  grid-template-columns:220px 280px minmax(560px,1fr) 300px 220px!important;
+  grid-template-rows:minmax(0,1fr)!important;
+  grid-auto-flow:column!important;
+  gap:8px!important;
+  align-items:stretch!important;
+  overflow:hidden!important;
+}
+body.writing-focus #writingRoom > *{min-width:0!important;min-height:0!important;height:100%!important;margin:0!important}
+body.writing-focus .wrPanel{display:flex!important;flex-direction:column!important;overflow:hidden!important}
+body.writing-focus .wrPanelBody{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important}
+body.writing-focus .editorStage{min-width:0!important;min-height:0!important;height:100%!important;overflow:auto!important;padding:12px 18px!important;box-sizing:border-box!important}
+body.writing-focus .paperWrap{min-width:max-content!important;min-height:100%!important;align-items:flex-start!important}
+body.writing-focus .paper,body.writing-focus .twoPreview{width:430px!important;min-width:430px!important;min-height:100%!important;box-sizing:border-box!important}
+body.writing-focus .manuscriptEditor{min-height:calc(100vh - 205px)!important}
+body.writing-focus .toolsPanel{display:flex!important}
+body.writing-focus .planPanel{display:flex!important}
+body.writing-focus .memoryPanel{display:flex!important}
+/* 2페이지는 두 장을 같은 높이/상단 구조로 맞춘다. */
+body.writing-focus .editorStage.two .paperWrap{display:flex!important;gap:18px!important;align-items:stretch!important;justify-content:center!important}
+body.writing-focus .editorStage.two .paper,
+body.writing-focus .editorStage.two .twoPreview{min-height:100%!important;height:auto!important}
+body.writing-focus .twoPreviewHeader{height:49px!important;min-height:49px!important;margin-bottom:14px!important}
+/* 작은 화면에서만 세로형으로 전환. 울트라와이드/일반 데스크톱에서는 절대 아래로 떨어지지 않는다. */
+@media (max-width:1100px){
+  body.writing-focus{overflow:auto}
+  body.writing-focus .main{overflow:auto!important;height:auto!important}
+  body.writing-focus #view{display:block!important;height:auto!important;overflow:visible!important}
+  body.writing-focus #writingRoom,body.writing-focus .writingRoom{display:block!important;height:auto!important;overflow:visible!important}
+  body.writing-focus #writingRoom > *{height:auto!important;min-height:320px!important;margin-bottom:8px!important}
+}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="writing-room-v07-polish">
+body.writing-focus .planPanel .wrField textarea{width:100%!important;box-sizing:border-box!important;min-height:58px!important;resize:vertical!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important}
+body.writing-focus .planPanel .wrField:first-child textarea{min-height:130px!important}
+body.writing-focus .planPanel .wrField{width:100%!important}
+body.writing-focus .planPanel .wrPanelBody{padding:10px!important}
+.viewModes .iconMode{width:36px!important;min-width:36px!important;padding:5px!important;font-size:18px!important;line-height:1!important}
+body.writing-focus #writingRoom.wide-room{grid-template-columns:minmax(0,1fr)!important}
+body.writing-focus #writingRoom.wide-room>.wrPanel{display:none!important}
+body.writing-focus #writingRoom.wide-room>.editorStage{display:flex!important;grid-column:1!important;width:100%!important}
+body.writing-focus #writingRoom.wide-room .paperWrap{width:100%!important;min-width:0!important}
+body.writing-focus #writingRoom.wide-room .paper{width:calc(100vw - 80px)!important;max-width:none!important;min-width:0!important}
+body.writing-focus #writingRoom.wide-room .manuscriptEditor{font-size:17px!important;line-height:1.85!important}
+body.writing-focus .editorStage.two .paper{display:none!important}
+body.writing-focus .editorStage.two .twoPreview{display:flex!important;flex-direction:column!important;width:430px!important;min-width:430px!important;height:calc(100vh - 110px)!important;min-height:0!important;padding:28px 34px 30px!important;overflow:hidden!important}
+body.writing-focus .editorStage.two .twoPreview.secondPage{display:flex!important}
+.twoPagesWrap{display:none;gap:18px;align-items:flex-start;justify-content:center}
+body.writing-focus .editorStage.two .paperWrap{display:none!important}
+body.writing-focus .editorStage.two .twoPagesWrap{display:flex!important}
+.pageSheet{width:430px;min-width:430px;height:calc(100vh - 110px);background:#fff;border:1px solid #d9d4cb;box-shadow:0 3px 18px rgba(40,34,28,.08);padding:28px 34px 30px;box-sizing:border-box;overflow:hidden;font-size:17px;line-height:1.85;white-space:pre-wrap}
+.pageSheetHeader{height:49px;margin-bottom:14px;border-bottom:1px solid transparent;display:grid;grid-template-columns:72px 1fr;gap:8px;align-items:center}
+.pageSheetHeader .pageNum{text-align:center;font-weight:800}.pageSheetHeader .pageTitle{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pageSheetHeader.blank{visibility:hidden}
+.pageText{height:calc(100% - 63px);overflow:hidden;white-space:pre-wrap;word-break:break-word}
+.pageNav{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:999px;padding:5px 8px;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:5}
+.editorStage.two{position:relative}.editorStage.two .pageNav{display:flex}.pageNav button{min-width:32px}.pageNav span{font-size:12px;color:var(--muted);min-width:70px;text-align:center}
+.modalShade{position:fixed;inset:0;background:rgba(20,20,20,.38);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}.snippetModal{width:min(620px,92vw);max-height:82vh;background:var(--panel);border-radius:16px;border:1px solid var(--line);box-shadow:0 18px 60px rgba(0,0,0,.22);display:flex;flex-direction:column;overflow:hidden}.snippetModalHead{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.snippetModalBody{padding:14px 17px;overflow:auto}.snippetEditRow{display:grid;grid-template-columns:32px 1fr auto;gap:8px;align-items:center;margin-bottom:8px}.snippetEditRow input{width:100%}.snippetModalFoot{padding:12px 17px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}.snippetModalFoot .right{display:flex;gap:8px}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+
+<style id="writing-room-v08-pages">
+/* v0.8: page-first writing room */
+body.writing-focus #writingRoom,body.writing-focus .writingRoom{grid-template-columns:190px 230px minmax(520px,1fr) 245px 110px!important}
+body.writing-focus .toolsPanel .wrPanelBody{padding:7px!important}
+body.writing-focus .toolsPanel .snippetGrid{grid-template-columns:1fr!important;gap:5px!important}
+body.writing-focus .toolsPanel .snippet{width:100%!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.writing-focus .toolsPanel .snippetHead{display:block!important}
+body.writing-focus .toolsPanel .snippetHead h4{margin-bottom:5px!important}
+body.writing-focus .toolsPanel #editSnippets{width:100%!important}
+body.writing-focus .toolsPanel .writingInfo{font-size:11px!important;line-height:1.65!important}
+.planSaveBtn{font-weight:800;background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+.mobilePagesWrap{display:flex;flex-direction:column;align-items:center;gap:22px;width:100%;padding-bottom:32px}
+.mobilePage{width:622px;min-width:622px;height:1220px;background:#dedede;border:1px solid #777;box-sizing:border-box;padding:112px 84px 76px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;color:#111;font-family:"Noto Sans KR",system-ui,sans-serif;font-size:24px;line-height:2.05;letter-spacing:-.02em;white-space:pre-wrap;word-break:break-word;outline:none}
+.mobilePage:focus{box-shadow:0 0 0 2px rgba(124,93,65,.25),0 2px 10px rgba(0,0,0,.07)}
+.mobilePageHead{font-size:15px;line-height:1.4;color:#777;margin-bottom:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:21px}
+.mobilePageBody{outline:none;white-space:pre-wrap;word-break:break-word;min-height:1000px}
+.mobilePageBody:focus{outline:none}
+body.writing-focus .editorStage.mobile-paged .paperWrap{display:none!important}
+body.writing-focus .editorStage.mobile-paged .mobilePagesWrap{display:flex!important}
+body.writing-focus .editorStage:not(.mobile-paged) .mobilePagesWrap{display:none!important}
+body.writing-focus .editorStage.two .mobilePagesWrap{display:none!important}
+body.writing-focus .editorStage.two .twoPagesWrap{display:flex!important}
+body.writing-focus .editorStage.two .pageSheet{width:622px!important;min-width:622px!important;height:1220px!important;padding:112px 84px 76px!important;background:#dedede!important;border-color:#777!important;font-size:24px!important;line-height:2.05!important;box-shadow:0 2px 10px rgba(0,0,0,.07)!important}
+body.writing-focus .editorStage.two .pageSheetHeader{height:21px!important;min-height:21px!important;margin-bottom:28px!important;font-size:15px!important;color:#777!important;display:block!important}
+body.writing-focus .editorStage.two .pageSheetHeader .pageNum{font-weight:700;margin-right:10px}.pageSheetHeader .pageTitle{font-weight:500}
+body.writing-focus .editorStage.two .pageText{height:calc(100% - 49px)!important}
+body.writing-focus .editorStage.two .twoPagesWrap{gap:22px!important;padding-bottom:52px!important}
+body.writing-focus .editorStage.two{align-items:flex-start!important}
+@media(max-width:1800px){.mobilePage{width:520px;min-width:520px;height:1020px;padding:92px 70px 62px;font-size:20px}.mobilePageBody{min-height:830px}body.writing-focus .editorStage.two .pageSheet{width:520px!important;min-width:520px!important;height:1020px!important;padding:92px 70px 62px!important;font-size:20px!important}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+
+<style id="v010-writing-fix">
+/* v0.10 focused writing-room repair */
+body.writing-focus #writingRoom,body.writing-focus .writingRoom{grid-template-columns:190px 230px minmax(560px,1fr) 245px 105px!important}
+.planSaveBtn{min-width:64px!important;transition:.15s ease}.planSaveBtn.saving{opacity:.7}.planSaveBtn.saved{background:#4f7658!important;border-color:#4f7658!important}
+.editorStage{scroll-behavior:smooth!important}
+.mobilePagesWrap{display:none;flex-direction:column;align-items:center;gap:26px;width:100%;padding:8px 0 38px}
+.mobilePage,.pageSheet{width:430px!important;min-width:430px!important;height:860px!important;background:#fff!important;border:1px solid #cfc9c0!important;box-shadow:0 3px 16px rgba(30,25,20,.09)!important;box-sizing:border-box!important;padding:58px 54px 54px!important;overflow:hidden!important;color:#171717!important;font-family:"Noto Sans KR",system-ui,sans-serif!important;font-size:16.5px!important;line-height:2.02!important;letter-spacing:-.015em!important;white-space:pre-wrap!important;word-break:break-word!important}
+.mobilePageHead,.pageSheetHeader,.pageNav{display:none!important}.mobilePageBody,.pageText{height:100%!important;min-height:0!important;overflow:hidden!important;outline:none!important;white-space:pre-wrap!important;word-break:break-word!important}
+body.writing-focus .editorStage.mobile-paged .paperWrap{display:none!important}
+body.writing-focus .editorStage.mobile-paged .mobilePagesWrap{display:flex!important}
+body.writing-focus .editorStage.mobile-paged .twoPagesWrap{display:none!important}
+body.writing-focus .editorStage.two .paperWrap,body.writing-focus .editorStage.two .mobilePagesWrap{display:none!important}
+body.writing-focus .editorStage.two .twoPagesWrap{display:grid!important;grid-template-columns:430px 430px!important;gap:26px 28px!important;align-items:start!important;justify-content:center!important;width:100%!important;padding:8px 0 38px!important}
+body.writing-focus .editorStage.two .pageSheet{display:block!important;margin:0!important}
+body.writing-focus .editorStage.wide .paperWrap{display:flex!important;width:100%!important;min-width:0!important}
+body.writing-focus .editorStage.wide .paper{display:block!important;width:100%!important;min-width:0!important;max-width:none!important}
+body.writing-focus .editorStage.wide .mobilePagesWrap,body.writing-focus .editorStage.wide .twoPagesWrap{display:none!important}
+body.writing-focus #writingRoom.wide-room{grid-template-columns:minmax(0,1fr)!important}
+body.writing-focus #writingRoom.wide-room>.wrPanel{display:none!important}
+body.writing-focus #writingRoom.wide-room>.editorStage{display:flex!important;width:100%!important}
+.pageMeasure{position:fixed!important;left:-10000px!important;top:0!important;visibility:hidden!important;pointer-events:none!important;width:430px!important;height:860px!important;box-sizing:border-box!important;padding:58px 54px 54px!important;font-family:"Noto Sans KR",system-ui,sans-serif!important;font-size:16.5px!important;line-height:2.02!important;letter-spacing:-.015em!important;white-space:pre-wrap!important;word-break:break-word!important;overflow:hidden!important}
+@media(max-height:1000px){.mobilePage,.pageSheet{width:390px!important;min-width:390px!important;height:760px!important;padding:46px 46px 44px!important;font-size:15px!important}.pageMeasure{width:390px!important;height:760px!important;padding:46px 46px 44px!important;font-size:15px!important}body.writing-focus .editorStage.two .twoPagesWrap{grid-template-columns:390px 390px!important}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v011-mobile-page-calibration">
+/* v0.11 calibrated from the user's real mobile-page sample.
+   Text area ~= 360px wide; one page body ~= 630px high. */
+.mobilePage,.pageSheet{
+  width:460px!important;min-width:460px!important;height:720px!important;
+  padding:46px 50px 44px!important;
+  font-size:16.5px!important;line-height:1.95!important;letter-spacing:-.015em!important;
+}
+.pageMeasure{
+  width:460px!important;height:720px!important;padding:46px 50px 44px!important;
+  font-size:16.5px!important;line-height:1.95!important;letter-spacing:-.015em!important;
+}
+body.writing-focus .editorStage.two .twoPagesWrap{
+  grid-template-columns:460px 460px!important;gap:26px 28px!important;
+}
+/* Keep the calibrated geometry on the 3440x1440 writing setup. */
+@media(max-height:1000px){
+  .mobilePage,.pageSheet{width:420px!important;min-width:420px!important;height:660px!important;padding:40px 44px 40px!important;font-size:15.5px!important;line-height:1.92!important}
+  .pageMeasure{width:420px!important;height:660px!important;padding:40px 44px 40px!important;font-size:15.5px!important;line-height:1.92!important}
+  body.writing-focus .editorStage.two .twoPagesWrap{grid-template-columns:420px 420px!important}
+}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v012-input-performance">
+/* v0.12: narrower mobile text column + responsive typing. Two-page mode removed. */
+.mobilePage{width:460px!important;min-width:460px!important;height:720px!important;padding:46px 75px 44px!important;font-size:16.5px!important;line-height:1.95!important;letter-spacing:-.015em!important}
+.pageMeasure{width:460px!important;height:720px!important;padding:46px 75px 44px!important;font-size:16.5px!important;line-height:1.95!important;letter-spacing:-.015em!important}
+.twoPagesWrap{display:none!important}
+@media(max-height:1000px){
+  .mobilePage{width:420px!important;min-width:420px!important;height:660px!important;padding:40px 67px 40px!important;font-size:15.5px!important;line-height:1.92!important}
+  .pageMeasure{width:420px!important;height:660px!important;padding:40px 67px 40px!important;font-size:15.5px!important;line-height:1.92!important}
+}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v013-final-page-layout">
+/* v0.13: final mobile calibration, restrained wide view, clean episode list */
+.mobilePage{padding-left:83px!important;padding-right:83px!important}
+.pageMeasure{padding-left:83px!important;padding-right:83px!important}
+@media(max-height:1000px){
+  .mobilePage{padding-left:75px!important;padding-right:75px!important}
+  .pageMeasure{padding-left:75px!important;padding-right:75px!important}
+}
+/* Wide review: only moderately wider than the mobile page, centered. */
+body.writing-focus #writingRoom.wide-room .editorStage{justify-content:center!important;padding-left:22px!important;padding-right:22px!important}
+body.writing-focus #writingRoom.wide-room .paperWrap{width:100%!important;justify-content:center!important}
+body.writing-focus #writingRoom.wide-room .paper{width:620px!important;max-width:620px!important;min-width:0!important;margin:0 auto!important}
+@media(max-height:1000px){body.writing-focus #writingRoom.wide-room .paper{width:570px!important;max-width:570px!important}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v014-writing-room-finish">
+/* v0.14: writing-room finishing touches. Mobile page calibration remains unchanged. */
+/* Wide mode fills only the existing editor column; surrounding panels stay put. */
+body.writing-focus #writingRoom.wide-room{grid-template-columns:190px 230px minmax(560px,1fr) 245px 105px!important}
+body.writing-focus #writingRoom.wide-room>.wrPanel{display:flex!important}
+body.writing-focus #writingRoom.wide-room>.editorStage{grid-column:auto!important;width:auto!important;min-width:0!important}
+body.writing-focus #writingRoom.wide-room .paperWrap{width:100%!important;justify-content:stretch!important}
+body.writing-focus #writingRoom.wide-room .paper{width:100%!important;max-width:none!important;min-width:0!important;margin:0!important}
+/* Page number lives in the page's bottom margin without changing manuscript flow. */
+.mobilePage{position:relative!important}
+.mobilePageNo{position:absolute;left:0;right:0;bottom:13px;text-align:center;font-size:11px;line-height:1;color:#8a857d;pointer-events:none;user-select:none}
+/* Compact manuscript search. */
+.writingSearch{display:flex;align-items:center;gap:5px;margin-right:4px}
+.writingSearch input{width:180px!important;min-height:34px!important;height:34px!important;padding:5px 9px!important;border-radius:8px!important}
+.writingSearch .miniBtn{height:34px;min-height:34px!important;padding:3px 7px!important}
+.writingPlanQuick{display:flex;align-items:center;gap:5px;margin-right:2px}.writingPlanQuick .miniBtn{height:34px;min-height:34px!important;padding:3px 10px!important;font-weight:800}.writingPlanQuick .miniBtn:first-child{min-width:34px!important}
+.writingRefOverlay{position:fixed;inset:0;z-index:9999;background:rgba(28,25,21,.34);display:flex;align-items:flex-start;justify-content:center;padding:58px 34px 34px}.writingRefModal{width:min(1380px,calc(100vw - 68px));max-height:calc(100vh - 92px);background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 55px rgba(0,0,0,.22);display:flex;flex-direction:column;overflow:hidden}.writingRefHead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);font-weight:800;font-size:16px}.writingRefClose{border:1px solid var(--line);background:#fff;border-radius:8px;width:34px;height:34px;font-size:18px;line-height:1}.writingRefBody{padding:20px 24px 28px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.75;min-height:180px}.writingRefEmpty{color:var(--muted)}
+@media(max-width:800px){.writingRefOverlay{padding:18px 10px}.writingRefModal{width:100%;max-height:calc(100vh - 36px)}}
+.searchCount{font-size:11px;color:var(--muted);min-width:44px;text-align:center}
+.mobilePage.searchHit{box-shadow:0 0 0 2px rgba(117,93,61,.35),0 3px 16px rgba(30,25,20,.09)!important}
+@media(max-width:1700px){body.writing-focus #writingRoom.wide-room{grid-template-columns:175px 215px minmax(480px,1fr) 225px 105px!important}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v015-page-selection-fix">
+/* v0.15: visual pages remain one manuscript; selection may span every page. */
+.mobilePagesWrap::selection,.mobilePageBody::selection{background:rgba(117,93,61,.22)}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v016-editor-performance-search">
+/* v0.16.1: pagination measurement fix; keeps v0.16 editor behavior and calibrated page geometry. */
+.mobilePageBody{caret-color:#171717}
+::highlight(manuscript-search){background:#ffe66b;color:inherit}
+::highlight(manuscript-search-current){background:#ffb84d;color:inherit}
+.writingSearch input:focus{outline:2px solid rgba(117,93,61,.18);outline-offset:1px}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v017-link-fields-wide-fix">
+/* DB connection fields: search -> select -> chip. */
+.linkField{position:relative;border:1px solid var(--line);border-radius:8px;background:#fff;padding:6px;min-height:70px}
+.linkField:focus-within{border-color:#9d8d79;box-shadow:0 0 0 2px rgba(117,93,61,.08)}
+.linkChips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px}
+.linkChip{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:3px 6px 3px 8px;border-radius:999px;background:#eee9e1;font-size:12px;line-height:1.4}
+.linkChip button{border:0;background:transparent;color:#756d63;cursor:pointer;padding:0 2px;font-size:14px;line-height:1}
+.linkField>input{border:0!important;background:transparent!important;box-shadow:none!important;padding:4px 3px!important;min-height:28px!important;width:100%!important}
+.linkField>input:focus{outline:0!important}
+.linkSuggest{display:none;position:absolute;z-index:40;left:0;right:0;top:calc(100% + 4px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 24px rgba(30,25,20,.13);max-height:230px;overflow:auto;padding:4px}
+.linkSuggest.open{display:block}
+.linkSuggestItem{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;border:0;background:#fff;text-align:left;padding:8px;border-radius:6px;cursor:pointer;color:var(--text)}
+.linkSuggestItem:hover,.linkSuggestItem:focus{background:#f3efe9;outline:0}
+.linkSuggestItem span{font-size:11px;color:var(--muted);white-space:nowrap}
+.linkSuggestEmpty{padding:9px;color:var(--muted);font-size:12px}
+/* Wide mode uses the full existing editor column and the entire manuscript, never one paginated slice. */
+body.writing-focus #writingRoom.wide-room .paper{height:auto!important;min-height:calc(100vh - 120px)!important;overflow:visible!important}
+body.writing-focus #writingRoom.wide-room .manuscriptEditor{height:auto;overflow:hidden!important;resize:none!important}
+/* v0.17.1: compact episode metadata controls */
+body.writing-focus .planPanel .linkField{min-height:36px!important;padding:3px 5px!important;display:flex;align-items:center;align-content:center;flex-wrap:wrap;gap:3px}
+body.writing-focus .planPanel .linkChips{display:flex;flex-wrap:wrap;gap:3px;margin:0!important;align-items:center}
+body.writing-focus .planPanel .linkChip{padding:1px 5px 1px 7px!important;font-size:11px!important;line-height:1.35!important;min-height:22px!important}
+body.writing-focus .planPanel .linkChip button{font-size:12px!important}
+body.writing-focus .planPanel .linkField>input{flex:1 1 54px!important;width:auto!important;min-width:54px!important;min-height:24px!important;height:24px!important;padding:1px 3px!important}
+body.writing-focus .planPanel #etag{min-height:34px!important;height:34px!important;resize:none!important;padding:6px 8px!important}
+body.writing-focus .planPanel #episodeMemo{min-height:66px!important;height:66px;resize:vertical!important}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v0181-character-priority">
+/* v0.18.1: character core fields + change history */
+.characterCoreLabel{color:#245b86!important;font-weight:800!important}
+/* v0.18.2: character editor — only name/aliases stay compact; role onward gets generous writing space */
+#ged textarea.characterLongField{min-height:138px;resize:vertical}
+#ged textarea.characterMediumField{min-height:88px;resize:vertical}
+#ged .fieldHelp{white-space:normal}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v021-story-board">
+.storyHead{display:flex;align-items:center;gap:8px;margin-bottom:14px}.storyHead h2{margin:0}.storyTopGrid{display:grid;grid-template-columns:220px 1fr;gap:14px}.storyBoard{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(520px,1.6fr);gap:14px;align-items:start}.storyArcList,.storyEpisodeList{display:flex;flex-direction:column;gap:7px}.storyArcItem,.storyEpItem{width:100%;border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 11px;text-align:left;color:var(--ink)}.storyArcItem.active,.storyEpItem.active{background:var(--soft);border-color:#b9aa94}.storyArcItem b,.storyEpItem b{display:block}.storyArcMeta,.storyEpMeta{font-size:11px;color:var(--muted);margin-top:2px}.storyMiniToolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:10px}.storyMiniToolbar .btn{min-height:34px;padding:6px 10px}.storyDetail textarea{min-height:96px}.storyDetail .storyBig{min-height:145px}.storyLinkGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.storyCheckList{border:1px solid var(--line);border-radius:9px;background:#fff;max-height:145px;overflow:auto;padding:7px}.storyCheckList label{display:flex;gap:7px;align-items:flex-start;margin:0;padding:5px;font-weight:500}.storyCheckList input{margin-top:3px}.storySaveState{font-size:12px;color:var(--muted);margin-left:auto}.storyEmpty{padding:20px 10px;text-align:center;color:var(--muted)}.storyHelpNote{background:#f8f4ec;border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:10px 0}.storyArcEdit{display:grid;grid-template-columns:1fr 150px 150px;gap:9px}.storyTimeline{min-height:150px}.storyHelpModal{width:min(1260px,95vw)}@media(max-width:1000px){.storyBoard,.storyTopGrid{grid-template-columns:1fr}.storyLinkGrid{grid-template-columns:1fr}.storyArcEdit{grid-template-columns:1fr}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v022-story-board">
+body.story-focus .main{max-width:none;width:100%}.storyHead22{display:flex;align-items:center;gap:8px;margin-bottom:10px}.storyHead22 h2{margin:0}.storyTop22{padding:12px 14px}.storyTopLine22{display:grid;grid-template-columns:220px minmax(0,1fr);gap:12px;width:100%}.storyTopPair22{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}.storyTop22 label{margin:4px 0 4px}.storyTop22 input,.storyTop22 textarea{width:100%;min-width:0;min-height:38px;padding:8px 10px}.storyTop22 textarea{resize:none;overflow:hidden}.storyAutoState22{font-size:12px;color:var(--muted);margin-left:auto}.storyBoardHead22{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0 10px}.storyBoardHead22 h3{margin:0 8px 0 0;font-size:18px}.storyCards22{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;align-items:start}.storyBlock22{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:12px;min-height:0;cursor:pointer;box-shadow:0 1px 3px #00000008}.storyBlock22:hover{border-color:#b9aa94}.storyBlock22.active{outline:2px solid #9e8a6e;outline-offset:-2px}.storyBlockTop22{display:flex;align-items:flex-start;gap:8px}.storyBlockCheck22{display:none}.storyBlockRange22{font-size:11px;font-weight:800;background:var(--soft);padding:3px 7px;border-radius:999px;white-space:nowrap}.storyBlock22 h4{font-size:15px;margin:8px 0 6px}.storyBlockBody22{font-size:13px;line-height:1.55;white-space:pre-wrap;color:#514b42;overflow:visible}.storyBlockDelete22{position:absolute;right:8px;top:8px;border:0;background:transparent;color:var(--muted);font-size:17px;padding:2px 6px;border-radius:6px}.storyBlockDelete22:hover{background:#f3e6e4;color:var(--danger)}.storyEditor22{margin-top:12px}.storyEditorGrid22{display:grid;grid-template-columns:720px 110px 110px;gap:8px;align-items:end;justify-content:start}.storyEditorGrid22 input{width:100%;min-width:0}.storyEditor22.is-collapsed .storyEditorBody22{display:none}.storyEditorToggle22{margin-left:auto}.storyCore22{color:#245b86}.storyEditor22 textarea{min-height:90px}.storyEditor22 #blockDetail22{min-height:220px}.storyFieldHint22{font-size:11px;color:var(--muted);margin:3px 0 6px}.aiStoryRow33{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:5px 0}.aiStoryRow33>span{min-width:180px;flex:1}.aiStoryChoice33{display:inline-flex;align-items:center;gap:4px;font-size:12px;white-space:nowrap}.storyEmpty22{text-align:center;padding:28px;color:var(--muted);border:1px dashed var(--line);border-radius:11px;background:#ffffff66}.storyHelpModal22{width:min(1180px,94vw)}@media(max-width:900px){.storyTopLine22,.storyTopPair22,.storyEditorGrid22{grid-template-columns:1fr}.storyCards22{grid-template-columns:1fr}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v026-prompt-ai">
+.promptLayout25{grid-template-columns:500px minmax(0,1fr)}.promptList25{max-height:78vh;padding:10px}.promptToolbar26{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.promptToolbar26 select{width:auto;min-width:150px}.folder26{border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden;background:#fff}.folderHead26{display:flex;align-items:center;gap:7px;padding:8px 9px;background:#faf8f4}.folderHead26 .folderToggle26{border:0;background:transparent;cursor:pointer;font-size:14px;padding:2px 5px}.folderHead26 b{flex:1}.folderBody26.collapsed{display:none}.promptItem25{display:grid;grid-template-columns:24px minmax(0,1fr);gap:7px;align-items:start}.promptItem25 input[type=checkbox]{margin-top:3px}.promptItem25 b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.promptName26{width:100%;font-size:15px}.promptEditTop26{display:grid;grid-template-columns:minmax(520px,1fr) 240px;gap:10px;align-items:end}.promptUse26{display:flex;gap:7px;align-items:center;font-weight:600;margin:0 0 8px}.folderEmpty26{padding:9px 12px;color:var(--muted);font-size:12px}.aiRelated26{margin-top:9px}.aiCharCount26{font-size:13px;font-weight:700;color:var(--ink)}@media(max-width:1050px){.promptLayout25,.promptEditTop26{grid-template-columns:1fr}}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+</style>
+
+<style id="v032-dashboard">
+/* v0.32 dashboard: work-at-a-glance only */
+.dashMain32{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(340px,.65fr);gap:14px;align-items:start}.dashEpisodes32{padding:8px 12px}.dashTable32 th,.dashTable32 td{padding:9px 8px}.dashTable32 .episodeSummary{max-width:none}.dashEpNote32{width:78px!important;min-height:32px!important;height:32px;padding:4px 7px!important;border-radius:7px!important;text-align:center}.dashSide32 .card{margin-bottom:10px}.dashSide32 h3{margin:0 0 8px;font-size:16px}.dashMemoCard32{padding:12px 14px 8px}.dashMemo32{min-height:58px!important;height:58px;padding:8px 9px;resize:vertical}.dashSave32{min-height:14px;font-size:11px}.dashPlanCard32{padding:12px 14px}.dashPlans32{display:grid;grid-template-columns:1fr;gap:6px}.dashPlan32{width:100%;min-height:46px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 9px;text-align:left;color:var(--ink);display:block}.dashPlan32:not(.empty){cursor:pointer}.dashPlan32:not(.empty):hover{background:var(--soft)}.dashPlan32 b{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dashPlan32 span{display:block;margin-top:2px;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dashPlan32.empty{background:#fff;cursor:default}.dashForeshadowCard32{padding:12px 14px}.dashForeshadows32{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start;max-height:190px;overflow:auto}.dashForeshadowTag32{border:1px solid #d5c9b8;background:var(--soft);color:var(--ink);border-radius:999px;padding:5px 9px;font-size:12px;line-height:1.2;white-space:nowrap}.dashForeshadowTag32:hover{border-color:#9e8a6e;background:#e1d5c4}.dashEmpty32{min-height:80px}
+@media(max-width:1000px){.dashMain32{grid-template-columns:1fr}}
+</style>
+
+<style id="v034-ui-polish">
+/* compact story editor */
+.storyEditor22{padding:12px 14px}.storyEditorGrid22{grid-template-columns:minmax(360px,720px) 110px 110px auto;gap:8px;align-items:end}.storyEditorGrid22 label{margin:0 0 4px}.storyEditorGrid22 input{height:38px!important;min-height:38px!important;padding:7px 9px!important}.storyEditorAction34{display:flex;align-items:center;gap:7px;height:38px}.storyEditorAction34 .storySaveState{margin:0;white-space:nowrap}.storyEditorAction34 .btn{height:38px;min-height:38px;padding:6px 10px}.storyEditor22 textarea{margin-top:0}
+/* dashboard plan cards show complete block text */
+.dashPlan32{height:auto;min-height:46px}.dashPlan32 b{white-space:normal;overflow:visible;text-overflow:clip}.dashPlan32 span{white-space:pre-wrap;overflow:visible;text-overflow:clip;line-height:1.45}
+/* normalize compact controls */
+.aiModes25 .btn,.aiSingle28 input,.aiRange25 input{height:34px!important;min-height:34px!important;padding:6px 10px!important}.promptEditTop26 input,.promptEditTop26 select{height:42px!important;min-height:42px!important;padding:9px 11px!important}
+/* denser project management */
+.manageCard{padding:14px 16px}.manageCard>p{margin-bottom:10px}.manageActions{grid-template-columns:repeat(2,minmax(120px,220px));justify-content:start;gap:8px}.manageActions.manageActions4{grid-template-columns:repeat(4,minmax(105px,170px))}.manageActions .btn{height:38px;min-height:38px;padding:6px 11px}.manageDataGroup34{padding-top:10px;margin-top:10px;border-top:1px solid var(--line)}.manageDataGroup34:first-of-type{margin-top:0}.manageDataGroup34>b{display:block;font-size:13px;margin-bottom:7px}.projectRow30{grid-template-columns:minmax(0,1fr) 112px;min-height:46px;padding:5px 0}.projectRow30 .btn{width:112px;height:34px;min-height:34px;padding:5px 8px}.manageActions.one{grid-template-columns:minmax(180px,260px)}
+@media(max-width:1050px){.storyEditorGrid22{grid-template-columns:minmax(280px,1fr) 100px 100px auto}.manageActions.manageActions4{grid-template-columns:repeat(2,minmax(120px,1fr))}}
+@media(max-width:700px){.storyEditorGrid22{grid-template-columns:1fr 1fr}.storyEditorGrid22>div:first-child{grid-column:1/-1}.storyEditorAction34{grid-column:1/-1}.manageActions,.manageActions.manageActions4{grid-template-columns:1fr 1fr}}
+</style>
+
+<style id="v035-episode-design">
+.episodeDesign35{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}.episodeDesign35 summary{cursor:pointer;font-weight:800;padding:5px 0;user-select:none}.episodeDesign35 .fieldHelp{margin-top:0}.episodeDesign35 textarea{min-height:100px}.episodeDesign35 #beatPlan35{min-height:150px}.aiStoryHead35{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.aiStoryHead35 h3{margin-right:auto}.aiStoryHead35 .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+</style>
+
+<style id="mobile-layout-v041">
+/* v0.41 — phone layout: keep desktop intact, make the writing room manuscript-first. */
+.mobileEpisodeToggle41{display:none}
+@media (max-width:700px){
+  html,body{max-width:100%;overflow-x:hidden}
+  body:not(.writing-focus) .main{padding:10px!important;overflow-x:hidden!important}
+  body:not(.writing-focus) .card{max-width:100%;box-sizing:border-box}
+  body:not(.writing-focus) input,
+  body:not(.writing-focus) textarea,
+  body:not(.writing-focus) select{max-width:100%;box-sizing:border-box}
+
+  body.writing-focus{overflow:hidden!important}
+  body.writing-focus .main{
+    width:100%!important;height:100dvh!important;min-height:0!important;
+    padding:6px!important;overflow:hidden!important;
+  }
+  body.writing-focus #view{
+    height:100%!important;min-height:0!important;
+    display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;
+    overflow:hidden!important;
+  }
+  body.writing-focus .writingTop{
+    height:auto!important;min-height:0!important;margin:0 0 5px!important;
+    display:flex!important;align-items:center!important;gap:5px!important;
+    flex-wrap:nowrap!important;
+  }
+  body.writing-focus .writingTitle{gap:5px!important;flex:none}
+  body.writing-focus .writingTitle h2{display:none!important}
+  body.writing-focus #writingHome{width:34px!important;height:34px!important;min-width:34px!important}
+  body.writing-focus .writingTop>div:last-child{
+    min-width:0!important;flex:1 1 auto!important;gap:5px!important;justify-content:flex-end!important;
+  }
+  body.writing-focus .writingPlanQuick{display:flex!important;gap:4px!important;flex:none}
+  body.writing-focus .writingPlanQuick .miniBtn{height:34px!important;min-height:34px!important;padding:4px 8px!important}
+  body.writing-focus .writingSearch{display:none!important}
+  body.writing-focus .viewModes{display:none!important}
+  .mobileEpisodeToggle41{
+    display:inline-flex!important;align-items:center;justify-content:center;
+    height:34px!important;min-height:34px!important;padding:4px 9px!important;flex:none;
+  }
+
+  body.writing-focus #writingRoom,
+  body.writing-focus .writingRoom{
+    width:100%!important;height:100%!important;min-height:0!important;
+    display:block!important;overflow:hidden!important;
+  }
+  body.writing-focus #writingRoom>.wrPanel{display:none!important}
+  body.writing-focus #writingRoom>.editorStage{
+    display:block!important;width:100%!important;height:100%!important;min-height:0!important;
+    margin:0!important;padding:0!important;overflow:auto!important;background:transparent!important;
+  }
+
+  /* Episode list becomes a temporary drawer instead of consuming manuscript width. */
+  body.writing-focus #writingRoom>.wrPanel:first-child.mobileOpen41{
+    display:flex!important;position:fixed!important;z-index:120!important;
+    left:8px!important;right:8px!important;top:48px!important;bottom:8px!important;
+    width:auto!important;height:auto!important;min-height:0!important;margin:0!important;
+    border-radius:12px!important;box-shadow:0 10px 35px rgba(0,0,0,.22)!important;
+  }
+  body.writing-focus #writingRoom>.wrPanel:first-child.mobileOpen41 .wrPanelBody{
+    overflow-y:auto!important;
+  }
+
+  /* Existing paged editor becomes a phone-sized writing sheet. */
+  body.writing-focus .editorStage.mobile-paged .paperWrap{display:none!important}
+  body.writing-focus .editorStage.mobile-paged .mobilePagesWrap{
+    display:flex!important;width:100%!important;min-width:0!important;
+    padding:0 0 20px!important;gap:10px!important;align-items:stretch!important;
+  }
+  body.writing-focus .mobilePage{
+    width:100%!important;min-width:0!important;max-width:none!important;
+    height:auto!important;min-height:calc(100dvh - 54px)!important;
+    padding:28px 20px 42px!important;margin:0!important;
+    border-radius:8px!important;box-shadow:none!important;
+    font-size:16px!important;line-height:1.9!important;
+    overflow:visible!important;
+  }
+  body.writing-focus .mobilePageBody{
+    height:auto!important;min-height:calc(100dvh - 124px)!important;overflow:visible!important;
+  }
+  body.writing-focus .mobilePageNo{bottom:14px!important}
+
+  /* Reference windows stay readable above the mobile keyboard. */
+  .writingRefOverlay{padding:8px!important}
+  .writingRefModal{width:100%!important;max-width:none!important;max-height:88dvh!important}
+  .writingRefBody{padding:14px!important;font-size:14px!important;line-height:1.75!important}
+
+  /* Non-writing screens only need safe single-column fallbacks on phones. */
+  .episodePlanGrid36,.aiGrid25,.dashMain,.dashStats{grid-template-columns:1fr!important}
+  .aiTop25{align-items:stretch!important;flex-wrap:wrap!important}
+  .aiTop25>div{min-width:0!important;flex:1 1 100%!important}
+  .aiTop25 .aiHelp40{margin-left:0!important}
+  .aiPick25{grid-template-columns:1fr!important}
+  .episodePlanCard36 textarea,.styleRefCard37 textarea{min-height:240px!important}
+}
+</style>
+
+<meta name="application-name" content="WEB">
+<meta name="apple-mobile-web-app-title" content="WEB">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#6b3f24">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+
+</head><body><div class="app"><aside class="side"><div class="nav" id="nav"></div></aside><main class="main"><div id="view"></div></main></div>
+<style id="v025-ai-studio">
+body.ai-focus .main,body.prompt-focus .main{max-width:none;width:100%}.promptLayout25{display:grid;grid-template-columns:320px minmax(0,1fr);gap:14px}.promptList25{max-height:76vh;overflow:auto}.promptItem25{padding:11px;border-bottom:1px solid var(--line);cursor:pointer}.promptItem25:hover,.promptItem25.active{background:var(--soft)}.promptBody25{min-height:520px}.aiGrid25{display:grid;grid-template-columns:minmax(340px,.72fr) minmax(520px,1.28fr);gap:14px;align-items:start}.aiSection25{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.aiSection25:first-child{border-top:0;padding-top:0;margin-top:0}.aiSection25 h3{margin:0 0 8px}.aiModes25{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.aiModes25 .btn{min-height:34px;padding:6px 10px}.aiModes25 .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}.aiRange25{display:grid;grid-template-columns:100px 26px 100px 1fr;gap:7px;align-items:center}.aiChecks25{display:flex;gap:14px;flex-wrap:wrap}.aiChecks25 label{font-weight:500;margin:3px 0;display:flex;gap:6px;align-items:center}.aiPick25{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.aiPickBox25{border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff;max-height:230px;overflow:auto}.aiPickBox25 label{font-weight:500;margin:0;padding:4px 2px;display:flex;gap:6px;align-items:flex-start}.aiPickHead25{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:5px}.aiPickHead25 b{font-size:13px}.aiStoryList25{border:1px solid var(--line);border-radius:9px;padding:8px;max-height:230px;overflow:auto;background:#fff}.aiStoryList25 label{font-weight:500;margin:0;padding:5px 2px;display:flex;gap:7px}.aiPreview25{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:9px;padding:14px;min-height:520px;max-height:72vh;overflow:auto}.aiTop25{display:grid;grid-template-columns:minmax(320px,1fr) auto auto;gap:8px;align-items:end}.aiMeta25{font-size:12px;color:var(--muted);margin-top:7px}.aiNote25{font-size:12px;color:var(--muted);line-height:1.5}.aiCore25{color:#245b86}@media(max-width:1050px){.promptLayout25,.aiGrid25,.aiPick25{grid-template-columns:1fr}.aiTop25,.aiRange25{grid-template-columns:1fr}}
+
+.aiEpisodeTop28{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}.aiEpisodeTop28 .aiModes25{margin-bottom:0}.aiSingle28{display:flex;align-items:center;gap:5px}.aiSingle28 input{width:82px;min-height:34px}.aiRelated26.active{background:var(--accent);color:#fff;border-color:var(--accent)}.aiStoryHead28{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.aiStoryHead28 h3{margin:0}.aiStoryHead28+.aiStoryList25{margin-top:0}
+
+.aiCountGuide29{display:inline-block;margin-left:7px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800;vertical-align:1px;border:1px solid transparent}.aiCountOk29{background:#eef8f1;color:#287247;border-color:#cfe8d7}.aiCountWarn29{background:#fff7e6;color:#9a6500;border-color:#f0d69a}.aiCountHigh29{background:#fff0e8;color:#a94c16;border-color:#efc2a8}.aiCountDanger29{background:#fdecec;color:#a42d2d;border-color:#edb9b9}
+
+/* v0.30 project management */
+.manageHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.manageHead h2{margin:0;font-size:24px}.manageCard h2{margin:0 0 5px;font-size:19px}.manageCard>p{margin:0 0 13px}.manageActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.manageActions.one{grid-template-columns:1fr}.manageActions .btn{width:100%;height:42px;min-height:42px;padding:8px 12px}.projectList30{border-top:1px solid var(--line);margin-top:13px}.projectRow30{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:10px;align-items:center;min-height:52px;padding:7px 0;border-bottom:1px solid var(--line)}.projectRow30:last-child{border-bottom:0}.projectName30{min-width:0;display:flex;align-items:center;gap:7px}.projectName30 b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.projectRow30 .btn{width:124px;height:38px;min-height:38px;padding:7px 10px}.manageNote30{font-size:12px;color:var(--muted);margin-top:9px}.dangerZone30{border-color:#d9b6b1;background:#fffafa}.dangerZone30 .btn{min-width:150px}.currentBadge{flex:none}.manageCard label.btn{margin:0;font-weight:600}.manageCard input[type=file]{display:none}
+@media(max-width:800px){.manageActions{grid-template-columns:1fr}.projectRow30{grid-template-columns:1fr}.projectRow30 .btn{width:100%}}
+
+/* v0.37: 독립 회차 설계 */
+.episodePlanLayout36{display:grid;grid-template-columns:260px minmax(0,1fr);gap:14px;align-items:start}
+.episodePlanList36{padding:8px;max-height:calc(100vh - 90px);overflow:auto;position:sticky;top:18px}
+.episodePlanItem36{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;padding:11px 10px;border-radius:7px;color:var(--ink)}
+.episodePlanItem36:hover,.episodePlanItem36.active{background:var(--soft)}
+.episodePlanItem36 b{display:block;margin-bottom:2px}.episodePlanItem36 span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.episodePlanHead36{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.episodePlanHead36 h2{margin:0}
+.episodePlanGrid36{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.episodePlanCard36 textarea{min-height:58vh;line-height:1.65}.episodePlanCard36 h3{margin:0 0 4px}.episodePlanState36{font-size:12px;color:var(--muted);min-width:70px;text-align:right}
+.episodePlanEmpty36{padding:28px;text-align:center;color:var(--muted)}
+@media(max-width:900px){.episodePlanLayout36{grid-template-columns:1fr}.episodePlanList36{position:static;max-height:230px}.episodePlanGrid36{grid-template-columns:1fr}.episodePlanCard36 textarea{min-height:320px}}
+</style>
+<script>
+const DB='story-context-lab', VER=1; let db, currentProject=null;
+const stores=['projects','episodes','characters','lore','foreshadows','tags','prompts','presets','assets','settings'];
+const $=s=>document.querySelector(s), esc=s=>(s??'').toString().replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function id(){return crypto.randomUUID()} function now(){return new Date().toISOString()}
+function openDB(){return new Promise((res,rej)=>{let r=indexedDB.open(DB,VER);r.onupgradeneeded=e=>{let d=e.target.result;for(const s of stores){if(!d.objectStoreNames.contains(s)){let o=d.createObjectStore(s,{keyPath:'id'});if(['episodes','characters','lore','foreshadows','tags','assets'].includes(s))o.createIndex('projectId','projectId');}}};r.onsuccess=()=>{db=r.result;res()};r.onerror=()=>rej(r.error)})}
+function all(s){return new Promise((res,rej)=>{let r=db.transaction(s).objectStore(s).getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})} function put(s,v){return new Promise((res,rej)=>{let r=db.transaction(s,'readwrite').objectStore(s).put(v);r.onsuccess=()=>res(v);r.onerror=()=>rej(r.error)})} function del(s,k){return new Promise((res,rej)=>{let r=db.transaction(s,'readwrite').objectStore(s).delete(k);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})} async function byProject(s){return (await all(s)).filter(x=>x.projectId===currentProject)}
+const pages=[['home','대시보드'],['story','스토리'],['episodeplan','회차 설계'],['episodes','집필'],['workdb','작품 DB'],['context','AI 작업실'],['promptlab','프롬프트'],['backup','작품 관리']];let page='home',workDbTab='characters',promptLabTab='prompts';
+function nav(){ $('#nav').innerHTML=pages.map(([k,n])=>`<button data-p="${k}" class="${page===k?'active':''}">${n}</button>`).join(''); document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{page=b.dataset.p;nav();render()})}
+async function projects(){return all('projects')} async function refreshProjects(){let ps=await projects();if(!currentProject&&ps[0])currentProject=ps[0].id;if(currentProject&&!ps.some(p=>p.id===currentProject))currentProject=ps[0]?.id||null} async function createProject(){let title=prompt('새 작품 제목');if(!title)return;let p={id:id(),title,genre:'',concept:'',summary:'',createdAt:now(),updatedAt:now()};await put('projects',p);currentProject=p.id;await refreshProjects();page='home';nav();render()}
+
+async function render(){if(page!=='episodes')document.body.classList.remove('writing-focus');if(page!=='story')document.body.classList.remove('story-focus');if(page!=='promptlab')document.body.classList.remove('prompt-focus');if(page!=='context')document.body.classList.remove('ai-focus');if(!currentProject&&page!=='backup'&&page!=='promptlab'){ $('#view').innerHTML='<div class="card"><h2>작품이 없습니다.</h2><p class="muted">작품 관리에서 새 작품을 만들어 시작하세요.</p><button class="btn primary" id="goSettings">작품 관리로 이동</button></div>'; $('#goSettings').onclick=()=>{page='backup';nav();render()};return} let fn={home,episodes,episodeplan,workdb,story,promptlab,context,backup}[page];await fn()}
+async function home(){
+ let p=(await projects()).find(x=>x.id===currentProject), es=(await byProject('episodes')).sort((a,b)=>a.number-b.number), fs=await byProject('foreshadows');
+ let openFs=fs.filter(x=>!['회수 완료','폐기'].includes(x.status));
+ let memoId='dashboardMemo:'+currentProject, settings=await all('settings'), memo=settings.find(x=>x.id===memoId)?.value||'';
+ p.storyArcs=Array.isArray(p.storyArcs)?p.storyArcs:[];
+ let lastEp=es.length?Math.max(...es.map(e=>+e.number||0)):0;
+ let future=p.storyArcs.slice().filter(a=>(+a.end||+a.start||0)>lastEp).sort((a,b)=>(+a.start||999999)-(+b.start||999999)).slice(0,3);
+ let planSlots=Array.from({length:3},(_,i)=>future[i]);
+ $('#view').innerHTML=`<div class="dashMain32"><div class="card dashEpisodes32">${es.length?`<div style="overflow:auto"><table class="episodeTable dashTable32"><thead><tr><th style="width:72px">회차</th><th style="width:190px">제목</th><th style="width:90px">글자 수</th><th>회차 요약</th><th style="width:92px">메모</th></tr></thead><tbody>${es.map(e=>`<tr class="episodeRow" data-ep="${e.id}"><td><b>${e.number}화</b></td><td>${esc(e.title||'제목 없음')}</td><td>${(e.manuscript||'').length.toLocaleString()}자</td><td class="episodeSummary ${e.summary?'':'muted'}">${esc(e.summary||'요약 없음')}</td><td><input class="dashEpNote32" data-note-ep="${e.id}" maxlength="10" value="${esc(e.dashboardNote||'')}" aria-label="${e.number}화 메모"></td></tr>`).join('')}</tbody></table></div>`:'<div class="dashEmpty32"></div>'}</div>
+ <div class="dashSide32"><div class="card dashMemoCard32"><h3>MEMO</h3><textarea id="dashMemo" class="dashMemo32">${esc(memo)}</textarea><div id="memoState" class="saveHint dashSave32"></div></div>
+ <div class="card dashPlanCard32"><h3>앞으로의 계획</h3><div class="dashPlans32">${planSlots.map(a=>a?`<button class="dashPlan32" data-story-block="${a.id}"><b>${a.start||'?'}${a.end&&a.end!=a.start?'~'+a.end:''}화 · ${esc(a.name||'이름 없는 블록')}</b><span>${esc(a.summary||'내용 없음')}</span></button>`:'<div class="dashPlan32 empty"></div>').join('')}</div></div>
+ <div class="card dashForeshadowCard32"><h3>미회수 떡밥 <span class="muted">${openFs.length}</span></h3><div class="dashForeshadows32">${openFs.map(f=>`<button class="dashForeshadowTag32" data-foreshadow="${f.id}" title="${esc(f.status||'미회수')}${f.related?' · '+esc(f.related)+'화':''}">${esc(f.name||'이름 없음')}</button>`).join('')}</div></div></div></div>`;
+ document.querySelectorAll('[data-ep]').forEach(r=>r.onclick=()=>{window.__openEpisodeId=r.dataset.ep;page='episodes';nav();render()});
+ document.querySelectorAll('[data-note-ep]').forEach(inp=>{inp.onclick=e=>e.stopPropagation();let timer;inp.oninput=e=>{e.stopPropagation();clearTimeout(timer);timer=setTimeout(async()=>{let ep=es.find(x=>x.id===inp.dataset.noteEp);if(!ep)return;ep.dashboardNote=inp.value;ep.updatedAt=now();await put('episodes',ep)},300)}});
+ document.querySelectorAll('[data-foreshadow]').forEach(b=>b.onclick=()=>{window.__openForeshadowId=b.dataset.foreshadow;workDbTab='foreshadows';page='workdb';nav();render()});
+ document.querySelectorAll('[data-story-block]').forEach(b=>b.onclick=()=>{window.__storyBlockId=b.dataset.storyBlock;page='story';nav();render()});
+ let t;$('#dashMemo').oninput=()=>{clearTimeout(t);$('#memoState').textContent='저장 중…';t=setTimeout(async()=>{await put('settings',{id:memoId,value:$('#dashMemo').value,updatedAt:now()});$('#memoState').textContent='저장됨 ✓'},350)};
+}
+async function episodes(){
+ let es=(await byProject('episodes')).sort((a,b)=>a.number-b.number);
+ let wantedId=window.__openEpisodeId||window.__activeEpisodeId;
+ let target=wantedId?es.find(e=>e.id===wantedId):es.at(-1);window.__openEpisodeId=null;
+ if(target)window.__activeEpisodeId=target.id;
+ if(!target&&es.length)target=es[0];
+ document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="페이지 보기" aria-label="페이지 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
+ if(!target){let e={id:id(),projectId:currentProject,number:1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',e);target=e;es=[e]}
+ await editEpisode(target,es);
+ const openWritingReference=async(kind)=>{
+   let settings=await all('settings'),rec=settings.find(x=>x.id==='episodePlanWorkspace:'+currentProject),w=rec?.value||{};
+   let title=kind==='beat'?'기승전결 블록':'설계 상담 메모',content=kind==='beat'?(w.beatPlan||''):(w.designMemo||'');
+   document.querySelector('.writingRefOverlay')?.remove();
+   let overlay=document.createElement('div');overlay.className='writingRefOverlay';overlay.innerHTML=`<div class="writingRefModal" role="dialog" aria-modal="true" aria-label="${title}"><div class="writingRefHead"><span>${title}</span><button class="writingRefClose" type="button" aria-label="닫기">×</button></div><div class="writingRefBody ${content?'':'writingRefEmpty'}">${content?esc(content):'저장된 내용이 없습니다.'}</div></div>`;
+   document.body.appendChild(overlay);
+   const close=()=>overlay.remove();overlay.querySelector('.writingRefClose').onclick=close;overlay.onclick=ev=>{if(ev.target===overlay)close()};
+   const onKey=ev=>{if(ev.key==='Escape'){close();document.removeEventListener('keydown',onKey)}};document.addEventListener('keydown',onKey);
+ };
+ $('#showBeatPlan').onclick=()=>openWritingReference('beat');
+ $('#showDesignMemo').onclick=()=>openWritingReference('memo');
+ $('#writingHome').onclick=()=>{page='home';nav();render()};
+ const mobileEpisodeBtn=$('#mobileEpisodeToggle41');
+ if(mobileEpisodeBtn) mobileEpisodeBtn.onclick=()=>{
+   const panel=document.querySelector('#writingRoom>.wrPanel:first-child');
+   if(panel) panel.classList.toggle('mobileOpen41');
+ };
+
+ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));let st=$('#editorStage'),room=$('#writingRoom');if(st.classList.contains('mobile-paged'))window.__syncFromMobilePages&&window.__syncFromMobilePages();st.classList.remove('two','wide','mobile-paged');room.classList.remove('wide-room');if(b.dataset.mode==='mobile'){st.classList.add('mobile-paged');window.__renderPages&&window.__renderPages()}if(b.dataset.mode==='wide'){st.classList.add('wide');room.classList.add('wide-room');requestAnimationFrame(()=>window.__updateWritingInfo&&window.__updateWritingInfo(false))}});
+}
+function normalizeNewlines(text){return (text||'').replace(/\r\n?/g,'\n')}
+function indentText(text){let lines=normalizeNewlines(text).split('\n');return lines.map(line=>{if(line==='')return '';let core=line.replace(/^[\t \u3000]+/,'');return core?'　'+core:''}).join('\n')}
+async function editEpisode(e,esArg){
+ let es=esArg||(await byProject('episodes')).sort((a,b)=>a.number-b.number), cs=await byProject('characters'), ls=await byProject('lore'), fs=await byProject('foreshadows');
+ let legacyCharNames=(e.characters||'').split(',').map(x=>x.trim()).filter(Boolean), legacyLoreNames=(e.lore||'').split(',').map(x=>x.trim()).filter(Boolean), legacyForeshadowNames=(e.foreshadows||'').split(',').map(x=>x.trim()).filter(Boolean);
+ let selectedCharIds=new Set((e.characterIds||cs.filter(c=>legacyCharNames.includes(c.name)).map(c=>c.id)).filter(id=>cs.some(c=>c.id===id)));
+ let selectedLoreIds=new Set((e.loreIds||ls.filter(l=>legacyLoreNames.includes(l.title)).map(l=>l.id)).filter(id=>ls.some(l=>l.id===id)));
+ let selectedForeshadowIds=new Set((e.foreshadowIds||fs.filter(f=>legacyForeshadowNames.includes(f.name)).map(f=>f.id)).filter(id=>fs.some(f=>f.id===id)));
+ let relChars=cs.filter(c=>selectedCharIds.has(c.id)), relLore=ls.filter(l=>selectedLoreIds.has(l.id)), relFs=fs.filter(f=>selectedForeshadowIds.has(f.id)||((f.related||'').split(',').map(x=>+x.trim()).includes(+e.number)));
+ let appSettings=await all('settings'), snippetRec=appSettings.find(x=>x.id==='writingSnippets'), snippets=(snippetRec?.value||['……','······','―','* * *','“”','‘’']);
+ $('#writingRoom').innerHTML=`<section class="wrPanel"><div class="wrPanelHead"><span>회차</span><button class="miniBtn" id="addE">+ 추가</button></div><div class="wrPanelBody" id="elist">${es.map(x=>`<div class="episodeNavItem ${x.id===e.id?'sel':''}" data-id="${x.id}"><div><span class="epNum">${x.number}화</span> ${esc(x.title||'')}</div></div>`).join('')}</div></section>
+ <section class="wrPanel planPanel"><div class="wrPanelHead"><span>이번 화</span><button class="miniBtn planSaveBtn" id="saveEpisodeNow">저장</button></div><div class="wrPanelBody"><div class="wrField"><label>회차 요약</label><textarea id="es">${esc(e.summary||'')}</textarea></div><div class="wrField"><label>캐릭터</label><div class="linkField" id="charLinkField"><div class="linkChips" id="charChips"></div><input id="charSearch" autocomplete="off"><div class="linkSuggest" id="charSuggest"></div></div></div><div class="wrField"><label>설정</label><div class="linkField" id="loreLinkField"><div class="linkChips" id="loreChips"></div><input id="loreSearch" autocomplete="off"><div class="linkSuggest" id="loreSuggest"></div></div></div><div class="wrField"><label>떡밥</label><div class="linkField" id="foreshadowLinkField"><div class="linkChips" id="foreshadowChips"></div><input id="foreshadowSearch" autocomplete="off"><div class="linkSuggest" id="foreshadowSuggest"></div></div></div><div class="wrField"><label>태그</label><input id="etag" type="text" value="${esc(e.tags||'')}"></div><div class="wrField"><label>메모</label><textarea id="episodeMemo">${esc(e.memo||'')}</textarea></div></div></section>
+ <section class="editorStage mobile-paged" id="editorStage"><div class="paperWrap"><div class="paper"><div class="paperHeader"><input id="en" type="number" value="${e.number}" title="회차"><input id="et" value="${esc(e.title||'')}" placeholder="회차 제목"></div><textarea id="em" class="manuscriptEditor" spellcheck="false">${esc(indentText(e.manuscript||'　'))}</textarea></div></div><div class="mobilePagesWrap" id="mobilePagesWrap"></div></section>
+ <section class="wrPanel memoryPanel"><div class="wrPanelHead">연결 정보</div><div class="wrPanelBody"><div class="memoryBlock"><h4>캐릭터</h4>${relChars.length?relChars.map(c=>`<div class="memoryItem"><b>${esc(c.name)}${c.role?' · '+esc(c.role):''}</b><div>${esc(c.state||c.description||'')}</div></div>`).join(''):'<div class="emptyMini">없음</div>'}</div><div class="memoryBlock"><h4>설정</h4>${relLore.length?relLore.map(l=>`<div class="memoryItem"><b>${esc(l.title)}</b><div>${esc((l.content||'').slice(0,110))}</div></div>`).join(''):'<div class="emptyMini">없음</div>'}</div><div class="memoryBlock"><h4>떡밥</h4>${relFs.length?relFs.map(f=>`<div class="memoryItem"><b>${esc(f.name)}</b><div>${esc(f.status||'미회수')} · ${esc((f.description||'').slice(0,100))}</div></div>`).join(''):'<div class="emptyMini">없음</div>'}</div></div></section>
+ <section class="wrPanel toolsPanel"><div class="wrPanelHead">집필 도구</div><div class="wrPanelBody"><div class="memoryBlock"><div class="snippetHead"><h4>상용구</h4><button class="miniBtn" id="editSnippets">수정</button></div><div class="snippetGrid">${snippets.map(x=>`<button class="miniBtn snippet" data-snippet="${esc(x)}">${esc(x)}</button>`).join('')}</div></div><div class="writingInfo">글자 수 <b id="count">0</b>자<br>문단 수 <b id="paraCount">0</b><br><span id="saveState" class="statusSaved">저장됨 ✓</span></div><button class="miniBtn dangerTiny" id="delE" style="width:100%;margin-top:8px">이 회차 삭제</button></div></section>`;
+ let em=$('#em'), saveTimer=null, saving=false;
+ function setupLinkField(kind,items,selected,inputId,chipsId,suggestId){
+   const input=$('#'+inputId),chips=$('#'+chipsId),suggest=$('#'+suggestId);if(!input||!chips||!suggest)return;
+   const titleOf=x=>kind==='character'?x.name:(kind==='lore'?x.title:x.name);
+   const metaOf=x=>kind==='character'?(x.role||''):(kind==='lore'?(x.category||''):(x.status||''));
+   const hayOf=x=>kind==='character'?[x.name,x.role,x.description,x.state]:kind==='lore'?[x.title,x.category,x.content]:[x.name,x.status,x.description];
+   const drawChips=()=>{chips.innerHTML=items.filter(x=>selected.has(x.id)).map(x=>`<span class="linkChip">${esc(titleOf(x)||'')}<button type="button" data-unlink="${x.id}" aria-label="연결 해제">×</button></span>`).join('');chips.querySelectorAll('[data-unlink]').forEach(b=>b.onclick=()=>{selected.delete(b.dataset.unlink);drawChips();queueSave();});};
+   const close=()=>{suggest.classList.remove('open');suggest.innerHTML=''};
+   const search=()=>{const q=input.value.trim().toLocaleLowerCase();if(!q){close();return}const found=items.filter(x=>!selected.has(x.id)&&hayOf(x).filter(Boolean).some(v=>String(v).toLocaleLowerCase().includes(q))).slice(0,8);suggest.innerHTML=found.length?found.map(x=>`<button type="button" class="linkSuggestItem" data-link="${x.id}"><b>${esc(titleOf(x)||'')}</b>${metaOf(x)?`<span>${esc(metaOf(x))}</span>`:''}</button>`).join(''):'<div class="linkSuggestEmpty">검색 결과 없음</div>';suggest.classList.add('open');suggest.querySelectorAll('[data-link]').forEach(b=>b.onclick=()=>{selected.add(b.dataset.link);input.value='';close();drawChips();queueSave();input.focus();});};
+   input.addEventListener('input',search);input.addEventListener('focus',()=>{if(input.value.trim())search()});input.addEventListener('keydown',ev=>{if(ev.key==='Escape')close();if(ev.key==='Enter'){const first=suggest.querySelector('[data-link]');if(first){ev.preventDefault();first.click()}}});
+   document.addEventListener('pointerdown',ev=>{if(!ev.target.closest('#'+input.closest('.linkField').id))close()});drawChips();
+ }
+ setupLinkField('character',cs,selectedCharIds,'charSearch','charChips','charSuggest');
+ setupLinkField('lore',ls,selectedLoreIds,'loreSearch','loreChips','loreSuggest');
+ setupLinkField('foreshadow',fs,selectedForeshadowIds,'foreshadowSearch','foreshadowChips','foreshadowSuggest');
+ let pageCache=[];
+ let pageRenderTimer=null, searchTimer=null;
+ function splitPages(text){
+   const clean=normalizeNewlines(text||'');
+   if(!clean)return [''];
+   let probe=document.getElementById('pageProbe');
+   if(!probe){
+     probe=document.createElement('div');probe.id='pageProbe';probe.className='mobilePage';
+     probe.style.cssText='position:fixed!important;left:-20000px!important;top:0!important;visibility:hidden!important;pointer-events:none!important;display:block!important;';
+     probe.innerHTML='<div class="mobilePageBody"></div>';document.body.appendChild(probe);
+   }
+   const body=probe.querySelector('.mobilePageBody'), pcs=getComputedStyle(probe);
+   // The page's usable text height is its content box. Measure that once and give the
+   // probe body that exact width, but let height grow naturally. This prevents the
+   // old 100%-height rule from making pagination count the vertical space incorrectly.
+   const available=Math.max(1,probe.clientHeight-(parseFloat(pcs.paddingTop)||0)-(parseFloat(pcs.paddingBottom)||0));
+   const usableWidth=Math.max(1,probe.clientWidth-(parseFloat(pcs.paddingLeft)||0)-(parseFloat(pcs.paddingRight)||0));
+   body.style.setProperty('height','auto','important');body.style.setProperty('min-height','0','important');body.style.setProperty('overflow','visible','important');body.style.setProperty('width',usableWidth+'px','important');
+   body.style.setProperty('box-sizing','border-box','important');
+   const fits=s=>{body.textContent=s||' ';const lh=parseFloat(getComputedStyle(body).lineHeight)||32;const h=body.getBoundingClientRect().height;return h<=available-Math.max(3,lh*.12)};
+   let rest=clean,pages=[];
+   while(rest.length){
+     if(fits(rest)){pages.push(rest);break}
+     let lo=1,hi=rest.length,best=1;
+     while(lo<=hi){let mid=(lo+hi)>>1;if(fits(rest.slice(0,mid))){best=mid;lo=mid+1}else hi=mid-1}
+     const cut=Math.max(1,best);pages.push(rest.slice(0,cut));rest=rest.slice(cut);
+   }
+   return pages.length?pages:[''];
+ }
+ function syncFromMobilePages(){
+   const bodies=[...document.querySelectorAll('#mobilePagesWrap .mobilePageBody')];if(!bodies.length)return;
+   pageCache=bodies.map(x=>x.innerText.replace(/\u00a0/g,' '));em.value=pageCache.join('');
+ }
+ window.__syncFromMobilePages=syncFromMobilePages;
+ function syncOnePage(body){
+   const pg=body.closest('.mobilePage'),i=+(pg?.dataset.page||0);pageCache[i]=body.innerText.replace(/\u00a0/g,' ');em.value=pageCache.join('');
+ }
+ function clearSearchHighlights(){
+   try{CSS.highlights?.delete('manuscript-search');CSS.highlights?.delete('manuscript-search-current')}catch(_){ }
+ }
+ function textNodes(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let out=[],n;while(n=w.nextNode())out.push(n);return out}
+ function rangeIn(root,start,end){
+   const nodes=textNodes(root);let pos=0,r=document.createRange(),setStart=false;
+   for(const n of nodes){let next=pos+n.data.length;if(!setStart&&start<=next){r.setStart(n,Math.max(0,start-pos));setStart=true}if(setStart&&end<=next){r.setEnd(n,Math.max(0,end-pos));return r}pos=next}
+   if(nodes.length){let n=nodes[nodes.length-1];if(!setStart)r.setStart(n,n.data.length);r.setEnd(n,n.data.length);return r}return null;
+ }
+ function drawSearchHighlights(){
+   clearSearchHighlights();const q=($('#manuscriptSearch')?.value||'').trim();if(!q||!searchMatches.length||!window.CSS?.highlights)return;
+   const all=[],current=[];let base=0;
+   document.querySelectorAll('#mobilePagesWrap .mobilePageBody').forEach((body,pi)=>{
+     const len=pageCache[pi]?.length||0;
+     searchMatches.forEach((off,mi)=>{if(off>=base&&off+q.length<=base+len){let r=rangeIn(body,off-base,off-base+q.length);if(r)(mi===searchPos?current:all).push(r)}});base+=len;
+   });
+   try{if(all.length)CSS.highlights.set('manuscript-search',new Highlight(...all));if(current.length)CSS.highlights.set('manuscript-search-current',new Highlight(...current))}catch(_){ }
+ }
+ function drawMobilePages(){
+   const wrap=$('#mobilePagesWrap');if(!wrap)return;
+   clearSearchHighlights();
+   wrap.innerHTML=pageCache.map((txt,i)=>`<div class="mobilePage" data-page="${i}"><div class="mobilePageBody" contenteditable="true" spellcheck="false">${esc(txt)}</div><div class="mobilePageNo">${i+1} / ${pageCache.length}</div></div>`).join('');
+   const bodies=[...wrap.querySelectorAll('.mobilePageBody')];
+   bodies.forEach((body,i)=>{
+     body.addEventListener('input',()=>{syncOnePage(body);updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh()});
+     body.addEventListener('paste',ev=>{
+       ev.preventDefault();const raw=(ev.clipboardData||window.clipboardData).getData('text/plain');const text=indentText(raw);
+       const sel=window.getSelection();if(!sel?.rangeCount)return;let r=sel.getRangeAt(0);
+       // If selection spans pages, replace the whole selected manuscript safely in the hidden source editor.
+       if(!body.contains(r.commonAncestorContainer)){
+         syncFromMobilePages();const src=em.value;em.value=indentText(src);renderPages();return;
+       }
+       r.deleteContents();const node=document.createTextNode(text);r.insertNode(node);r.setStartAfter(node);r.collapse(true);sel.removeAllRanges();sel.addRange(r);
+       syncOnePage(body);updateInfo(false);queueSave();schedulePageRender(1100);scheduleSearchRefresh();
+     });
+     body.addEventListener('blur',()=>{syncOnePage(body);schedulePageRender(80)});
+     body.addEventListener('keydown',ev=>{
+       if((ev.ctrlKey||ev.metaKey)&&ev.key.toLowerCase()==='a'){
+         ev.preventDefault();const sel=window.getSelection(),range=document.createRange();range.setStart(bodies[0],0);range.setEnd(bodies[bodies.length-1],bodies[bodies.length-1].childNodes.length);sel.removeAllRanges();sel.addRange(range);wrap.dataset.allSelected='1';return;
+       }
+       if(wrap.dataset.allSelected==='1'&&(ev.key==='Backspace'||ev.key==='Delete')){
+         ev.preventDefault();wrap.dataset.allSelected='';em.value='';pageCache=[''];drawMobilePages();updateInfo(false);queueSave();document.querySelector('#mobilePagesWrap .mobilePageBody')?.focus();return;
+       }
+       wrap.dataset.allSelected='';
+       if(ev.key==='Enter'){ev.preventDefault();const sel=window.getSelection();if(sel?.rangeCount){let r=sel.getRangeAt(0);r.deleteContents();let n=document.createTextNode('\n　');r.insertNode(n);r.setStartAfter(n);r.collapse(true);sel.removeAllRanges();sel.addRange(r);body.dispatchEvent(new Event('input',{bubbles:true}))}}
+     });
+     body.addEventListener('pointerdown',()=>{wrap.dataset.allSelected=''});
+   });
+   if(($('#manuscriptSearch')?.value||'').trim())rebuildSearch(false);
+ }
+ function renderPages(){clearTimeout(pageRenderTimer);pageCache=splitPages(em.value);drawMobilePages()}
+ function schedulePageRender(delay=850){clearTimeout(pageRenderTimer);pageRenderTimer=setTimeout(()=>{if(document.body.contains(em)&&$('#editorStage')?.classList.contains('mobile-paged'))renderPages()},delay)}
+ window.__renderPages=renderPages;
+ let searchMatches=[],searchPos=-1;
+ function rebuildSearch(reset=true){
+   const q=($('#manuscriptSearch')?.value||'').trim();const old=searchPos;searchMatches=[];if(reset)searchPos=-1;clearSearchHighlights();
+   if(!q){if($('#searchCount'))$('#searchCount').textContent='';return}
+   const src=em.value,low=src.toLocaleLowerCase(),key=q.toLocaleLowerCase();let at=0;
+   while((at=low.indexOf(key,at))!==-1){searchMatches.push(at);at+=Math.max(1,key.length)}
+   if(searchMatches.length){searchPos=reset?0:Math.min(Math.max(old,0),searchMatches.length-1);showSearchMatch(false)}else if($('#searchCount'))$('#searchCount').textContent='0 / 0';
+ }
+ function scheduleSearchRefresh(){clearTimeout(searchTimer);searchTimer=setTimeout(()=>{if(($('#manuscriptSearch')?.value||'').trim())rebuildSearch(false)},250)}
+ function pageForOffset(offset){let n=0;for(let i=0;i<pageCache.length;i++){let len=pageCache[i].length;if(offset<n+len)return i;n+=len}return Math.max(0,pageCache.length-1)}
+ function showSearchMatch(scroll=true){
+   if(!searchMatches.length)return;const q=($('#manuscriptSearch')?.value||'').trim();if($('#searchCount'))$('#searchCount').textContent=`${searchPos+1} / ${searchMatches.length}`;
+   if($('#editorStage')?.classList.contains('mobile-paged')){
+     drawSearchHighlights();const pi=pageForOffset(searchMatches[searchPos]),pg=document.querySelector(`.mobilePage[data-page="${pi}"]`);if(pg&&scroll)pg.scrollIntoView({behavior:'smooth',block:'center'});
+   }else{const start=searchMatches[searchPos];em.focus();em.setSelectionRange(start,start+q.length);if(scroll){const lh=parseFloat(getComputedStyle(em).lineHeight)||28,before=em.value.slice(0,start),approx=before.split('\n').length*lh;$('#editorStage').scrollTop=Math.max(0,approx-120)}}
+ }
+ function moveSearch(step){if(!searchMatches.length){rebuildSearch();if(!searchMatches.length)return}else{searchPos=(searchPos+step+searchMatches.length)%searchMatches.length;showSearchMatch(true)}}
+ const searchInput=$('#manuscriptSearch');if(searchInput){searchInput.addEventListener('input',()=>rebuildSearch(true));searchInput.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();moveSearch(ev.shiftKey?-1:1)}})}
+ $('#searchNext')?.addEventListener('click',()=>moveSearch(1));$('#searchPrev')?.addEventListener('click',()=>moveSearch(-1));
+ function updateInfo(doRender=true){let v=em.value;$('#count').textContent=v.length.toLocaleString();$('#paraCount').textContent=v.split(/\n+/).filter(x=>x.trim()).length;em.style.height='auto';em.style.height=Math.max(em.scrollHeight,window.innerHeight-220)+'px';if(doRender)renderPages()}
+ let savePromise=null; async function save(){clearTimeout(saveTimer);if(savePromise)return savePromise;savePromise=(async()=>{saving=true;let ss=$('#saveState');if(ss){ss.textContent='저장 중…';ss.className='statusSaving'}Object.assign(e,{number:+$('#en').value||e.number,title:$('#et').value,manuscript:indentText(em.value),summary:$('#es').value,characterIds:[...selectedCharIds],loreIds:[...selectedLoreIds],foreshadowIds:[...selectedForeshadowIds],characters:cs.filter(c=>selectedCharIds.has(c.id)).map(c=>c.name).join(', '),lore:ls.filter(l=>selectedLoreIds.has(l.id)).map(l=>l.title).join(', '),foreshadows:fs.filter(f=>selectedForeshadowIds.has(f.id)).map(f=>f.name).join(', '),tags:$('#etag').value,memo:$('#episodeMemo').value,updatedAt:now()});await put('episodes',e);let nav=document.querySelector(`#elist [data-id="${e.id}"]`);if(nav){nav.querySelector('div:first-child').innerHTML=`<span class="epNum">${e.number}화</span> ${esc(e.title||'')}`}if(ss){ss.textContent='저장됨 ✓';ss.className='statusSaved'}saving=false;updateInfo(false);})().finally(()=>{savePromise=null});return savePromise}
+ function queueSave(){clearTimeout(saveTimer);$('#saveState').textContent='저장 중…';$('#saveState').className='statusSaving';saveTimer=setTimeout(save,1000)}
+ em.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();let a=em.selectionStart,b=em.selectionEnd,v=em.value;em.value=v.slice(0,a)+'\n　'+v.slice(b);em.selectionStart=em.selectionEnd=a+2;updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh()}});
+ em.addEventListener('paste',ev=>{ev.preventDefault();let text=indentText((ev.clipboardData||window.clipboardData).getData('text'));let a=em.selectionStart,b=em.selectionEnd;em.setRangeText(text,a,b,'end');updateInfo(false);queueSave();schedulePageRender(1100);scheduleSearchRefresh()});
+ em.oninput=()=>{updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh()};['en','et','es','etag'].forEach(id=>{let x=$('#'+id);if(x)x.addEventListener('input',()=>{updateInfo(false);queueSave()})});window.__updateWritingInfo=updateInfo;updateInfo();if(document.fonts?.ready)document.fonts.ready.then(()=>{if(document.body.contains(em)&&$('#editorStage')?.classList.contains('mobile-paged'))renderPages()});
+$('#saveEpisodeNow').onclick=async()=>{let btn=$('#saveEpisodeNow');btn.disabled=true;btn.classList.add('saving');btn.textContent='저장 중…';syncFromMobilePages();await save();btn.classList.remove('saving');btn.classList.add('saved');btn.textContent='저장됨 ✓';window.__activeEpisodeId=e.id;window.__openEpisodeId=e.id;setTimeout(async()=>{await episodes();},280)};
+$('#addE').onclick=async()=>{syncFromMobilePages();await save();let fresh={id:id(),projectId:currentProject,number:(es.at(-1)?.number||0)+1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',fresh);window.__activeEpisodeId=fresh.id;window.__openEpisodeId=fresh.id;await episodes()};
+ document.querySelectorAll('#elist [data-id]').forEach(x=>x.onclick=async(ev)=>{ev.preventDefault();ev.stopPropagation();const nextId=x.dataset.id;if(nextId===e.id)return;document.querySelectorAll('#elist [data-id]').forEach(n=>n.classList.toggle('sel',n===x));if($('#editorStage')?.classList.contains('mobile-paged'))syncFromMobilePages();window.__activeEpisodeId=nextId;window.__openEpisodeId=nextId;await save();await episodes()});
+ document.querySelectorAll('[data-snippet]').forEach(b=>b.onclick=()=>{let a=em.selectionStart,z=em.selectionEnd;em.setRangeText(b.dataset.snippet,a,z,'end');em.focus();updateInfo(false);queueSave()});
+ $('#editSnippets').onclick=async()=>{await save();let vals=[...snippets];let shade=document.createElement('div');shade.className='modalShade';shade.innerHTML=`<div class="snippetModal"><div class="snippetModalHead"><b>상용구 설정</b><button class="miniBtn" id="closeSnippetModal">✕</button></div><div class="snippetModalBody" id="snippetRows"></div><div class="snippetModalFoot"><button class="btn" id="addSnippetRow">+ 추가</button><div class="right"><button class="btn" id="cancelSnippets">취소</button><button class="btn primary" id="saveSnippets">저장</button></div></div></div>`;document.body.appendChild(shade);let rows=shade.querySelector('#snippetRows');function draw(){rows.innerHTML=vals.map((v,i)=>`<div class="snippetEditRow"><span>${i+1}</span><input data-si="${i}" value="${esc(v)}" placeholder="상용구"><button class="miniBtn dangerTiny" data-rm="${i}">삭제</button></div>`).join('')||'<div class="muted">등록된 상용구가 없습니다.</div>';rows.querySelectorAll('[data-si]').forEach(inp=>inp.oninput=()=>vals[+inp.dataset.si]=inp.value);rows.querySelectorAll('[data-rm]').forEach(btn=>btn.onclick=()=>{vals.splice(+btn.dataset.rm,1);draw()})}draw();let close=()=>shade.remove();shade.querySelector('#closeSnippetModal').onclick=close;shade.querySelector('#cancelSnippets').onclick=close;shade.onclick=ev=>{if(ev.target===shade)close()};shade.querySelector('#addSnippetRow').onclick=()=>{vals.push('');draw();let inputs=rows.querySelectorAll('input');inputs[inputs.length-1]?.focus()};shade.querySelector('#saveSnippets').onclick=async()=>{vals=vals.map(x=>x.trim()).filter(Boolean);await put('settings',{id:'writingSnippets',value:vals,updatedAt:now()});close();await editEpisode(e,es)}};
+ $('#delE').onclick=async()=>{if(confirm(`${e.number}화를 삭제할까요?`)){clearTimeout(saveTimer);await del('episodes',e.id);await episodes()}};
+}
+async function episodeplan(){
+ let settings=await all('settings'),key='episodePlanWorkspace:'+currentProject,rec=settings.find(x=>x.id===key),w=rec?.value||{};
+ $('#view').innerHTML=`<div class="episodePlanHead36"><div><div class="pageTitleHelp40"><h2>회차 설계</h2><button class="helpIcon" id="episodePlanHelp40" title="회차 설계 도움말">?</button></div><div class="muted small">현재 집필할 한 회차만 잠깐 설계하는 작업판입니다. 회차가 끝나면 비우고 다음 회차 설계로 교체하세요.</div></div><span class="episodePlanState36" id="episodePlanState36"></span></div><div class="episodePlanGrid36"><div class="card episodePlanCard36"><h3>기승전결 블록</h3><div class="fieldHelp">첫 줄에 ‘8화’처럼 현재 회차를 직접 적고, 그 아래 기승전결을 저장해두면 됩니다.</div><textarea id="beatPlan36" placeholder="8화\n\n[기]\n시작 상황 → 행동 → 사건의 시작\n\n[승]\n...">${esc(w.beatPlan||'')}</textarea></div><div class="card episodePlanCard36"><h3>설계 상담 메모</h3><div class="fieldHelp">설계 과정의 판단 근거나 선택지를 임시 보관합니다. AI 프롬프트 조립에는 포함하지 않습니다.</div><textarea id="designMemo36" placeholder="설계 상담 중 남겨둘 메모를 적으세요.">${esc(w.designMemo||'')}</textarea></div></div><div class="card styleRefCard37"><h3>문체 참고 자료</h3><div class="fieldHelp">회차가 바뀌어도 유지되는 문체 샘플입니다. 평상시 서술, 대화·티키타카, 코미디, 액션, 감정 등 참고하고 싶은 장면을 소제목과 함께 모아두세요.</div><textarea id="styleRef37" placeholder="[평상시 서술]\n...\n\n[대화 / 티키타카]\n...\n\n[액션]\n...">${esc(w.styleReference||'')}</textarea></div>`;
+ $('#episodePlanHelp40').onclick=()=>showSimpleHelp40('회차 설계 도움말',`<p><b>회차 설계는 지금 집필할 한 화를 위한 임시 작업판</b>입니다. 장기 기록용 DB가 아니므로 한 화가 끝나면 다음 회차 내용으로 교체해 사용하면 됩니다.</p><h3>기승전결 블록</h3><p>이번 회차가 어디서 시작해 어디까지 갈지를 사건과 변화 중심으로 적습니다. 기·승·전·결을 같은 분량으로 나눌 필요는 없습니다. 첫 줄에 ‘8화’처럼 회차를 직접 적어두면 구분하기 편합니다.</p><p>집필할 때 AI 작업실에서 <b>기승전결 블록</b>을 선택하면 현재 작업판의 내용을 프롬프트에 넣을 수 있습니다. 집필실의 <b>기승전결</b> 버튼으로도 이 내용을 바로 확인할 수 있습니다.</p><h3>설계 상담 메모</h3><p>AI와 회차를 설계하면서 나온 판단 근거, 버린 선택지, 아직 고민 중인 내용처럼 <b>작가가 작업 중 참고할 메모</b>를 자유롭게 적습니다. 기본 AI 프롬프트 조립에는 포함되지 않으며, 집필실의 <b>메모</b> 버튼으로 확인할 수 있습니다.</p><h3>문체 참고 자료</h3><p>집필 때 참고할 문체 샘플을 보관합니다. 회차를 바꿔도 유지됩니다. 필요하면 평상시 서술, 대화·티키타카, 코미디, 액션, 감정처럼 소제목을 붙여 여러 샘플을 모아둘 수 있습니다.</p><p>AI 작업실에서 <b>참고 문체</b>를 선택한 경우에만 조립 결과에 포함됩니다. 작품의 실제 원고가 있다면 실제 원고를 가장 중요한 문체 기준으로 사용하는 것이 좋습니다.</p><h3>권장 흐름</h3><p>스토리 블록·상세 스토리로 중기 방향을 잡고 → 이 화면에서 현재 한 화의 기승전결을 설계하고 → 집필실에서 구간별로 집필합니다. 실제 원고가 계획과 달라졌다면 이미 작성된 원고를 우선하고 남은 설계를 필요에 따라 수정하면 됩니다.</p>`);
+ let timer=null;
+ async function savePlan(){clearTimeout(timer);let st=$('#episodePlanState36');if(st)st.textContent='저장 중…';w={beatPlan:$('#beatPlan36').value,designMemo:$('#designMemo36').value,styleReference:$('#styleRef37').value};await put('settings',{id:key,projectId:currentProject,value:w,updatedAt:now()});if(st)st.textContent='저장됨 ✓'}
+ function queue(){clearTimeout(timer);let st=$('#episodePlanState36');if(st)st.textContent='저장 중…';timer=setTimeout(savePlan,450)}
+ $('#beatPlan36').oninput=queue;$('#designMemo36').oninput=queue;$('#styleRef37').oninput=queue;
+}
+function fieldHint(store,key){const h={characters:{name:'캐릭터 이름',role:'예: 주인공, 동료, 라이벌, 스승, 가족, 적대인물, 직장상사',description:'변하지 않는 인물의 핵심 설정. 성격, 배경, 직업·무공, 관계 등 AI가 알아야 할 내용을 적습니다.',state:'현재 시점에서 달라진 상태. 예: 47화 기준 왼팔 부상. 회사에서 좌천됨. 주인공을 의심하고 있음.'},lore:{title:'예: 회귀 조건, 화산파, 주인공의 회사, 초능력의 한계',category:'예: 회귀, 조직, 직업, 무공, 장소, 규칙, 사건',content:'이 설정의 규칙과 작품에서 알아야 할 내용을 기록합니다.'},foreshadows:{name:'예: 주인공 아버지의 실종 이유',status:'미회수 / 진행 중 / 회수 완료 / 폐기',description:'떡밥의 의미와 현재까지 밝혀진 내용을 기록합니다.',related:'예: 12, 24, 37 (이 떡밥이 등장하거나 진행된 회차)'}};return (h[store]&&h[store][key])||''}
+async function generic(store,title,fields){let xs=await byProject(store);$('#view').innerHTML=`<div class="toolbar"><button class="btn primary" id="addG">+ ${title} 추가</button></div><div class="split ${store==='lore'?'loreDbSplit':''}"><div class="card list">${xs.map(x=>`<div class="item" data-id="${x.id}"><b>${esc(x.name||x.title)}</b><div class="small muted">${esc((x.description||x.content||'').slice(0,60))}</div></div>`).join('')||'<span class="muted">아직 없습니다.</span>'}</div><div id="ged"><div class="card muted">항목을 선택하세요.</div></div></div>`;let edit=x=>{$('#ged').innerHTML=`<div class="card">${fields.map(f=>`<label class="${f[5]?'characterCoreLabel':''}">${f[1]}</label>${f[3]?`<div class="fieldHelp">${f[3]}</div>`:''}${f[2]==='textarea'?`<textarea id="f_${f[0]}" class="${f[6]==='medium'?'characterMediumField':f[6]==='long'?'characterLongField':''}" placeholder="${esc(f[4]||'')}">${esc(x[f[0]]||'')}</textarea>`:f[2]==='select'?`<select id="f_${f[0]}"><option value=""></option>${(f[7]||[]).map(o=>`<option value="${esc(o)}" ${x[f[0]]===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`:`<input id="f_${f[0]}" value="${esc(x[f[0]]||'')}" placeholder="${esc(f[4]||'')}">`}`).join('')}<div class="toolbar"><button class="btn primary" id="sg">저장</button><button class="btn danger" id="dg">삭제</button></div></div>`;$('#sg').onclick=async()=>{fields.forEach(f=>x[f[0]]=$(`#f_${f[0]}`).value);x.updatedAt=now();await put(store,x);await workdb()};$('#dg').onclick=async()=>{if(confirm('삭제할까요?')){await del(store,x.id);await workdb()}}};$('#addG').onclick=()=>edit({id:id(),projectId:currentProject,createdAt:now()});document.querySelectorAll('.item[data-id]').forEach(el=>el.onclick=()=>edit(xs.find(x=>x.id===el.dataset.id)))}
+const characters=()=>generic('characters','캐릭터',[
+['name','이름',null,'','','core'],
+['aliases','별칭·호칭',null,'다른 인물이 부르는 이름, 직함, 애칭처럼 같은 인물을 가리키는 다른 표현을 적습니다.',''],
+['role','역할','textarea','작품 안에서 이 인물이 차지하는 위치나 기능을 적습니다.','','core','medium'],
+['definition','한줄 정의','textarea','이 인물이 누구인지 한 문장으로 빠르게 파악할 수 있게 적습니다.','','core','medium'],
+['personality','성격','textarea','행동과 판단에 지속적으로 영향을 주는 성향을 적습니다.','','core','long'],
+['speech','말투·대사 특징','textarea','대사에서 반복해서 드러나는 말투, 어휘, 존댓말 여부, 말버릇 등을 적습니다.','','core','long'],
+['goal','목표·욕망','textarea','현재 이 인물이 원하는 것과 행동하는 이유를 적습니다.','','','long'],
+['relationships','관계','textarea','다른 인물과의 관계와 서로를 대하는 태도를 적습니다.','','','long'],
+['description','고정 정보','textarea','직업, 과거, 능력, 신분처럼 쉽게 바뀌지 않는 사실을 적습니다.','','','long'],
+['state','현재 상태','textarea','지금 시점에 유효한 상태만 적습니다. 상태가 바뀌면 이전 내용은 지우거나 갱신하고, 과거 변화는 아래 변화 기록에 남깁니다.','','','long'],
+['changeLog','변화 기록','textarea','회차와 함께 상태 변화나 새로 알게 된 사실을 누적 기록합니다. 현재 상태와 달리 과거 이력을 보존하는 칸입니다.','','','long'],
+['authorMemo','작가 메모','textarea','AI에게 자동으로 전달하지 않을 개인 메모를 적습니다.','','','long']]);const lore=()=>generic('lore','설정',[
+['title','설정명',null,'이 설정을 검색하고 회차에 연결할 때 알아보기 쉬운 이름을 적습니다.','','core'],
+['category','분류','select','설정의 종류를 선택합니다. 비슷한 설정을 모아 찾는 기준입니다.','','core','', ['장소','조직·세력','능력','아이템','규칙','용어','기타']],
+['definition','한줄 정의','textarea','이 설정이 무엇인지 AI가 즉시 파악할 수 있도록 핵심만 한 문장으로 적습니다.','','core','medium'],
+['content','상세 설정','textarea','작동 방식, 사실관계, 작품에서 지켜야 할 내용을 구체적으로 적습니다.','','core','long'],
+['constraints','조건·제약','textarea','언제 적용되는지, 무엇이 불가능한지, 횟수·거리·대가·예외처럼 설정의 한계를 적습니다.','','','long'],
+['relatedSettings','관련 설정','textarea','함께 알아야 이해되는 다른 설정이나 연결 관계를 적습니다.','','','medium'],
+['disclosure','공개 상태','textarea','작가가 아는 진실과 독자·등장인물이 현재 어디까지 알고 있는지 필요할 때 적습니다.','','','long'],
+['authorMemo','작가 메모','textarea','아직 확정하지 않은 아이디어나 AI에게 기본적으로 전달하지 않을 개인 메모를 적습니다.','','','long']]);async function foreshadows(){
+ let xs=await byProject('foreshadows'), es=(await byProject('episodes')).sort((a,b)=>a.number-b.number), cs=await byProject('characters'), ls=await byProject('lore');
+ $('#view').innerHTML=`<div class="toolbar"><button class="btn primary" id="addF">+ 떡밥 추가</button></div><div class="split"><div class="card list">${xs.map(x=>`<div class="item" data-fid="${x.id}"><b>${esc(x.name||'이름 없음')}</b><div class="small muted">${esc(x.status||'심기 전')}${x.description?' · '+esc(x.description.slice(0,42)):''}</div></div>`).join('')||'<span class="muted">아직 없습니다.</span>'}</div><div id="fed"><div class="card muted">항목을 선택하세요.</div></div></div>`;
+ const epOptions=(selected)=>`<option value=""></option>${es.map(e=>`<option value="${e.id}" ${selected===e.id?'selected':''}>${e.number}화${e.title?' · '+esc(e.title):''}</option>`).join('')}`;
+ function edit(x){
+  x.characterIds=Array.isArray(x.characterIds)?x.characterIds:[];x.loreIds=Array.isArray(x.loreIds)?x.loreIds:[];
+  $('#fed').innerHTML=`<div class="card"><div class="foreshadowGrid">
+   <div class="full"><label class="characterCoreLabel">떡밥명</label><div class="fieldHelp">나중에 검색하고 회차에 연결하기 쉬운 짧고 명확한 이름을 적습니다.</div><input id="ff_name" value="${esc(x.name||'')}"></div>
+   <div><label class="characterCoreLabel">상태</label><div class="fieldHelp">현재 떡밥이 서사에서 어느 단계인지 선택합니다.</div><select id="ff_status">${['심기 전','심음','강화 중','회수 완료','폐기'].map(v=>`<option ${x.status===v?'selected':''}>${v}</option>`).join('')}</select></div>
+   <div><label>최초 등장</label><div class="fieldHelp">독자에게 처음 노출한 회차를 선택합니다.</div><select id="ff_first">${epOptions(x.firstEpisodeId||'')}</select></div>
+   <div class="full"><label class="characterCoreLabel">핵심 내용</label><div class="fieldHelp">이 떡밥의 실제 의미와 작가가 알고 있는 진실을 기록합니다.</div><textarea id="ff_description" class="characterLongField">${esc(x.description||'')}</textarea></div>
+   <div><label>회수 예정</label><div class="fieldHelp">아직 회차가 만들어지지 않았어도 대략적인 예정 회차를 숫자로 적을 수 있습니다.</div><input id="ff_planned" type="number" min="1" value="${esc(x.plannedEpisode||'')}"></div>
+   <div><label>회수 회차</label><div class="fieldHelp">실제로 회수한 뒤 해당 회차를 선택합니다.</div><select id="ff_resolvedEp">${epOptions(x.resolvedEpisodeId||'')}</select></div>
+   <div class="full"><label>회수 내용</label><div class="fieldHelp">독자에게 어떤 장면이나 정보로 정체를 밝히거나 약속을 해결하는지 적습니다.</div><textarea id="ff_resolution" class="characterMediumField">${esc(x.resolution||'')}</textarea></div>
+   <div class="full"><label>진행 기록</label><div class="fieldHelp">회차와 함께 심기·강화·변형·회수 과정을 누적 기록합니다. 현재 상태와 별개로 과거 이력을 보존합니다.</div><textarea id="ff_progress" class="characterLongField">${esc(x.progressLog||x.related||'')}</textarea></div>
+   <div class="full"><label>관련 캐릭터</label><div class="fieldHelp">이 떡밥과 직접 관계된 인물을 검색해 연결합니다.</div><div class="dbLinkField" id="ff_charField"><div id="ff_charChips"></div><input id="ff_charSearch" autocomplete="off"><div class="dbSuggest" id="ff_charSuggest"></div></div></div>
+   <div class="full"><label>관련 설정</label><div class="fieldHelp">이 떡밥을 이해하는 데 필요한 세계관 설정을 검색해 연결합니다.</div><div class="dbLinkField" id="ff_loreField"><div id="ff_loreChips"></div><input id="ff_loreSearch" autocomplete="off"><div class="dbSuggest" id="ff_loreSuggest"></div></div></div>
+   <div class="full"><label>작가 메모</label><div class="fieldHelp">미확정 아이디어나 수정 메모를 적습니다. 기본 AI 컨텍스트에는 포함하지 않습니다.</div><textarea id="ff_memo" class="characterMediumField">${esc(x.authorMemo||'')}</textarea></div>
+  </div><div class="toolbar" style="margin-top:14px"><button class="btn primary" id="sf">저장</button><button class="btn danger" id="df">삭제</button></div></div>`;
+  let charSet=new Set(x.characterIds), loreSet=new Set(x.loreIds);
+  function linkUI(items,set,searchId,chipsId,suggestId,labelFn,metaFn){let inp=$('#'+searchId),chips=$('#'+chipsId),sg=$('#'+suggestId);const draw=()=>{chips.innerHTML=items.filter(a=>set.has(a.id)).map(a=>`<span class="dbLinkChip">${esc(labelFn(a))}<button type="button" data-rm="${a.id}">×</button></span>`).join('');chips.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{set.delete(b.dataset.rm);draw()})};const search=()=>{let q=inp.value.trim().toLowerCase();if(!q){sg.classList.remove('open');sg.innerHTML='';return}let found=items.filter(a=>!set.has(a.id)&&([labelFn(a),metaFn(a)].join(' ').toLowerCase().includes(q))).slice(0,12);sg.innerHTML=found.map(a=>`<div class="dbSuggestItem" data-pick="${a.id}"><b>${esc(labelFn(a))}</b>${metaFn(a)?`<div class="small muted">${esc(metaFn(a))}</div>`:''}</div>`).join('')||'<div class="dbSuggestItem muted">검색 결과 없음</div>';sg.classList.add('open');sg.querySelectorAll('[data-pick]').forEach(d=>d.onclick=()=>{set.add(d.dataset.pick);inp.value='';sg.classList.remove('open');draw()})};inp.oninput=search;inp.onfocus=search;draw()}
+  linkUI(cs,charSet,'ff_charSearch','ff_charChips','ff_charSuggest',a=>a.name||'',a=>a.role||a.definition||'');
+  linkUI(ls,loreSet,'ff_loreSearch','ff_loreChips','ff_loreSuggest',a=>a.title||'',a=>a.category||a.definition||'');
+  $('#sf').onclick=async()=>{Object.assign(x,{name:$('#ff_name').value,status:$('#ff_status').value,firstEpisodeId:$('#ff_first').value,description:$('#ff_description').value,plannedEpisode:$('#ff_planned').value?+$('#ff_planned').value:'',resolvedEpisodeId:$('#ff_resolvedEp').value,resolution:$('#ff_resolution').value,progressLog:$('#ff_progress').value,characterIds:[...charSet],loreIds:[...loreSet],authorMemo:$('#ff_memo').value,updatedAt:now()});let nums=[];let first=es.find(e=>e.id===x.firstEpisodeId),resolved=es.find(e=>e.id===x.resolvedEpisodeId);if(first)nums.push(first.number);if(resolved&&!nums.includes(resolved.number))nums.push(resolved.number);x.related=nums.join(', ');await put('foreshadows',x);await workdb()};
+  $('#df').onclick=async()=>{if(confirm('삭제할까요?')){await del('foreshadows',x.id);await workdb()}};
+ }
+ $('#addF').onclick=()=>edit({id:id(),projectId:currentProject,name:'',status:'심기 전',createdAt:now()});document.querySelectorAll('[data-fid]').forEach(el=>el.onclick=()=>edit(xs.find(x=>x.id===el.dataset.fid)));
+}
+function showSimpleHelp40(title,body){let old=$('#simpleHelp40');if(old)old.remove();let d=document.createElement('div');d.id='simpleHelp40';d.className='helpOverlay';d.innerHTML=`<div class="helpModal"><button class="btn helpClose" id="closeSimpleHelp40">닫기</button><h2>${title}</h2>${body}</div>`;document.body.appendChild(d);$('#closeSimpleHelp40').onclick=()=>d.remove();d.onclick=e=>{if(e.target===d)d.remove()};let onKey=e=>{if(e.key==='Escape'){d.remove();document.removeEventListener('keydown',onKey)}};document.addEventListener('keydown',onKey)}
+async function workdb(){let tabs=[['characters','캐릭터'],['lore','세계관·설정'],['foreshadows','떡밥']];let fn={characters,lore,foreshadows}[workDbTab]||characters;await fn();let v=$('#view');v.insertAdjacentHTML('afterbegin',`<div class="card"><h2 style="margin-top:0">작품 DB <button class="helpIcon" id="workDbHelp" title="작품 DB 사용법">?</button></h2><div class="tabs">${tabs.map(([k,n])=>`<button class="btn ${workDbTab===k?'active':''}" data-dbtab="${k}">${n}</button>`).join('')}</div></div>`);document.querySelectorAll('[data-dbtab]').forEach(b=>b.onclick=()=>{workDbTab=b.dataset.dbtab;workdb()});$('#workDbHelp').onclick=()=>showWorkDbHelp();if(workDbTab==='foreshadows'&&window.__openForeshadowId){let target=document.querySelector(`[data-fid="${window.__openForeshadowId}"]`);window.__openForeshadowId=null;if(target)target.click()}}
+function showWorkDbHelp(){let wrap=document.createElement('div');wrap.className='helpOverlay';wrap.innerHTML=`<div class="helpModal"><button class="btn helpClose" id="closeWorkDbHelp">닫기</button><h2>작품 DB 도움말</h2>
+<p><b>작품 DB는 실제로 집필된 작품의 사실을 정리하는 곳</b>입니다. 캐릭터, 세계관·설정, 떡밥을 필요한 회차와 연결해 두면 집필 중 내용을 다시 찾기 쉽고, AI 작업실에서도 필요한 정보만 골라 전달할 수 있습니다.</p>
+<p><b>스토리와 역할이 다릅니다.</b> 스토리는 앞으로 바뀔 수 있는 계획과 시뮬레이션이고, 작품 DB는 현재까지 작품 안에서 확정된 정보와 계속 지켜야 할 사실을 중심으로 관리합니다. 계획과 실제 원고가 달라졌다면 실제 원고와 회차 요약, 작품 DB를 우선합니다.</p>
+<p>모든 칸을 채울 필요는 없습니다. <b style="color:#245b86">진한 청색 제목</b>은 특히 활용도가 높은 핵심 항목입니다. 확실한 사실부터 적고, 작품이 진행되면서 필요한 정보만 추가하는 편이 좋습니다. 아직 정하지 않은 내용을 억지로 채우면 오히려 이후 집필과 AI 상담에 잘못된 제약이 생길 수 있습니다.</p>
+<h3>회차와 연결하는 이유</h3><p>집필의 ‘이번 화’에서 캐릭터·설정·떡밥을 연결하면 그 회차에 어떤 작품 정보가 관계되는지 기록됩니다. AI 작업실의 <b>선택 회차 관련 정보</b> 기능은 이 연결을 이용해 선택한 회차에 관계된 DB 항목을 한꺼번에 고릅니다. 따라서 모든 DB를 매번 AI에게 보내기보다, 실제로 관계된 항목만 연결해 두는 것이 장편으로 갈수록 유용합니다.</p>
+<h3>캐릭터</h3><table><tr><th>항목</th><th>작성 기준</th></tr>
+<tr><td>이름</td><td>인물을 구분하는 대표 이름입니다.</td></tr><tr><td>별칭·호칭</td><td>같은 인물을 가리키는 다른 표현입니다. 직함, 애칭, 성+직책, 다른 인물이 부르는 호칭 등을 적어두면 이름이 달라져도 같은 인물임을 파악하기 쉽습니다.</td></tr><tr><td>역할</td><td>작품 안에서 이 인물이 차지하는 위치를 적습니다. 직업만 적기보다 주인공, 조력자, 경쟁자, 특정 조직의 책임자처럼 서사에서 어떤 위치인지 알 수 있으면 좋습니다.</td></tr><tr><td>한줄 정의</td><td>이 인물이 누구인지 한 문장으로 압축합니다. AI 작업실에서 여러 인물을 함께 보낼 때 빠르게 구분하는 데 특히 유용합니다.</td></tr><tr><td>성격</td><td>행동과 판단에 반복적으로 영향을 주는 성향을 적습니다. ‘냉정하다’처럼 추상적인 말만 쓰기보다 어떤 상황에서 어떻게 행동하는지가 드러나면 좋습니다.</td></tr><tr><td>말투·대사 특징</td><td>존댓말 여부, 문장 길이, 어휘, 말버릇, 상대에 따른 태도처럼 실제 대사를 재현하거나 점검할 때 사용할 수 있는 특징을 적습니다.</td></tr><tr><td>목표·욕망</td><td>현재 무엇을 원하고 왜 행동하는지 적습니다. 목표가 달라졌다면 현재 유효한 내용으로 갱신합니다.</td></tr><tr><td>관계</td><td>다른 인물과의 관계와 그 관계가 행동에 미치는 영향을 적습니다. 신뢰, 경계, 의존, 원한, 숨기는 사실 등을 함께 적을 수 있습니다.</td></tr><tr><td>고정 정보</td><td>직업, 출신, 과거, 능력, 신분처럼 쉽게 바뀌지 않는 사실을 적습니다.</td></tr><tr><td>현재 상태</td><td><b>지금 시점에 유효한 최신 상태</b>를 적습니다. 부상, 소속 변화, 관계 변화, 새로 알게 된 사실처럼 현재 행동에 영향을 주는 내용이 대상입니다.</td></tr><tr><td>변화 기록</td><td>상태가 어떻게 바뀌어 왔는지를 회차와 함께 누적합니다. <b>현재 상태는 최신값, 변화 기록은 과거 이력</b>이라고 생각하면 됩니다.</td></tr><tr><td>작가 메모</td><td>미확정 아이디어나 개인 작업 메모입니다. AI 작업실에서 기본 자료로 사용하지 않습니다.</td></tr></table>
+<h3>캐릭터 작성 요령</h3><p><b>AI에게 멋진 소개문을 써주는 곳이 아니라 사실을 저장하는 곳</b>이라고 생각하면 편합니다. 장황한 인물 소개보다 나중에 다시 확인해야 할 정보와 행동 규칙을 우선합니다.</p><p><b>고정 정보와 현재 상태를 분리합니다.</b> 오래 유지되는 사실은 고정 정보에, 작품 진행에 따라 달라질 수 있는 내용은 현재 상태에 둡니다.</p><p><b>현재 상태를 일기처럼 누적하지 않습니다.</b> 상태가 바뀌면 최신 내용으로 고치고 이전 내용은 변화 기록에 남깁니다.</p><p><b>말투는 재현 가능한 특징이 좋습니다.</b> ‘말을 잘한다’보다 ‘항상 존댓말, 짧게 대답함, 화가 나면 호칭을 생략함’처럼 실제 문장에서 확인할 수 있는 규칙이 유용합니다.</p>
+<h3>세계관·설정</h3><p>세계관·설정은 작품에서 <b>계속 지켜야 하는 사실과 규칙</b>을 저장하는 곳입니다. 거대한 세계관 문서 하나를 통째로 넣기보다 회차에 연결하고 AI 작업실에서 필요한 것만 고를 수 있도록 적당한 단위로 나누는 편이 좋습니다.</p><table><tr><th>항목</th><th>작성 기준</th></tr>
+<tr><td>설정명</td><td>검색하고 연결하기 쉬운 이름입니다. 나중에 집필에서 일부 단어만 검색해도 찾을 수 있도록 구체적으로 붙입니다.</td></tr><tr><td>분류</td><td>장소 / 조직·세력 / 능력 / 아이템 / 규칙 / 용어 / 기타 중 가장 가까운 종류를 선택합니다. 분류는 찾기 위한 묶음일 뿐 설정의 중요도를 뜻하지 않습니다.</td></tr><tr><td>한줄 정의</td><td>이 설정이 무엇인지 한 문장으로 압축합니다. 여러 설정을 AI에게 함께 보낼 때 빠르게 구분하는 데 유용합니다.</td></tr><tr><td>상세 설정</td><td>작품에서 실제로 지켜야 하는 내용과 작동 방식을 적습니다.</td></tr><tr><td>조건·제약</td><td>언제 적용되는지, 무엇이 불가능한지, 거리·횟수·대가·예외 등 한계를 적습니다. 능력이나 규칙을 AI가 임의로 확장하는 것을 막는 데 특히 중요합니다.</td></tr><tr><td>관련 설정</td><td>함께 알아야 이해되는 다른 설정이나 연결 관계를 적습니다.</td></tr><tr><td>공개 상태</td><td>작가가 아는 진실과 독자·등장인물이 현재 알고 있는 정보가 다를 때 기록합니다. 아직 공개되지 않은 사실이 대사나 서술에서 먼저 튀어나오는 것을 막는 데 도움이 됩니다.</td></tr><tr><td>작가 메모</td><td>미확정 아이디어나 수정 후보 등 개인 작업용 메모입니다. AI 작업실에서 기본 자료로 사용하지 않습니다.</td></tr></table>
+<h3>설정을 나누는 기준</h3><p><b>한 항목에서 하나의 대상을 설명할 수 있으면 충분합니다.</b> 무조건 아주 잘게 쪼갤 필요는 없지만, 서로 다른 회차에서 따로 불러올 가능성이 높은 정보라면 분리하는 편이 좋습니다.</p><p><b>사실과 계획을 구분합니다.</b> ‘마법은 하루 세 번만 사용할 수 있다’처럼 현재 작품의 규칙은 작품 DB에, ‘30화에서 마법의 비밀을 밝힌다’처럼 앞으로 일어날 계획은 스토리에 두는 편이 자연스럽습니다.</p><p><b>조건과 예외를 명확히 합니다.</b> AI는 빈틈을 그럴듯하게 채우려는 경향이 있으므로 반드시 지켜야 하는 제한이 있다면 상세 설명보다 조건·제약을 분명하게 적는 것이 유용합니다.</p>
+<h3>떡밥</h3><p>떡밥은 단순한 설정이 아니라 <b>독자에게 던진 질문·단서·약속을 추적하는 곳</b>입니다. 세계가 어떻게 작동하는지는 세계관·설정에, 무엇을 숨겼고 언제 드러낼지는 떡밥에 기록합니다.</p><table><tr><th>항목</th><th>작성 기준</th></tr>
+<tr><td>떡밥명</td><td>작가가 빠르게 알아볼 수 있고 검색하기 쉬운 이름을 붙입니다.</td></tr><tr><td>상태</td><td>심기 전 / 심음 / 강화 중 / 회수 완료 / 폐기로 관리합니다. 실제 원고에 아직 나오지 않았다면 심기 전, 처음 노출했다면 심음, 추가 단서를 쌓는 중이면 강화 중으로 둡니다.</td></tr><tr><td>핵심 내용</td><td><b>작가가 알고 있는 실제 의미와 진실</b>을 적습니다. 독자가 현재 알고 있는 정보만 적는 칸은 아닙니다.</td></tr><tr><td>최초 등장</td><td>독자에게 처음 노출된 실제 회차를 연결합니다.</td></tr><tr><td>회수 예정</td><td>앞으로 어느 회차쯤 회수할지 계획을 숫자로 적습니다. 미정이면 비워도 됩니다.</td></tr><tr><td>회수 회차</td><td>실제로 회수한 뒤 해당 회차를 연결합니다.</td></tr><tr><td>회수 내용</td><td>정답뿐 아니라 어떤 장면·정보·행동을 통해 독자에게 밝혀졌는지 또는 밝힐지를 적습니다.</td></tr><tr><td>진행 기록</td><td>회차별로 심기·강화·변형·회수 과정을 누적합니다. 장편에서 현재까지 독자에게 무엇을 보여줬는지 추적하는 이력입니다.</td></tr><tr><td>관련 캐릭터</td><td>이 떡밥과 직접 관계된 캐릭터를 작품 DB에서 연결합니다.</td></tr><tr><td>관련 설정</td><td>이 떡밥을 이해하는 데 필요한 세계관·설정을 연결합니다.</td></tr><tr><td>작가 메모</td><td>미확정 아이디어나 개인 작업 메모입니다. AI 작업실에서 기본 자료로 사용하지 않습니다.</td></tr></table>
+<h3>떡밥 관리 요령</h3><p><b>핵심 내용과 진행 기록을 구분합니다.</b> 핵심 내용은 작가가 알고 있는 정답이고, 진행 기록은 독자에게 실제로 어떤 단서를 어느 회차까지 보여줬는지에 가깝습니다.</p><p><b>모든 의문을 등록할 필요는 없습니다.</b> 나중에 다시 의미를 더하거나 반드시 회수해야 해서 잊으면 문제가 되는 것 위주로 등록하면 목록이 관리하기 쉽습니다.</p><p><b>회수 완료 후에도 남겨둡니다.</b> 완료된 떡밥도 과거 구조를 확인하거나 후속 떡밥과 연결할 때 실제 작품 기록으로 가치가 있습니다.</p>
+<h3>AI 작업실에서 사용하는 법</h3><p>작품 DB 전체를 항상 AI에게 보낼 필요는 없습니다. AI 작업실에서 직접 필요한 캐릭터·설정·떡밥만 선택하거나, 회차를 고른 뒤 <b>선택 회차 관련 정보</b>를 사용해 그 회차들에 연결된 항목을 한꺼번에 선택할 수 있습니다. 선택된 자료가 많다면 필요 없는 항목을 다시 빼서 이번 작업에 필요한 정보만 전달하는 편이 좋습니다.</p><p><b>작가 메모는 기본 AI 자료에서 제외</b>합니다. 미확정 생각이나 개인 메모까지 사실처럼 전달되는 것을 피하기 위한 것입니다.</p>
+<h3>기억해 둘 기준</h3><p><b>실제 원고와 회차 요약이 가장 우선되는 작품 기록</b>이고, 작품 DB는 그 사실을 찾고 재사용하기 쉽게 구조화한 자료입니다. 스토리는 앞으로 바뀔 수 있는 계획입니다. 서로 충돌한다면 이미 집필된 실제 내용을 기준으로 판단하고 작품 DB를 최신 상태에 맞게 정리하면 됩니다.</p></div>`;document.body.appendChild(wrap);$('#closeWorkDbHelp').onclick=()=>wrap.remove();wrap.onclick=e=>{if(e.target===wrap)wrap.remove()}}
+async function story(){
+ document.body.classList.add('story-focus');
+ let p=(await projects()).find(x=>x.id===currentProject);
+ p.storyArcs=Array.isArray(p.storyArcs)?p.storyArcs:[];
+ if(!p.overallPlot&&p.summary)p.overallPlot=p.summary;
+ // v0.22: old arcs become free-form story blocks. Episode-plan fields remain in episode data but are not used here.
+ let active=window.__storyBlockId||null;
+ const sortBlocks=()=>p.storyArcs.sort((a,b)=>(parseInt(a.start)||999999)-(parseInt(b.start)||999999)||(parseInt(a.end)||999999)-(parseInt(b.end)||999999));
+ sortBlocks();
+ const autoGrow=el=>{if(!el)return;el.style.height='auto';el.style.height=Math.max(38,el.scrollHeight)+'px'};
+ let topTimer=null, blockTimer=null;
+ const saveTop=()=>{clearTimeout(topTimer);$('#storyTopState22').textContent='저장 중…';topTimer=setTimeout(async()=>{p.genre=$('#stGenre22').value;p.concept=$('#stConcept22').value;p.overallPlot=$('#stPlot22').value;p.summary=p.overallPlot;p.timeline=$('#stTimeline22').value;p.updatedAt=now();await put('projects',p);let st=$('#storyTopState22');if(st)st.textContent='저장됨 ✓'},650)};
+ const showHelp=()=>showSimpleHelp40('스토리 도움말',`<p><b>스토리는 앞으로의 이야기를 설계하는 중기 계획판</b>입니다. 실제 원고나 작품 DB처럼 이미 확정된 기록이 아니라, 집필하면서 언제든 수정할 수 있는 미래 계획입니다.</p><h3>상단 기본 정보</h3><p><b>장르</b>는 작품의 장르, <b>핵심 콘셉트</b>는 작품의 중심 재미와 방향, <b>전체 줄거리</b>는 작품 전체의 큰 흐름, <b>타임라인</b>은 작품 세계에서 중요한 사건의 시간 순서를 적습니다. 처음부터 완벽하게 채울 필요는 없으며 필요한 만큼 갱신하면 됩니다.</p><h3>스토리 블록</h3><p>카드 하나가 하나의 이야기 덩어리입니다. 보통 여러 회차의 중기 흐름을 잡는 데 사용하지만 길이는 자유롭습니다. <b>구간명</b>은 블록을 알아보기 위한 제목, <b>시작·종료 회차</b>는 예상 위치, <b>블록</b>은 핵심 흐름을 짧게 압축한 내용입니다.</p><h3>상세 스토리</h3><p>블록보다 구체적인 상황·행동·갈등·변화·다음 연결을 적습니다. 회차별로 억지로 쪼갤 필요는 없습니다. 먼저 블록으로 방향을 잡고, 실제로 설계가 필요한 구간만 상세 스토리를 채워도 됩니다.</p><h3>블록과 실제 원고의 관계</h3><p>스토리 계획과 실제 집필 결과가 달라져도 괜찮습니다. 이미 작성된 부분에서는 <b>실제 원고와 회차 요약이 우선</b>합니다. 앞으로 사용할 블록은 실제 진행 상황에 맞춰 수정하거나 그대로 다음 전개의 참고로 사용할 수 있습니다.</p><h3>AI 작업실에서 사용</h3><p>AI 작업실에서는 각 블록의 <b>블록</b>만 선택하거나 <b>상세까지</b> 선택할 수 있습니다. 전체적인 방향 상담에는 블록만, 특정 구간을 자세히 설계할 때는 상세까지 전달하는 식으로 필요한 만큼만 선택하면 됩니다.</p><p><b>전체 블록</b>과 <b>전체 상세</b>는 여러 블록을 한꺼번에 선택할 때 사용합니다. 모든 계획을 매번 AI에게 보낼 필요는 없습니다.</p><h3>권장 작업 흐름</h3><p>처음에는 전체 방향을 잡고 여러 스토리 블록을 만든 뒤 → 필요한 블록의 상세 스토리를 구체화하고 → 회차 설계에서 현재 한 화의 기승전결을 만들고 → 집필합니다. 작품 DB는 처음부터 억지로 채우기보다 실제 원고에서 확정된 정보가 생길 때 기록해도 됩니다.</p><h3>삭제</h3><p>블록 카드의 ×는 해당 스토리 블록만 삭제합니다. 실제 회차 원고나 작품 DB는 삭제되지 않습니다.</p>`);
+
+ const rangeText=a=>{let st=parseInt(a.start),en=parseInt(a.end);if(st&&en)return st===en?`${st}화`:`${st}~${en}화`;if(st)return `${st}화~`;if(en)return `~${en}화`;return '회차 미정'};
+ const draw=()=>{
+  sortBlocks();if(active&&!p.storyArcs.some(a=>a.id===active))active=null;
+  let a=p.storyArcs.find(x=>x.id===active);  $('#view').innerHTML=`<div class="storyHead22"><h2>스토리</h2><button class="helpIcon" id="storyHelp" title="스토리 도움말">?</button><span class="storyAutoState22" id="storyTopState22"></span></div>
+  <div class="card storyTop22"><div class="storyTopLine22"><div><label>장르</label><input id="stGenre22" value="${esc(p.genre||'')}"></div><div><label>핵심 콘셉트</label><input id="stConcept22" value="${esc(p.concept||'')}"></div></div><div class="storyTopPair22"><div><label>전체 줄거리</label><textarea id="stPlot22" rows="2">${esc(p.overallPlot||'')}</textarea></div><div><label>타임라인</label><textarea id="stTimeline22" rows="2">${esc(p.timeline||'')}</textarea></div></div></div>
+  <div class="storyBoardHead22"><h3>스토리 보드</h3><button class="btn primary" id="addStoryBlock22">+ 스토리 블록</button><span class="muted small">${p.storyArcs.length}개 블록 · 시작 회차 순</span></div>
+  <div class="storyCards22">${p.storyArcs.length?p.storyArcs.map(x=>`<div class="storyBlock22 ${active===x.id?'active':''}" data-block22="${x.id}"><div class="storyBlockTop22"><span class="storyBlockRange22">${rangeText(x)}</span></div><button class="storyBlockDelete22" data-del22="${x.id}" title="이 블록 삭제">×</button><h4>${esc(x.name||'이름 없는 블록')}</h4><div class="storyBlockBody22">${esc(x.summary||'블록 내용 없음')}</div></div>`).join(''):'<div class="storyEmpty22">아직 스토리 블록이 없습니다. 큰 흐름 하나부터 가볍게 만들어 보세요.</div>'}</div>
+  ${a?`<div class="card storyEditor22" id="storyEditor22"><div class="storyEditorBody22"><div class="storyEditorGrid22"><div><label class="storyCore22">구간명</label><input id="blockName22" value="${esc(a.name||'')}"></div><div><label>시작 회차</label><input id="blockStart22" type="number" min="1" value="${esc(a.start||'')}"></div><div><label>종료 회차</label><input id="blockEnd22" type="number" min="1" value="${esc(a.end||'')}"></div><div class="storyEditorAction34"><span class="storySaveState" id="blockState22"></span><button class="btn storyEditorToggle22" id="hideStoryEditor22">편집기 숨기기</button></div></div><label class="storyCore22">블록</label><div class="storyFieldHint22">카드와 AI 작업실의 ‘블록’ 선택에 들어가는 짧은 흐름 요약</div><textarea id="blockSummary22">${esc(a.summary||'')}</textarea><label class="storyCore22" style="margin-top:10px">상세 스토리</label><div class="storyFieldHint22">이 구간의 상황·행동·갈등·변화·다음 연결을 자세히 기록</div><textarea id="blockDetail22">${esc(a.detail||'')}</textarea><div class="toolbar" style="margin:8px 0 0"><button class="btn danger" id="deleteActive22">이 블록 삭제</button><span class="muted small">자동 저장</span></div></div></div>`:''}`;
+  $('#storyHelp').onclick=showHelp;
+  ['stGenre22','stConcept22','stPlot22','stTimeline22'].forEach(idn=>{let el=$('#'+idn);el.oninput=()=>{if(el.tagName==='TEXTAREA')autoGrow(el);saveTop()};if(el.tagName==='TEXTAREA')autoGrow(el)});
+  document.querySelectorAll('[data-block22]').forEach(el=>el.onclick=e=>{if(e.target.matches('input,button'))return;active=el.dataset.block22;window.__storyBlockId=active;draw()});
+  document.querySelectorAll('[data-del22]').forEach(b=>b.onclick=async e=>{e.stopPropagation();let idd=b.dataset.del22;p.storyArcs=p.storyArcs.filter(x=>x.id!==idd);if(active===idd){active=null;window.__storyBlockId=null}p.updatedAt=now();await put('projects',p);draw()});
+  $('#addStoryBlock22').onclick=async()=>{let maxEnd=Math.max(0,...p.storyArcs.map(x=>parseInt(x.end)||parseInt(x.start)||0));let n=maxEnd?maxEnd+1:'';let x={id:id(),name:'새 스토리 블록',start:n,end:n,range:n?`${n}~${n}`:'',summary:'',detail:''};p.storyArcs.push(x);active=x.id;window.__storyBlockId=active;p.updatedAt=now();await put('projects',p);draw();setTimeout(()=>$('#blockName22')?.select(),0)};
+  if(a){['blockSummary22','blockDetail22'].forEach(idn=>autoGrow($('#'+idn)));const saveBlock=()=>{clearTimeout(blockTimer);let st=$('#blockState22');if(st)st.textContent='저장 중…';blockTimer=setTimeout(async()=>{a.name=$('#blockName22').value;a.start=$('#blockStart22').value;a.end=$('#blockEnd22').value;a.range=[a.start,a.end].filter(Boolean).join('~');a.summary=$('#blockSummary22').value;a.detail=$('#blockDetail22').value;p.updatedAt=now();await put('projects',p);let s2=$('#blockState22');if(s2)s2.textContent='저장됨 ✓'},600)};['blockName22','blockStart22','blockEnd22','blockSummary22','blockDetail22'].forEach(idn=>$('#'+idn).oninput=()=>{if($('#'+idn).tagName==='TEXTAREA')autoGrow($('#'+idn));saveBlock()});$('#deleteActive22').onclick=async()=>{p.storyArcs=p.storyArcs.filter(x=>x.id!==active);active=null;window.__storyBlockId=null;p.updatedAt=now();await put('projects',p);draw()};$('#hideStoryEditor22').onclick=()=>{active=null;window.__storyBlockId=null;draw()}}
+ };
+ draw();
+}
+async function promptlab(){
+ document.body.classList.add('prompt-focus');
+ let xs=await all('prompts'),settings=await all('settings'),folderRec=settings.find(x=>x.id==='prompt-folders-v26')||{id:'prompt-folders-v26',folders:[],collapsed:[]};
+ folderRec.folders=Array.isArray(folderRec.folders)?folderRec.folders:[];folderRec.collapsed=Array.isArray(folderRec.collapsed)?folderRec.collapsed:[];
+ for(let i=0;i<xs.length;i++){let q=xs[i],changed=false;if(!q.createdAt){q.createdAt=q.updatedAt||new Date(0+i).toISOString();changed=true}if(q.enabledForAI===undefined){q.enabledForAI=true;changed=true}if(q.folderId===undefined){q.folderId='';changed=true}if(changed)await put('prompts',q)}
+ let sortRec=settings.find(x=>x.id==='prompt-sort-v40'),active=window.__prompt25||xs[0]?.id||null,sortMode=window.__promptSort26||sortRec?.value||'createdDesc';
+ const saveFolders=async()=>{await put('settings',folderRec)};
+ const sorted=(arr)=>arr.slice().sort((a,b)=>sortMode==='title'?(a.name||'').localeCompare(b.name||'','ko'):sortMode==='createdAsc'?(a.createdAt||'').localeCompare(b.createdAt||''):(b.createdAt||'').localeCompare(a.createdAt||''));
+ const promptRow=q=>`<div class="promptItem25 ${q.id===active?'active':''}" data-pr25="${q.id}"><input type="checkbox" data-usepr26="${q.id}" ${q.enabledForAI!==false?'checked':''} title="AI 작업실에서 사용"><b title="${esc(q.name||'이름 없는 프롬프트')}">${esc(q.name||'이름 없는 프롬프트')}</b></div>`;
+ const draw=()=>{let x=xs.find(p=>p.id===active),loose=sorted(xs.filter(q=>!(q.folderId||''))),looseHtml=loose.length?`<div class="unfiledPrompts27">${loose.map(promptRow).join('')}</div>`:'';
+  let folderList=folderRec.folders.slice();if(sortMode==='title')folderList.sort((a,b)=>(a.name||'').localeCompare(b.name||'','ko'));let folders=folderList.map(g=>{let items=sorted(xs.filter(q=>(q.folderId||'')===g.id)),collapsed=folderRec.collapsed.includes(g.id);return `<div class="folder26"><div class="folderHead26"><button class="folderToggle26" data-fold26="${g.id}">${collapsed?'▶':'▼'}</button><b title="${esc(g.name)}">${esc(g.name)}</b><button class="btn small" data-renfolder26="${g.id}">이름</button><button class="btn small" data-delfolder26="${g.id}">삭제</button></div><div class="folderBody26 ${collapsed?'collapsed':''}">${items.length?items.map(promptRow).join(''):'<div class="folderEmpty26">프롬프트 없음</div>'}</div></div>`}).join('');
+  $('#view').innerHTML=`<div class="card"><div class="hero"><div><h2 style="margin:0">프롬프트</h2></div><div class="toolbar" style="margin:0"><button class="btn" id="addFolder26">+ 폴더</button><button class="btn primary" id="addPr25">+ 새 프롬프트</button></div></div></div><div class="promptLayout25"><div class="card promptList25"><div class="promptToolbar26"><label style="margin:0">정렬</label><select id="prSort26"><option value="title">제목순</option><option value="createdDesc">최근 제작순</option><option value="createdAsc">제작순</option></select></div>${looseHtml}${folders}</div><div id="prEdit25">${x?`<div class="card"><div class="promptEditTop26"><div><label class="aiCore25">프롬프트 이름</label><input class="promptName26" id="prName25" value="${esc(x.name||'')}"></div><div><label>폴더</label><select id="prFolder26"><option value="">폴더 없음</option>${folderRec.folders.map(f=>`<option value="${f.id}" ${x.folderId===f.id?'selected':''}>${esc(f.name)}</option>`).join('')}</select></div></div><label class="aiCore25">프롬프트 본문</label><textarea class="promptBody25" id="prBody25">${esc(x.body||'')}</textarea><div class="toolbar" style="margin-top:8px"><button class="btn primary" id="savePr25">저장</button><button class="btn" id="dupPr25">복제</button><button class="btn danger" id="delPr25">삭제</button></div></div>`:'<div class="card muted">왼쪽에서 프롬프트를 선택하거나 새 프롬프트를 만드세요.</div>'}</div></div>`;
+  $('#prSort26').value=sortMode;$('#prSort26').onchange=async e=>{sortMode=e.target.value;window.__promptSort26=sortMode;await put('settings',{id:'prompt-sort-v40',value:sortMode,updatedAt:now()});draw()};
+  $('#addFolder26').onclick=async()=>{let name=prompt('새 폴더 이름');if(!name||!name.trim())return;folderRec.folders.push({id:id(),name:name.trim(),createdAt:now()});await saveFolders();draw()};
+  $('#addPr25').onclick=async()=>{let q={id:id(),name:'새 프롬프트',body:'',folderId:'',enabledForAI:true,createdAt:now(),updatedAt:now()};await put('prompts',q);xs.push(q);active=q.id;window.__prompt25=active;draw();setTimeout(()=>$('#prName25')?.select(),0)};
+  document.querySelectorAll('[data-fold26]').forEach(b=>b.onclick=async()=>{let k=b.dataset.fold26,i=folderRec.collapsed.indexOf(k);if(i>=0)folderRec.collapsed.splice(i,1);else folderRec.collapsed.push(k);await saveFolders();draw()});
+  document.querySelectorAll('[data-renfolder26]').forEach(b=>b.onclick=async()=>{let f=folderRec.folders.find(z=>z.id===b.dataset.renfolder26),name=prompt('폴더 이름',f?.name||'');if(f&&name&&name.trim()){f.name=name.trim();await saveFolders();draw()}});
+  document.querySelectorAll('[data-delfolder26]').forEach(b=>b.onclick=async()=>{let fid=b.dataset.delfolder26;for(let q of xs.filter(z=>z.folderId===fid)){q.folderId='';q.updatedAt=now();await put('prompts',q)}folderRec.folders=folderRec.folders.filter(z=>z.id!==fid);folderRec.collapsed=folderRec.collapsed.filter(z=>z!==fid);await saveFolders();draw()});
+  document.querySelectorAll('[data-pr25]').forEach(el=>el.onclick=e=>{if(e.target.matches('[data-usepr26]'))return;active=el.dataset.pr25;window.__prompt25=active;draw()});
+  document.querySelectorAll('[data-usepr26]').forEach(cb=>cb.onchange=async()=>{let q=xs.find(z=>z.id===cb.dataset.usepr26);if(q){q.enabledForAI=cb.checked;q.updatedAt=now();await put('prompts',q)}});
+  if(!x)return;
+  $('#savePr25').onclick=async()=>{x.name=$('#prName25').value.trim()||'이름 없는 프롬프트';x.body=$('#prBody25').value;x.folderId=$('#prFolder26').value;x.updatedAt=now();await put('prompts',x);draw()};
+  $('#dupPr25').onclick=async()=>{let y={...x,id:id(),name:(x.name||'프롬프트')+' 복사본',createdAt:now(),updatedAt:now()};delete y.version;delete y.versionMemo;await put('prompts',y);xs.push(y);active=y.id;window.__prompt25=active;draw();setTimeout(()=>$('#prName25')?.select(),0)};
+  $('#delPr25').onclick=async()=>{await del('prompts',x.id);xs=xs.filter(q=>q.id!==x.id);active=sorted(xs)[0]?.id||null;window.__prompt25=active;draw()};
+ };
+ draw();
+}
+function aiEpisodeRange25(es,mode,a,b,single){if(mode==='all')return es;if(mode==='recent2')return es.slice(-2);if(mode==='recent5')return es.slice(-5);if(mode==='single'){let n=parseInt(single);return Number.isFinite(n)?es.filter(e=>+e.number===n):[]}if(mode==='range'){let x=parseInt(a),y=parseInt(b);if(!Number.isFinite(x)&&!Number.isFinite(y))return [];if(!Number.isFinite(x))x=y;if(!Number.isFinite(y))y=x;return es.filter(e=>e.number>=Math.min(x,y)&&e.number<=Math.max(x,y))}return []}
+function aiCharText25(c){return [`${c.name||''}${c.role?' / '+c.role:''}`,c.aliases?`별칭·호칭: ${c.aliases}`:'',c.definition?`한줄 정의: ${c.definition}`:'',c.personality?`성격: ${c.personality}`:'',c.speech?`말투·대사 특징: ${c.speech}`:'',c.goal?`목표·욕망: ${c.goal}`:'',c.relationships?`관계: ${c.relationships}`:'',c.description?`고정 정보: ${c.description}`:'',c.state?`현재 상태: ${c.state}`:'',c.changeHistory?`변화 기록: ${c.changeHistory}`:''].filter(Boolean).join('\n')}
+function aiLoreText25(l){return [`${l.title||''}${l.category?' / '+l.category:''}`,l.definition?`한줄 정의: ${l.definition}`:'',l.content?`상세 설정: ${l.content}`:'',l.constraints?`조건·제약: ${l.constraints}`:'',l.relatedSettings?`관련 설정: ${l.relatedSettings}`:'',l.disclosure?`공개 상태: ${l.disclosure}`:''].filter(Boolean).join('\n')}
+function aiForeshadowText25(f){return [`${f.name||''} [${f.status||'심기 전'}]`,f.description?`핵심 내용: ${f.description}`:'',f.firstEpisode?`최초 등장: ${f.firstEpisode}화`:'',f.plannedEpisode?`회수 예정: ${f.plannedEpisode}화`:'',f.resolution?`회수 내용: ${f.resolution}`:'',f.progressLog?`진행 기록: ${f.progressLog}`:''].filter(Boolean).join('\n')}
+async function context(){
+ document.body.classList.add('ai-focus');
+ let ps=(await all('prompts')).filter(x=>x.enabledForAI!==false).sort((a,b)=>(a.name||'').localeCompare(b.name||'','ko')),es=(await byProject('episodes')).sort((a,b)=>a.number-b.number),cs=await byProject('characters'),ls=await byProject('lore'),fs=await byProject('foreshadows'),p=(await projects()).find(x=>x.id===currentProject);p.storyArcs=Array.isArray(p.storyArcs)?p.storyArcs:[];
+ let settings=await all('settings'),stateRec=settings.find(x=>x.id==='aiWorkspace:'+currentProject),defaults={mode:'recent2',single:'',includeSummary:true,includeManuscript:false,includeBeatPlan:false,includeStyleReference:false,chars:[],lore:[],fores:[],stories:[],includeBase:true,includePlot:false,includeTimeline:false,relatedActive:false};
+ let state=window.__ai25&&window.__ai25.__projectId===currentProject?window.__ai25:{...defaults,...(stateRec?.value||{}),__projectId:currentProject};window.__ai25=state;
+ ['chars','lore','fores','stories'].forEach(k=>{if(!Array.isArray(state[k]))state[k]=[]});
+ const persist=async()=>{let value={...state};delete value.__projectId;await put('settings',{id:'aiWorkspace:'+currentProject,projectId:currentProject,value,updatedAt:now()})};
+ const ck=(arr,id)=>arr.includes(id)?'checked':'';
+ $('#view').innerHTML=`<div class="card"><div class="aiTop25"><div><label class="aiCore25">사용 프롬프트</label><select id="aiPrompt25"><option value="">프롬프트 없음</option>${ps.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('')}</select></div><button class="btn primary" id="gen25">GPT용 텍스트 생성</button><button class="btn" id="copy25" disabled>전체 복사</button><button class="helpIcon aiHelp40" id="aiHelp40" title="AI 작업실 도움말">?</button></div></div><div class="aiGrid25"><div class="card"><div class="aiSection25"><h3>작품 기본 정보</h3><div class="aiChecks25"><label><input type="checkbox" id="base25" ${state.includeBase?'checked':''}> 장르 + 핵심 콘셉트</label><label><input type="checkbox" id="plot25" ${state.includePlot?'checked':''}> 전체 줄거리</label><label><input type="checkbox" id="timeline25" ${state.includeTimeline?'checked':''}> 타임라인</label></div></div><div class="aiSection25"><h3>회차</h3><div class="aiEpisodeChoice37">${[['single','한 회차'],['range','범위'],['recent2','최근 2화'],['recent5','최근 5화'],['all','전체']].map(([k,n])=>`<button class="btn ${state.mode===k?'active':''}" data-mode25="${k}">${n}</button>`).join('')}</div><div class="aiEpisodeInputs37"><div id="singleBox37" style="${state.mode==='single'?'':'display:none'}"><input type="number" id="single28" min="1" value="${state.single||''}" placeholder="회차"><span class="muted small">화</span></div><div class="aiRange25" id="range25" style="${state.mode==='range'?'':'display:none'}"><input type="number" id="from25" min="1" value="${state.from||''}" placeholder="시작"><span>~</span><input type="number" id="to25" min="1" value="${state.to||''}" placeholder="끝"><span class="muted small">화</span></div></div><div class="aiChecks25" style="margin-top:8px"><label><input type="checkbox" id="sum25" ${state.includeSummary?'checked':''}> 회차 요약</label><label><input type="checkbox" id="man25" ${state.includeManuscript?'checked':''}> 원고 본문</label><label><input type="checkbox" id="beat35" ${state.includeBeatPlan?'checked':''}> 기승전결 블록</label><label><input type="checkbox" id="style37" ${state.includeStyleReference?'checked':''}> 참고 문체</label></div><button class="btn aiRelated26 ${state.relatedActive?'active':''}" id="related26">선택 회차 관련 정보</button></div><div class="aiSection25"><h3>작품 DB</h3><div class="aiPick25"><div class="aiPickBox25"><div class="aiPickHead25"><b>캐릭터</b><button class="btn small" data-all25="chars">전체</button></div>${cs.map(x=>`<label><input type="checkbox" data-char25="${x.id}" ${ck(state.chars,x.id)}> ${esc(x.name||'이름 없음')}</label>`).join('')||'<span class="muted small">없음</span>'}</div><div class="aiPickBox25"><div class="aiPickHead25"><b>설정</b><button class="btn small" data-all25="lore">전체</button></div>${ls.map(x=>`<label><input type="checkbox" data-lore25="${x.id}" ${ck(state.lore,x.id)}> ${esc(x.title||'이름 없음')}</label>`).join('')||'<span class="muted small">없음</span>'}</div><div class="aiPickBox25"><div class="aiPickHead25"><b>떡밥</b><button class="btn small" data-all25="fores">미회수 전체</button></div>${fs.map(x=>`<label><input type="checkbox" data-fore25="${x.id}" ${ck(state.fores,x.id)}> ${esc(x.name||'이름 없음')} <span class="muted small">${esc(x.status||'')}</span></label>`).join('')||'<span class="muted small">없음</span>'}</div></div></div><div class="aiSection25"><div class="aiStoryHead28 aiStoryHead35"><h3>스토리 계획</h3><div class="aiStoryActions37"><button class="btn small" id="storyBlocks35">전체 블록</button><button class="btn small" id="storyDetails35">전체 상세</button></div></div><div class="aiStoryList25">${p.storyArcs.length?p.storyArcs.slice().sort((a,b)=>(+a.start||999999)-(+b.start||999999)).map(x=>`<div class="aiStoryRow33"><span><b>${x.start||'?'}${x.end&&x.end!=x.start?'~'+x.end:''}화</b>&nbsp; ${esc(x.name||'이름 없는 블록')}</span><label class="aiStoryChoice33"><input type="checkbox" data-story25="${x.id}" ${ck(state.stories,x.id)}> 블록</label><label class="aiStoryChoice33"><input type="checkbox" data-storydetail33="${x.id}" ${ck(state.storyDetails||[],x.id)}> 상세까지</label></div>`).join(''):'<span class="muted small">스토리 블록이 없습니다.</span>'}</div></div></div><div class="card"><h3 style="margin-top:0">조립 결과</h3><div id="meta25" class="aiMeta25"><span class="aiCharCount26">예상 글자 수 0자</span></div><div id="preview25" class="aiPreview25"></div></div></div>`;
+ $('#aiHelp40').onclick=()=>showSimpleHelp40('AI 작업실 도움말',`<p><b>AI 작업실은 프로그램에 저장된 자료 중 이번 작업에 필요한 것만 골라 하나의 GPT용 텍스트로 조립하는 곳</b>입니다. 모든 자료를 항상 선택할 필요는 없습니다.</p><h3>1. 사용 프롬프트</h3><p>프롬프트 화면에서 저장하고 <b>AI 작업실에서 사용</b>이 켜진 프롬프트가 목록에 표시됩니다. 회차 설계, 집필, 원고 검토, 맞춤법 검사, DB 갱신 등 지금 하려는 작업에 맞는 프롬프트를 하나 선택합니다.</p><h3>2. 작품 기본 정보</h3><p><b>장르 + 핵심 콘셉트</b>는 작품의 기본 방향, <b>전체 줄거리</b>와 <b>타임라인</b>은 더 넓은 맥락이 필요할 때 선택합니다. 간단한 작업에 매번 전부 넣을 필요는 없습니다.</p><h3>3. 회차</h3><p><b>한 회차</b>는 지정한 한 화, <b>범위</b>는 시작~끝 회차, <b>최근 2화·최근 5화</b>는 현재까지의 최근 원고, <b>전체</b>는 저장된 모든 회차를 대상으로 합니다. 그 아래에서 회차 요약과 원고 본문 중 필요한 것을 선택합니다.</p><p><b>기승전결 블록</b>은 회차 설계 화면의 현재 임시 계획을 가져오며 회차 DB와 연결되지 않습니다. <b>참고 문체</b>도 회차 설계 화면에 저장된 문체 참고 자료를 가져옵니다.</p><h3>4. 작품 DB</h3><p>캐릭터·설정·떡밥은 <b>이번 작업에 관계된 항목만 선택</b>하는 것이 기본입니다. DB가 비어 있어도 프로그램 사용에는 문제가 없습니다. 실제 집필을 진행하면서 확정된 정보가 생길 때 하나씩 쌓아가면 됩니다.</p><p><b>선택 회차 관련 정보</b>는 선택한 회차에 연결해둔 캐릭터·설정·떡밥을 한꺼번에 골라줍니다. 선택 후 필요 없는 항목은 다시 빼도 됩니다.</p><h3>5. 스토리 계획</h3><p><b>블록</b>은 짧은 중기 흐름, <b>상세까지</b>는 해당 블록의 상세 스토리까지 함께 전달합니다. <b>전체 블록 / 전체 상세</b>는 한 번에 켜고 끄는 토글입니다. 스토리 계획은 실제로 벌어진 사실이 아니라 변경 가능한 미래 설계라는 전제로 조립됩니다.</p><h3>6. 생성과 복사</h3><p><b>GPT용 텍스트 생성</b>을 누르면 선택한 프롬프트와 자료가 오른쪽 조립 결과에 합쳐집니다. 예상 글자 수를 확인한 뒤 너무 많다면 이번 작업에 필요 없는 자료를 빼고, <b>전체 복사</b>로 복사해 사용합니다.</p><h3>기본 사용 예</h3><p>다음 회차 설계라면 관련 스토리 블록·상세 + 최근 회차 요약/원고 + 필요한 DB를 선택합니다. 집필이라면 현재 기승전결 + 직전/현재 원고 + 필요한 DB + 필요시 참고 문체를 선택합니다. 원고 검토나 DB 갱신은 완성된 실제 원고를 중심으로 필요한 자료만 추가합니다.</p>`);
+ if(state.promptId&&ps.some(x=>x.id===state.promptId))$('#aiPrompt25').value=state.promptId;else if(state.promptId&&!ps.some(x=>x.id===state.promptId))state.promptId='';
+ const sync=()=>{state.promptId=$('#aiPrompt25').value;state.includeBase=$('#base25').checked;state.includePlot=$('#plot25').checked;state.includeTimeline=$('#timeline25').checked;state.includeSummary=$('#sum25').checked;state.includeManuscript=$('#man25').checked;state.includeBeatPlan=$('#beat35').checked;state.includeStyleReference=$('#style37').checked;state.from=$('#from25')?.value||'';state.to=$('#to25')?.value||'';state.single=$('#single28')?.value||state.single||'';state.chars=[...document.querySelectorAll('[data-char25]:checked')].map(x=>x.dataset.char25);state.lore=[...document.querySelectorAll('[data-lore25]:checked')].map(x=>x.dataset.lore25);state.fores=[...document.querySelectorAll('[data-fore25]:checked')].map(x=>x.dataset.fore25);state.stories=[...document.querySelectorAll('[data-story25]:checked')].map(x=>x.dataset.story25);state.storyDetails=[...document.querySelectorAll('[data-storydetail33]:checked')].map(x=>x.dataset.storydetail33);state.storyDetails.forEach(id=>{if(!state.stories.includes(id))state.stories.push(id)})};
+ const build=()=>{sync();let out=[],pr=ps.find(x=>x.id===state.promptId);if(pr?.body)out.push(`[작업 프롬프트]\n${pr.body}`);if(state.includeBase)out.push(`[작품 기본 정보]\n장르: ${p.genre||''}\n핵심 콘셉트: ${p.concept||''}`);if(state.includePlot&&p.overallPlot)out.push(`[전체 줄거리 — 변경 가능한 설계 정보]\n${p.overallPlot}`);if(state.includeTimeline&&p.timeline)out.push(`[타임라인]\n${p.timeline}`);let picked=aiEpisodeRange25(es,state.mode,state.from,state.to,state.single);if(state.includeSummary&&picked.length)out.push(`[회차 요약 — 실제 집필 기록]\n`+picked.map(e=>`${e.number}화${e.title?' '+e.title:''}\n${e.summary||'(요약 없음)'}`).join('\n\n'));if(state.includeManuscript&&picked.length)out.push(`[원고 본문 — 실제 집필 기록]\n`+picked.map(e=>`--- ${e.number}화${e.title?' '+e.title:''} ---\n${e.manuscript||''}`).join('\n\n'));let planRec=settings.find(x=>x.id==='episodePlanWorkspace:'+currentProject),planWork=planRec?.value||{};if(state.includeBeatPlan&&planWork.beatPlan)out.push(`[회차 기승전결 설계 — 현재 집필용 임시 계획]
+${planWork.beatPlan}`);if(state.includeStyleReference&&planWork.styleReference)out.push(`[문체 참고 자료 — 사건·인물·설정·고유 표현이 아니라 문장 호흡과 장면 운용의 일반적 특성만 참고]
+${planWork.styleReference}`);let cc=cs.filter(x=>state.chars.includes(x.id));if(cc.length)out.push(`[선택 캐릭터]\n`+cc.map(aiCharText25).join('\n\n'));let ll=ls.filter(x=>state.lore.includes(x.id));if(ll.length)out.push(`[선택 설정]\n`+ll.map(aiLoreText25).join('\n\n'));let ff=fs.filter(x=>state.fores.includes(x.id));if(ff.length)out.push(`[선택 떡밥]\n`+ff.map(aiForeshadowText25).join('\n\n'));let ss=p.storyArcs.filter(x=>state.stories.includes(x.id));if(ss.length)out.push(`[스토리 계획 — 변경 가능한 미래 설계]\n`+ss.sort((a,b)=>(+a.start||999999)-(+b.start||999999)).map(x=>{let t=`${x.start||'?'}${x.end&&x.end!=x.start?'~'+x.end:''}화 · ${x.name||''}\n[블록]\n${x.summary||''}`;if((state.storyDetails||[]).includes(x.id)&&x.detail)t+=`\n\n[상세 스토리]\n${x.detail}`;return t}).join('\n\n'));return {txt:out.filter(Boolean).join('\n\n==============================\n\n'),picked}};
+ const countGuide29=n=>n<=50000?['적정','aiCountOk29']:n<=100000?['줄이기 권장','aiCountWarn29']:n<=200000?['과다 · 선별 권장','aiCountHigh29']:['매우 과다 · 컨텍스트 축소 권장','aiCountDanger29']; const countHtml29=n=>{const [label,cls]=countGuide29(n);return `<span class="aiCharCount26">예상 글자 수 ${n.toLocaleString()}자</span> <span class="aiCountGuide29 ${cls}">${label}</span>`}; const updateCount=()=>{let r=build();$('#meta25').innerHTML=`${countHtml29(r.txt.length)} · 선택 회차 ${r.picked.length}개`};
+ const saveNow=()=>{sync();persist();updateCount()};
+ document.querySelectorAll('[data-mode25]').forEach(b=>b.onclick=async()=>{sync();state.mode=b.dataset.mode25;await persist();context()});
+ $('#single28').oninput=()=>{sync();state.single=$('#single28').value;state.mode='single';state.relatedActive=false;persist();updateCount()};
+ document.querySelectorAll('input:not(#single28),select').forEach(x=>x.onchange=()=>{if(x.matches('[data-storydetail33]')&&x.checked){let q=document.querySelector(`[data-story25=\"${x.dataset.storydetail33}\"]`);if(q)q.checked=true}sync();if(x.matches('[data-char25],[data-lore25],[data-fore25]')){state.relatedActive=false;$('#related26').classList.remove('active')}persist();updateCount();if(x.matches('[data-story25],[data-storydetail33]'))refreshStoryAll35()});
+ document.querySelectorAll('[data-all25]').forEach(b=>b.onclick=()=>{let type=b.dataset.all25,sel=type==='chars'?'[data-char25]':type==='lore'?'[data-lore25]':'[data-fore25]';let boxes=[...document.querySelectorAll(sel)];let targets=type==='fores'?boxes.filter(q=>{let f=fs.find(x=>x.id===q.dataset.fore25);return f&&!['회수 완료','폐기'].includes(f.status)}):boxes;let allOn=targets.length&&targets.every(q=>q.checked);targets.forEach(q=>q.checked=!allOn);state.relatedActive=false;$('#related26').classList.remove('active');saveNow()});
+ $('#related26').onclick=()=>{sync();if(state.relatedActive){document.querySelectorAll('[data-char25],[data-lore25],[data-fore25]').forEach(q=>q.checked=false);state.relatedActive=false;$('#related26').classList.remove('active');saveNow();return}let picked=aiEpisodeRange25(es,state.mode,state.from,state.to,state.single),charIds=new Set(),loreIds=new Set(),foreIds=new Set();for(let e of picked){(e.characterIds||[]).forEach(v=>charIds.add(v));(e.loreIds||[]).forEach(v=>loreIds.add(v));(e.foreshadowIds||[]).forEach(v=>foreIds.add(v));if(!e.characterIds)(e.characters||'').split(',').map(v=>v.trim()).filter(Boolean).forEach(n=>{let q=cs.find(c=>c.name===n);if(q)charIds.add(q.id)});if(!e.loreIds)(e.lore||'').split(',').map(v=>v.trim()).filter(Boolean).forEach(n=>{let q=ls.find(c=>c.title===n);if(q)loreIds.add(q.id)});if(!e.foreshadowIds)(e.foreshadows||'').split(',').map(v=>v.trim()).filter(Boolean).forEach(n=>{let q=fs.find(c=>c.name===n);if(q)foreIds.add(q.id)})}document.querySelectorAll('[data-char25]').forEach(q=>q.checked=charIds.has(q.dataset.char25));document.querySelectorAll('[data-lore25]').forEach(q=>q.checked=loreIds.has(q.dataset.lore25));document.querySelectorAll('[data-fore25]').forEach(q=>q.checked=foreIds.has(q.dataset.fore25));state.relatedActive=true;$('#related26').classList.add('active');saveNow()};
+ const refreshStoryAll35=()=>{let blocks=[...document.querySelectorAll('[data-story25]')],details=[...document.querySelectorAll('[data-storydetail33]')];$('#storyBlocks35')?.classList.toggle('active',!!blocks.length&&blocks.every(q=>q.checked));$('#storyDetails35')?.classList.toggle('active',!!details.length&&details.every(q=>q.checked))};
+ $('#storyBlocks35').onclick=()=>{let boxes=[...document.querySelectorAll('[data-story25]')],allOn=boxes.length&&boxes.every(q=>q.checked);boxes.forEach(q=>q.checked=!allOn);if(allOn)document.querySelectorAll('[data-storydetail33]').forEach(q=>q.checked=false);saveNow();refreshStoryAll35()};
+ $('#storyDetails35').onclick=()=>{let details=[...document.querySelectorAll('[data-storydetail33]')],allOn=details.length&&details.every(q=>q.checked);if(allOn){details.forEach(q=>q.checked=false)}else{details.forEach(q=>q.checked=true);document.querySelectorAll('[data-story25]').forEach(q=>q.checked=true)}saveNow();refreshStoryAll35()};
+ refreshStoryAll35();
+ let txt='';$('#gen25').onclick=()=>{let r=build();txt=r.txt;$('#preview25').textContent=txt;$('#meta25').innerHTML=`${countHtml29(txt.length)} · 선택 회차 ${r.picked.length}개`;$('#copy25').disabled=!txt;persist()};$('#copy25').onclick=async()=>{await navigator.clipboard.writeText(txt);let b=$('#copy25');b.textContent='복사됨 ✓';setTimeout(()=>{if(b)b.textContent='전체 복사'},1200)};updateCount();
+}
+async function backup(){
+ let ps=await projects(),cp=ps.find(p=>p.id===currentProject);
+ $('#view').innerHTML=`<div class="manageHead"><h2>작품 관리</h2></div>
+ <div class="card manageCard"><h2>작품</h2><p class="muted">작품별 원고와 작품 DB를 관리하고, 작품 프로젝트 파일로 저장하거나 불러옵니다.</p>
+ <div class="manageActions"><button class="btn primary" id="newProjectSetting">+ 새 작품 만들기</button><label class="btn">작품 프로젝트 불러오기<input id="projectRestore" type="file" accept="application/json,.json"></label></div>
+ <div class="projectList30">${ps.map(p=>`<div class="projectRow30"><div class="projectName30"><b>${esc(p.title)}</b>${p.id===currentProject?'<span class="currentBadge">현재 작품</span>':''}</div>${p.id===currentProject?'<button class="btn" id="renameCurrentProject">이름 변경</button>':`<button class="btn selectProject" data-switchproj="${p.id}">이 작품 열기</button>`}</div>`).join('')||'<p class="muted">저장된 작품이 없습니다.</p>'}</div>
+ ${cp?`<div class="manageActions one" style="margin-top:12px"><button class="btn" id="projB">현재 작품 프로젝트 저장</button></div>`:''}
+ <div class="manageNote30">작품 프로젝트에는 해당 작품의 회차·캐릭터·설정·떡밥·스토리와 작품별 작업 상태가 포함됩니다. 공용 프롬프트는 포함되지 않습니다.</div></div>
+ <div class="card manageCard manageData34"><h2>데이터</h2><p class="muted">전체 데이터와 공용 프롬프트를 백업하거나 복원하고, 필요하면 데이터를 초기화합니다.</p>
+ <div class="manageDataGroup34"><b>전체 데이터</b><div class="manageActions manageActions4"><button class="btn" id="allB">백업</button><label class="btn">복원<input id="allRestore" type="file" accept="application/json,.json"></label><button class="btn danger" id="resetAllData34">초기화</button>${cp?`<button class="btn danger" id="deleteCurrentProject">작품 삭제</button>`:'<button class="btn" disabled>작품 삭제</button>'}</div></div>
+ <div class="manageDataGroup34"><b>프롬프트 데이터</b><div class="manageActions"><button class="btn" id="promptB">프롬프트 저장</button><label class="btn">프롬프트 불러오기<input id="promptRestore" type="file" accept="application/json,.json"></label></div></div>
+ <div class="manageNote30">백업·복원은 모든 작품, 프롬프트, 프로그램 내부 설정을 대상으로 합니다. 초기화는 전체 데이터를 삭제하며, 작품 삭제는 현재 작품만 삭제합니다.</div></div>`;
+ $('#newProjectSetting').onclick=createProject;
+ document.querySelectorAll('[data-switchproj]').forEach(b=>b.onclick=async()=>{currentProject=b.dataset.switchproj;window.__activeEpisodeId=null;window.__openEpisodeId=null;page='home';nav();await render()});
+ if($('#renameCurrentProject'))$('#renameCurrentProject').onclick=async()=>{let title=prompt('새 작품 이름',cp.title);if(!title||!title.trim())return;cp.title=title.trim();cp.updatedAt=now();await put('projects',cp);await backup()};
+ async function exportData(mode){
+  let data={schema:2,mode,exportedAt:now(),stores:{}};
+  for(const st of stores){
+   let a=await all(st);
+   if(mode==='project'){
+    if(st==='projects')a=a.filter(x=>x.id===currentProject);
+    else if(st==='settings')a=a.filter(x=>x.projectId===currentProject||x.id===`dashboardMemo:${currentProject}`);
+    else if(['episodes','characters','lore','foreshadows','tags','assets'].includes(st))a=a.filter(x=>x.projectId===currentProject);
+    else a=[];
+   }
+   if(mode==='prompts'){
+    if(st==='prompts'){}else if(st==='settings')a=a.filter(x=>x.id==='prompt-folders-v26');else a=[];
+   }
+   data.stores[st]=a;
+  }
+  let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);let safe=(cp?.title||'작품').replace(/[\\/:*?"<>|]/g,'_'),date=new Date().toISOString().slice(0,10);a.download=mode==='project'?`${safe}_작품프로젝트_${date}.json`:mode==='prompts'?`프롬프트_${date}.json`:`웹소설스튜디오_전체백업_${date}.json`;a.click();URL.revokeObjectURL(a.href)
+ }
+ async function readBackup(file,expectedMode){let data;try{data=JSON.parse(await file.text())}catch(e){alert('올바른 백업 파일이 아닙니다.');return null}if(!data?.stores){alert('WebNovel Studio 백업 파일을 확인할 수 없습니다.');return null}if(expectedMode&&data.mode!==expectedMode){alert(expectedMode==='project'?'작품 프로젝트 저장 파일을 선택하세요.':expectedMode==='prompts'?'프롬프트 저장 파일을 선택하세요.':'전체 백업 파일을 선택하세요.');return null}return data}
+ async function restoreStores(data,allowed=null){for(const [st,a] of Object.entries(data.stores||{}))if(stores.includes(st)&&(!allowed||allowed.includes(st)))for(const x of (a||[]))await put(st,x)}
+ $('#allB').onclick=()=>exportData('all');if($('#projB'))$('#projB').onclick=()=>exportData('project');$('#promptB').onclick=()=>exportData('prompts');
+ $('#projectRestore').onchange=async e=>{let file=e.target.files[0];if(!file)return;let data=await readBackup(file,'project');if(!data)return;let incoming=(data.stores.projects||[])[0];if(!incoming){alert('작품 정보가 없는 프로젝트 파일입니다.');return}let exists=(await projects()).some(p=>p.id===incoming.id);if(exists&&!confirm(`“${incoming.title}” 프로젝트가 이미 있습니다. 저장된 파일 내용으로 덮어쓸까요?`))return;await restoreStores(data);currentProject=incoming.id;await refreshProjects();page='home';nav();await render();alert(`“${incoming.title}” 프로젝트를 불러왔습니다.`)};
+ $('#promptRestore').onchange=async e=>{let file=e.target.files[0];if(!file)return;let data=await readBackup(file,'prompts');if(!data)return;if(!confirm('프롬프트 데이터를 불러올까요? 같은 ID의 프롬프트는 덮어씁니다.'))return;await restoreStores(data,['prompts','settings']);alert('프롬프트를 불러왔습니다.');await backup()};
+ $('#allRestore').onchange=async e=>{let file=e.target.files[0];if(!file)return;let data=await readBackup(file,'all');if(!data)return;if(!confirm('전체 백업을 복원할까요? 같은 ID의 데이터는 덮어씁니다.'))return;await restoreStores(data);await refreshProjects();await render();alert('전체 백업을 복원했습니다.')};
+ if($('#resetAllData34'))$('#resetAllData34').onclick=async()=>{if(!confirm('모든 작품, 프롬프트, 설정을 포함한 전체 데이터를 초기화합니다. 계속할까요?'))return;if(!confirm('이 작업은 되돌릴 수 없습니다. 전체 백업을 저장했다면 확인을 눌러 초기화하세요.'))return;for(const st of stores)for(const x of await all(st))await del(st,x.id);currentProject=null;window.__activeEpisodeId=null;window.__openEpisodeId=null;window.__storyBlockId=null;await refreshProjects();await backup();alert('전체 데이터를 초기화했습니다.')};
+ if($('#deleteCurrentProject'))$('#deleteCurrentProject').onclick=async()=>{let pid=currentProject,p=ps.find(x=>x.id===pid);if(!confirm(`“${p.title}” 작품 데이터를 삭제합니다. 삭제 전에 작품 프로젝트 저장을 권장합니다. 계속할까요?`))return;for(const st of ['episodes','characters','lore','foreshadows','tags','assets'])for(const x of (await all(st)).filter(x=>x.projectId===pid))await del(st,x.id);for(const x of (await all('settings')).filter(x=>x.projectId===pid||x.id===`dashboardMemo:${pid}`))await del('settings',x.id);await del('projects',pid);currentProject=null;await refreshProjects();render()}
+}
+(async()=>{await openDB();await refreshProjects();nav();render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{})})();
+</script><script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
+
+</body></html>
