@@ -697,31 +697,44 @@ body.story-focus .main{max-width:none;width:100%}.storyHead22{display:flex;align
 @media(min-width:701px){#mobileSnippetsRight48{display:none!important}}
 </style>
 
-
-<style id="mobile-workdb-head-v051">
-@media(max-width:700px){
-  /* 작품 DB 모바일 상단 탭 카드만: 화면 높이를 늘려 먹지 않도록 내용 높이에 고정 */
-  .workDbHead51{
-    height:auto!important;
-    min-height:0!important;
-    max-height:none!important;
-    flex:none!important;
-    align-self:auto!important;
-    padding-bottom:10px!important;
+<style id="mobile-dark-nav-height-fix-v052">
+@media(max-width:800px){
+  html body .app{
+    grid-template-rows:auto minmax(0,1fr)!important;
+    min-height:100vh!important;
+    align-items:start!important;
   }
-  .workDbHead51 .tabs{
+  html body .app>.side{
     height:auto!important;
     min-height:0!important;
     max-height:none!important;
-    margin-bottom:0!important;
+    position:relative!important;
+    top:auto!important;
+    align-self:start!important;
+    overflow:hidden!important;
+    padding:8px 10px!important;
+  }
+  html body .app>.side>.nav{
+    display:flex!important;
+    flex-direction:row!important;
+    flex-wrap:nowrap!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:48px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
     align-items:center!important;
-    align-content:flex-start!important;
-    flex:none!important;
   }
-  .workDbHead51 .tabs .btn{
-    height:auto!important;
-    min-height:36px!important;
+  html body .app>.side>.nav>button{
+    display:inline-flex!important;
     flex:0 0 auto!important;
+    width:auto!important;
+    min-width:max-content!important;
+    height:38px!important;
+    margin:0 2px!important;
+    padding:8px 10px!important;
+    align-items:center!important;
   }
 }
 </style>
@@ -1049,7 +1062,7 @@ const characters=()=>generic('characters','캐릭터',[
  $('#addF').onclick=()=>edit({id:id(),projectId:currentProject,name:'',status:'심기 전',createdAt:now()});document.querySelectorAll('[data-fid]').forEach(el=>el.onclick=()=>edit(xs.find(x=>x.id===el.dataset.fid)));
 }
 function showSimpleHelp40(title,body){let old=$('#simpleHelp40');if(old)old.remove();let d=document.createElement('div');d.id='simpleHelp40';d.className='helpOverlay';d.innerHTML=`<div class="helpModal"><button class="btn helpClose" id="closeSimpleHelp40">닫기</button><h2>${title}</h2>${body}</div>`;document.body.appendChild(d);$('#closeSimpleHelp40').onclick=()=>d.remove();d.onclick=e=>{if(e.target===d)d.remove()};let onKey=e=>{if(e.key==='Escape'){d.remove();document.removeEventListener('keydown',onKey)}};document.addEventListener('keydown',onKey)}
-async function workdb(){let tabs=[['characters','캐릭터'],['lore','세계관·설정'],['foreshadows','떡밥']];let fn={characters,lore,foreshadows}[workDbTab]||characters;await fn();let v=$('#view');v.insertAdjacentHTML('afterbegin',`<div class="card workDbHead51"><h2 style="margin-top:0">작품 DB <button class="helpIcon" id="workDbHelp" title="작품 DB 사용법">?</button></h2><div class="tabs">${tabs.map(([k,n])=>`<button class="btn ${workDbTab===k?'active':''}" data-dbtab="${k}">${n}</button>`).join('')}</div></div>`);document.querySelectorAll('[data-dbtab]').forEach(b=>b.onclick=()=>{workDbTab=b.dataset.dbtab;workdb()});$('#workDbHelp').onclick=()=>showWorkDbHelp();if(workDbTab==='foreshadows'&&window.__openForeshadowId){let target=document.querySelector(`[data-fid="${window.__openForeshadowId}"]`);window.__openForeshadowId=null;if(target)target.click()}}
+async function workdb(){let tabs=[['characters','캐릭터'],['lore','세계관·설정'],['foreshadows','떡밥']];let fn={characters,lore,foreshadows}[workDbTab]||characters;await fn();let v=$('#view');v.insertAdjacentHTML('afterbegin',`<div class="card"><h2 style="margin-top:0">작품 DB <button class="helpIcon" id="workDbHelp" title="작품 DB 사용법">?</button></h2><div class="tabs">${tabs.map(([k,n])=>`<button class="btn ${workDbTab===k?'active':''}" data-dbtab="${k}">${n}</button>`).join('')}</div></div>`);document.querySelectorAll('[data-dbtab]').forEach(b=>b.onclick=()=>{workDbTab=b.dataset.dbtab;workdb()});$('#workDbHelp').onclick=()=>showWorkDbHelp();if(workDbTab==='foreshadows'&&window.__openForeshadowId){let target=document.querySelector(`[data-fid="${window.__openForeshadowId}"]`);window.__openForeshadowId=null;if(target)target.click()}}
 function showWorkDbHelp(){let wrap=document.createElement('div');wrap.className='helpOverlay';wrap.innerHTML=`<div class="helpModal"><button class="btn helpClose" id="closeWorkDbHelp">닫기</button><h2>작품 DB 도움말</h2>
 <p><b>작품 DB는 실제로 집필된 작품의 사실을 정리하는 곳</b>입니다. 캐릭터, 세계관·설정, 떡밥을 필요한 회차와 연결해 두면 집필 중 내용을 다시 찾기 쉽고, AI 작업실에서도 필요한 정보만 골라 전달할 수 있습니다.</p>
 <p><b>스토리와 역할이 다릅니다.</b> 스토리는 앞으로 바뀔 수 있는 계획과 시뮬레이션이고, 작품 DB는 현재까지 작품 안에서 확정된 정보와 계속 지켜야 할 사실을 중심으로 관리합니다. 계획과 실제 원고가 달라졌다면 실제 원고와 회차 요약, 작품 DB를 우선합니다.</p>
