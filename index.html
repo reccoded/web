@@ -660,72 +660,23 @@ body.story-focus .main{max-width:none;width:100%}.storyHead22{display:flex;align
 }
 </style>
 
-
-
-<style id="mobile-writing-order-v044">
+<style id="mobile-writing-layout-final-v047">
 @media(max-width:700px){
-  /* Left group: Home → Episode → Tag */
-  body.writing-focus .writingTitle{order:0!important}
-  body.writing-focus #writingHome{order:0!important}
-  body.writing-focus #mobileEpisodeToggle41{order:1!important}
-  body.writing-focus #mobileEpisodeData42{order:2!important}
-
-  /* Right group: Beat plan → Memo → Snippets */
-  body.writing-focus .writingTop>div:last-child{order:2!important}
-  body.writing-focus .writingPlanQuick{order:0!important}
-  body.writing-focus #showBeatPlan{order:0!important}
-  body.writing-focus #showPlanMemo{order:1!important}
-  body.writing-focus #mobileSnippets42{order:3!important}
-
-  /* The snippets button is moved visually to the far right on mobile. */
-  body.writing-focus .writingTitle #mobileSnippets42{
-    position:absolute!important;
-    right:6px!important;
-    top:6px!important;
-    z-index:4!important;
-  }
-  body.writing-focus .writingTop>div:last-child{padding-right:39px!important}
-  body.writing-focus #mobileEpisodeToggle41{
-    display:inline-flex!important;
-    margin-left:4px!important;
-  }
-  body.writing-focus #mobileEpisodeData42{margin-left:0!important}
-  body.writing-focus #mobileEpisodeData42 svg{display:block;color:currentColor}
+ body.writing-focus .writingTop{display:flex!important;align-items:center!important;width:100%!important;gap:4px!important;overflow:visible!important}
+ body.writing-focus .writingTitle{display:flex!important;align-items:center!important;gap:4px!important;flex:0 0 auto!important}
+ body.writing-focus #writingHome{order:1!important}
+ body.writing-focus #mobileEpisodeToggle41{order:2!important;display:inline-flex!important}
+ body.writing-focus #mobileEpisodeData42{order:3!important;display:inline-flex!important}
+ body.writing-focus .writingTitle #mobileSnippets42{display:none!important}
+ body.writing-focus .writingTop>div:last-child{margin-left:auto!important;display:flex!important;align-items:center!important;gap:4px!important;padding:0!important}
+ body.writing-focus #showDesignMemo{order:1!important}
+ body.writing-focus #showBeatPlan{order:2!important}
+ body.writing-focus #mobileSnippetsRight47{order:3!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:34px!important;height:34px!important;min-width:34px!important;padding:0!important}
+ #mobileSnippetsDrawer42 .mobileToolDrawer42{left:auto!important;right:0!important;box-shadow:-10px 0 35px rgba(0,0,0,.22)!important}
+ #mobileSnippetsDrawer42 .mobileToolHead42{position:relative!important;justify-content:center!important}
+ #mobileSnippetsDrawer42 .mobileToolHead42 .mobileToolClose42{position:absolute!important;left:8px!important;right:auto!important}
 }
-</style>
-
-
-<style id="mobile-top-order-final-v046">
-@media(max-width:700px){
-  /* Mobile only: left = Home → Episode → Tag */
-  body.writing-focus .writingTitle{
-    position:static!important;
-    display:flex!important;
-    align-items:center!important;
-    gap:4px!important;
-  }
-  body.writing-focus #writingHome{order:1!important}
-  body.writing-focus #mobileEpisodeToggle41{order:2!important}
-  body.writing-focus #mobileEpisodeData42{order:3!important}
-
-  /* Snippet belongs at the absolute far right, after Beat → Memo. */
-  body.writing-focus .writingTitle #mobileSnippets42{
-    position:fixed!important;
-    top:6px!important;
-    right:6px!important;
-    left:auto!important;
-    margin:0!important;
-    z-index:20!important;
-  }
-  body.writing-focus .writingTop>div:last-child{
-    display:flex!important;
-    align-items:center!important;
-    gap:4px!important;
-    padding-right:40px!important;
-  }
-  body.writing-focus #showBeatPlan{order:1!important}
-  body.writing-focus #showPlanMemo{order:2!important}
-}
+@media(min-width:701px){#mobileSnippetsRight47{display:none!important}}
 </style>
 
 </head><body><div class="app"><aside class="side"><div class="nav" id="nav"></div></aside><main class="main"><div id="view"></div></main></div>
@@ -788,7 +739,7 @@ async function episodes(){
  let target=wantedId?es.find(e=>e.id===wantedId):es.at(-1);window.__openEpisodeId=null;
  if(target)window.__activeEpisodeId=target.id;
  if(!target&&es.length)target=es[0];
- document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><button class="btn menuToggle mobileSnippets42" id="mobileSnippets42" title="상용구" aria-label="상용구">✎</button><button class="btn menuToggle mobileEpisodeData42" id="mobileEpisodeData42" title="이번 화 정보" aria-label="이번 화 정보"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 13.2 12.2 21a2 2 0 0 1-2.8 0L3 14.6V4h10.6L20 10.4a2 2 0 0 1 0 2.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.35" fill="currentColor"/></svg></button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="페이지 보기" aria-label="페이지 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
+ document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><button class="btn menuToggle mobileSnippets42" id="mobileSnippets42" title="상용구" aria-label="상용구">✎</button><button class="btn menuToggle mobileEpisodeData42" id="mobileEpisodeData42" title="이번 화 정보" aria-label="이번 화 정보"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 13.2 12.2 21a2 2 0 0 1-2.8 0L3 14.6V4h10.6L20 10.4a2 2 0 0 1 0 2.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.35" fill="currentColor"/></svg></button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="btn menuToggle" id="mobileSnippetsRight47" title="상용구" aria-label="상용구">✎</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="페이지 보기" aria-label="페이지 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
  if(!target){let e={id:id(),projectId:currentProject,number:1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',e);target=e;es=[e]}
  await editEpisode(target,es);
  const openWritingReference=async(kind)=>{
@@ -1292,4 +1243,15 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
   window.addEventListener('pagehide',commit43);
 })();
 </script>
+
+<script id="mobile-snippets-right-v047">
+(function(){
+ document.addEventListener('click',function(e){
+  if(!e.target.closest?.('#mobileSnippetsRight47'))return;
+  e.preventDefault();e.stopPropagation();
+  document.getElementById('mobileSnippets42')?.click();
+ },true);
+})();
+</script>
+
 </body></html>
