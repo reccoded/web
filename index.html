@@ -1262,28 +1262,29 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
 })();
 </script>
 
-<script id="mobile-writing-layout-js-v048">
+<script id="mobile-writing-layout-js-v049">
 (function(){
- function arrange48(){
-   if(!matchMedia('(max-width:700px)').matches) return;
+ let arranged49=false;
+ function arrange49(){
+   if(arranged49 || !matchMedia('(max-width:700px)').matches) return;
    const home=document.getElementById('writingHome');
    const episode=document.getElementById('mobileEpisodeToggle41');
    const tag=document.getElementById('mobileEpisodeData42');
-   if(home && episode && tag){
-     /* Actual DOM placement, not CSS order. */
-     home.insertAdjacentElement('afterend', episode);
-     episode.insertAdjacentElement('afterend', tag);
-   }
+   if(!home||!episode||!tag)return;
+   home.insertAdjacentElement('afterend',episode);
+   episode.insertAdjacentElement('afterend',tag);
+   arranged49=true;
  }
- arrange48();
+ document.addEventListener('DOMContentLoaded',arrange49,{once:true});
+ window.addEventListener('load',arrange49,{once:true});
  document.addEventListener('click',function(e){
+   /* Arrange once when entering/opening writing room, but never mutate repeatedly. */
+   if(!arranged49) setTimeout(arrange49,0);
    if(e.target.closest?.('#mobileSnippetsRight48')){
      e.preventDefault();e.stopPropagation();
      document.getElementById('mobileSnippets42')?.click();
    }
  },true);
- window.addEventListener('resize',arrange48);
- new MutationObserver(arrange48).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
