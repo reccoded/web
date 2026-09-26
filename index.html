@@ -925,7 +925,35 @@ async function editEpisode(e,esArg){
 $('#saveEpisodeNow').onclick=async()=>{let btn=$('#saveEpisodeNow');btn.disabled=true;btn.classList.add('saving');btn.textContent='저장 중…';syncFromMobilePages();await save();btn.classList.remove('saving');btn.classList.add('saved');btn.textContent='저장됨 ✓';window.__activeEpisodeId=e.id;window.__openEpisodeId=e.id;setTimeout(async()=>{await episodes();},280)};
 $('#addE').onclick=async()=>{syncFromMobilePages();await save();let fresh={id:id(),projectId:currentProject,number:(es.at(-1)?.number||0)+1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',fresh);window.__activeEpisodeId=fresh.id;window.__openEpisodeId=fresh.id;await episodes()};
  document.querySelectorAll('#elist [data-id]').forEach(x=>x.onclick=async(ev)=>{ev.preventDefault();ev.stopPropagation();const nextId=x.dataset.id;if(nextId===e.id)return;document.querySelectorAll('#elist [data-id]').forEach(n=>n.classList.toggle('sel',n===x));if($('#editorStage')?.classList.contains('mobile-paged'))syncFromMobilePages();window.__activeEpisodeId=nextId;window.__openEpisodeId=nextId;await save();await episodes()});
- document.querySelectorAll('[data-snippet]').forEach(b=>b.onclick=()=>{let a=em.selectionStart,z=em.selectionEnd;em.setRangeText(b.dataset.snippet,a,z,'end');em.focus();updateInfo(false);queueSave()});
+ let lastPageRange=null,lastPageBody=null;
+ function rememberPageCaret(){
+   const sel=window.getSelection();if(!sel?.rangeCount)return;
+   const r=sel.getRangeAt(0),node=r.startContainer.nodeType===1?r.startContainer:r.startContainer.parentElement;
+   const body=node?.closest?.('#mobilePagesWrap .mobilePageBody');
+   if(body){lastPageRange=r.cloneRange();lastPageBody=body}
+ }
+ document.querySelectorAll('#mobilePagesWrap').forEach(w=>{
+   w.addEventListener('keyup',rememberPageCaret,true);
+   w.addEventListener('pointerup',rememberPageCaret,true);
+   w.addEventListener('input',rememberPageCaret,true);
+ });
+ document.querySelectorAll('[data-snippet]').forEach(b=>{
+   b.addEventListener('pointerdown',ev=>ev.preventDefault());
+   b.onclick=()=>{
+     const text=b.dataset.snippet||'';
+     if(lastPageBody&&document.body.contains(lastPageBody)){
+       lastPageBody.focus();
+       const sel=window.getSelection();sel.removeAllRanges();
+       let r=lastPageRange?.cloneRange();
+       if(!r||!lastPageBody.contains(r.commonAncestorContainer)){r=document.createRange();r.selectNodeContents(lastPageBody);r.collapse(false)}
+       sel.addRange(r);r.deleteContents();const n=document.createTextNode(text);r.insertNode(n);r.setStartAfter(n);r.collapse(true);sel.removeAllRanges();sel.addRange(r);
+       lastPageRange=r.cloneRange();syncOnePage(lastPageBody);updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh();
+     }else{
+       let a=em.selectionStart||0,z=em.selectionEnd||a;em.setRangeText(text,a,z,'end');em.focus();updateInfo(false);queueSave();schedulePageRender();scheduleSearchRefresh();
+     }
+     const drawer=document.getElementById('mobileSnippetsDrawer42');if(drawer)drawer.classList.remove('open');
+   };
+ });
  $('#editSnippets').onclick=async()=>{await save();let vals=[...snippets];let shade=document.createElement('div');shade.className='modalShade';shade.innerHTML=`<div class="snippetModal"><div class="snippetModalHead"><b>상용구 설정</b><button class="miniBtn" id="closeSnippetModal">✕</button></div><div class="snippetModalBody" id="snippetRows"></div><div class="snippetModalFoot"><button class="btn" id="addSnippetRow">+ 추가</button><div class="right"><button class="btn" id="cancelSnippets">취소</button><button class="btn primary" id="saveSnippets">저장</button></div></div></div>`;document.body.appendChild(shade);let rows=shade.querySelector('#snippetRows');function draw(){rows.innerHTML=vals.map((v,i)=>`<div class="snippetEditRow"><span>${i+1}</span><input data-si="${i}" value="${esc(v)}" placeholder="상용구"><button class="miniBtn dangerTiny" data-rm="${i}">삭제</button></div>`).join('')||'<div class="muted">등록된 상용구가 없습니다.</div>';rows.querySelectorAll('[data-si]').forEach(inp=>inp.oninput=()=>vals[+inp.dataset.si]=inp.value);rows.querySelectorAll('[data-rm]').forEach(btn=>btn.onclick=()=>{vals.splice(+btn.dataset.rm,1);draw()})}draw();let close=()=>shade.remove();shade.querySelector('#closeSnippetModal').onclick=close;shade.querySelector('#cancelSnippets').onclick=close;shade.onclick=ev=>{if(ev.target===shade)close()};shade.querySelector('#addSnippetRow').onclick=()=>{vals.push('');draw();let inputs=rows.querySelectorAll('input');inputs[inputs.length-1]?.focus()};shade.querySelector('#saveSnippets').onclick=async()=>{vals=vals.map(x=>x.trim()).filter(Boolean);await put('settings',{id:'writingSnippets',value:vals,updatedAt:now()});close();await editEpisode(e,es)}};
  $('#delE').onclick=async()=>{if(confirm(`${e.number}화를 삭제할까요?`)){clearTimeout(saveTimer);await del('episodes',e.id);await episodes()}};
 }
@@ -1230,90 +1258,4 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
   window.addEventListener('pagehide',commit43);
 })();
 </script>
-
-
-
-<script id="snippet-insert-fix-v045">
-(function(){
-  let savedRange45=null;
-  let savedEditor45=null;
-
-  function currentEditor45(){
-    const a=document.activeElement;
-    if(a && (a.classList.contains('page') || a.classList.contains('mobilePageBody') || a.getAttribute('contenteditable')==='true')) return a;
-    return savedEditor45 && document.contains(savedEditor45) ? savedEditor45 : null;
-  }
-  function remember45(){
-    const sel=window.getSelection();
-    if(!sel || !sel.rangeCount) return;
-    const r=sel.getRangeAt(0);
-    let node=r.startContainer.nodeType===1?r.startContainer:r.startContainer.parentElement;
-    const ed=node && node.closest ? node.closest('.page,.mobilePageBody,[contenteditable="true"]') : null;
-    if(ed){
-      savedRange45=r.cloneRange();
-      savedEditor45=ed;
-    }
-  }
-  document.addEventListener('selectionchange',remember45);
-  document.addEventListener('keyup',remember45,true);
-  document.addEventListener('pointerup',remember45,true);
-  document.addEventListener('input',remember45,true);
-
-  function snippetText45(el){
-    const explicit=el.dataset && (el.dataset.text || el.dataset.snippet || el.dataset.value);
-    if(explicit) return explicit;
-    const clone=el.cloneNode(true);
-    clone.querySelectorAll('button,.snippetActions,.actions').forEach(x=>x.remove());
-    return (clone.innerText||clone.textContent||'').trim();
-  }
-  function insert45(text){
-    if(!text) return false;
-    let ed=currentEditor45();
-    if(!ed) return false;
-    ed.focus();
-
-    const sel=window.getSelection();
-    sel.removeAllRanges();
-    let r=null;
-    if(savedRange45 && savedEditor45===ed){
-      r=savedRange45.cloneRange();
-    }else{
-      r=document.createRange();
-      r.selectNodeContents(ed);
-      r.collapse(false);
-    }
-    sel.addRange(r);
-    r.deleteContents();
-    const node=document.createTextNode(text);
-    r.insertNode(node);
-    r.setStartAfter(node); r.collapse(true);
-    sel.removeAllRanges(); sel.addRange(r);
-    savedRange45=r.cloneRange(); savedEditor45=ed;
-
-    /* Trigger the app's normal manuscript sync/save path. */
-    ed.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText',data:text}));
-    ed.dispatchEvent(new Event('change',{bubbles:true}));
-    return true;
-  }
-
-  /* Capture snippet clicks before older handlers lose the editor selection. */
-  document.addEventListener('pointerdown',function(e){
-    const s=e.target.closest && e.target.closest('.snippet');
-    if(s && !e.target.closest('button')) e.preventDefault();
-  },true);
-
-  document.addEventListener('click',function(e){
-    const s=e.target.closest && e.target.closest('.snippet');
-    if(!s || e.target.closest('button')) return;
-    const text=snippetText45(s);
-    if(insert45(text)){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      const drawer=document.getElementById('mobileSnippetsDrawer42');
-      if(drawer) drawer.classList.remove('open');
-    }
-  },true);
-})();
-</script>
-
 </body></html>
