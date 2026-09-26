@@ -608,6 +608,70 @@ body.story-focus .main{max-width:none;width:100%}.storyHead22{display:flex;align
 <link rel="apple-touch-icon" href="./icons/icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
 
+
+<style id="mobile-writing-tools-v042">
+@media (max-width:700px){
+  /* Mobile dashboard: keep everything inside the viewport and stack wide layouts. */
+  body:not(.writing-focus) #view{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
+  body:not(.writing-focus) #view *{max-width:100%;box-sizing:border-box}
+  body:not(.writing-focus) .dashMain,
+  body:not(.writing-focus) .dashStats,
+  body:not(.writing-focus) .dashGrid,
+  body:not(.writing-focus) .storyGrid{grid-template-columns:minmax(0,1fr)!important;width:100%!important;min-width:0!important}
+  body:not(.writing-focus) .card{width:100%!important;min-width:0!important}
+  body:not(.writing-focus) pre,
+  body:not(.writing-focus) .mono{white-space:pre-wrap!important;overflow-wrap:anywhere!important}
+
+  /* Writing-room mobile buttons */
+  .mobileSnippets42,.mobileEpisodeData42{
+    display:inline-flex!important;align-items:center;justify-content:center;
+    width:34px!important;height:34px!important;min-width:34px!important;padding:0!important;
+    font-size:17px!important;line-height:1!important;
+  }
+  body.writing-focus .writingTitle{display:flex!important;align-items:center!important;gap:4px!important;flex:none!important}
+  body.writing-focus .writingTop{overflow-x:auto!important;overflow-y:hidden!important}
+  body.writing-focus .writingTop>div:last-child{flex:0 0 auto!important}
+
+  /* Mobile left drawer */
+  .mobileToolBackdrop42{display:none;position:fixed;inset:0;z-index:180;background:rgba(0,0,0,.28)}
+  .mobileToolBackdrop42.open{display:block}
+  .mobileToolDrawer42{
+    position:absolute;left:0;top:0;bottom:0;width:min(92vw,400px);
+    background:var(--panel,#fff);box-shadow:10px 0 35px rgba(0,0,0,.22);
+    display:flex;flex-direction:column;min-width:0;
+  }
+  .mobileToolHead42{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:11px 13px;border-bottom:1px solid var(--line,#ddd);flex:none;
+  }
+  .mobileToolHead42 strong{font-size:15px}
+  .mobileToolClose42{width:34px;height:34px;border:0;background:transparent;border-radius:8px;font-size:21px;cursor:pointer}
+  .mobileToolBody42{padding:8px;overflow:auto;min-height:0;flex:1}
+  .mobileToolBody42>.wrPanel{
+    display:flex!important;position:static!important;width:100%!important;height:auto!important;min-height:100%!important;
+    margin:0!important;border:0!important;box-shadow:none!important;
+  }
+  .mobileToolBody42 .wrPanelBody{overflow:visible!important}
+  .mobileToolBody42 .snippetGrid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:7px!important}
+  .mobileToolBody42 .snippet{min-height:42px!important;white-space:normal!important}
+}
+@media (min-width:701px){
+  .mobileSnippets42,.mobileEpisodeData42,.mobileToolBackdrop42{display:none!important}
+}
+</style>
+
+
+<style id="mobile-delete-v043">
+@media(max-width:700px){
+ .mobileEpisodeDelete43{margin-top:18px;padding-top:14px;border-top:1px solid var(--line,#ddd)}
+ .mobileEpisodeDelete43 button{
+   width:100%;min-height:42px;border:1px solid #b94a48;border-radius:8px;
+   background:transparent;color:#b13b39;font-weight:700;cursor:pointer;
+ }
+}
+@media(min-width:701px){.mobileEpisodeDelete43{display:none!important}}
+</style>
+
 </head><body><div class="app"><aside class="side"><div class="nav" id="nav"></div></aside><main class="main"><div id="view"></div></main></div>
 <style id="v025-ai-studio">
 body.ai-focus .main,body.prompt-focus .main{max-width:none;width:100%}.promptLayout25{display:grid;grid-template-columns:320px minmax(0,1fr);gap:14px}.promptList25{max-height:76vh;overflow:auto}.promptItem25{padding:11px;border-bottom:1px solid var(--line);cursor:pointer}.promptItem25:hover,.promptItem25.active{background:var(--soft)}.promptBody25{min-height:520px}.aiGrid25{display:grid;grid-template-columns:minmax(340px,.72fr) minmax(520px,1.28fr);gap:14px;align-items:start}.aiSection25{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.aiSection25:first-child{border-top:0;padding-top:0;margin-top:0}.aiSection25 h3{margin:0 0 8px}.aiModes25{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.aiModes25 .btn{min-height:34px;padding:6px 10px}.aiModes25 .btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}.aiRange25{display:grid;grid-template-columns:100px 26px 100px 1fr;gap:7px;align-items:center}.aiChecks25{display:flex;gap:14px;flex-wrap:wrap}.aiChecks25 label{font-weight:500;margin:3px 0;display:flex;gap:6px;align-items:center}.aiPick25{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.aiPickBox25{border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff;max-height:230px;overflow:auto}.aiPickBox25 label{font-weight:500;margin:0;padding:4px 2px;display:flex;gap:6px;align-items:flex-start}.aiPickHead25{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:5px}.aiPickHead25 b{font-size:13px}.aiStoryList25{border:1px solid var(--line);border-radius:9px;padding:8px;max-height:230px;overflow:auto;background:#fff}.aiStoryList25 label{font-weight:500;margin:0;padding:5px 2px;display:flex;gap:7px}.aiPreview25{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:9px;padding:14px;min-height:520px;max-height:72vh;overflow:auto}.aiTop25{display:grid;grid-template-columns:minmax(320px,1fr) auto auto;gap:8px;align-items:end}.aiMeta25{font-size:12px;color:var(--muted);margin-top:7px}.aiNote25{font-size:12px;color:var(--muted);line-height:1.5}.aiCore25{color:#245b86}@media(max-width:1050px){.promptLayout25,.aiGrid25,.aiPick25{grid-template-columns:1fr}.aiTop25,.aiRange25{grid-template-columns:1fr}}
@@ -668,7 +732,7 @@ async function episodes(){
  let target=wantedId?es.find(e=>e.id===wantedId):es.at(-1);window.__openEpisodeId=null;
  if(target)window.__activeEpisodeId=target.id;
  if(!target&&es.length)target=es[0];
- document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="페이지 보기" aria-label="페이지 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
+ document.body.classList.add('writing-focus'); $('#view').innerHTML=`<div class="writingTop"><div class="writingTitle"><button class="btn menuToggle" id="writingHome" title="대시보드로 이동" aria-label="대시보드로 이동"><svg class="homeLineIcon40" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></button><button class="btn menuToggle mobileSnippets42" id="mobileSnippets42" title="상용구" aria-label="상용구">✎</button><button class="btn menuToggle mobileEpisodeData42" id="mobileEpisodeData42" title="이번 화 정보" aria-label="이번 화 정보">🏷</button><h2>집필실</h2></div><div style="display:flex;align-items:center;gap:8px"><button class="miniBtn mobileEpisodeToggle41" id="mobileEpisodeToggle41" title="회차 목록">회차</button><div class="writingPlanQuick"><button class="miniBtn" id="showBeatPlan" title="현재 기승전결 블록 보기">기승전결</button><button class="miniBtn" id="showDesignMemo" title="설계 상담 메모 보기">메모</button></div><div class="writingSearch"><input id="manuscriptSearch" type="text" placeholder="원고 검색" aria-label="원고 검색"><button class="miniBtn" id="searchPrev" title="이전 검색 결과">↑</button><button class="miniBtn" id="searchNext" title="다음 검색 결과">↓</button><span class="searchCount" id="searchCount"></span></div><div class="viewModes"><button class="btn iconMode active" data-mode="mobile" title="페이지 보기" aria-label="페이지 보기">↕</button><button class="btn iconMode" data-mode="wide" title="와이드 보기" aria-label="와이드 보기">↔</button></div></div></div><div id="writingRoom"></div>`;
  if(!target){let e={id:id(),projectId:currentProject,number:1,title:'',manuscript:'　',summary:'',events:'',characters:'',lore:'',foreshadows:'',tags:'',memo:'',episodeDesignMemo:'',beatPlan:'',important:false,createdAt:now()};await put('episodes',e);target=e;es=[e]}
  await editEpisode(target,es);
  const openWritingReference=async(kind)=>{
@@ -1058,6 +1122,108 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
+</script>
+
+
+<div class="mobileToolBackdrop42" id="mobileSnippetsDrawer42">
+ <div class="mobileToolDrawer42">
+  <div class="mobileToolHead42"><strong>상용구</strong><button class="mobileToolClose42" data-close42="mobileSnippetsDrawer42">×</button></div>
+  <div class="mobileToolBody42" id="mobileSnippetsBody42"></div>
+ </div>
+</div>
+<div class="mobileToolBackdrop42" id="mobileEpisodeDataDrawer42">
+ <div class="mobileToolDrawer42">
+  <div class="mobileToolHead42"><strong>이번 화 정보</strong><button class="mobileToolClose42" data-close42="mobileEpisodeDataDrawer42">×</button></div>
+  <div class="mobileToolBody42" id="mobileEpisodeDataBody42"></div><div class="mobileEpisodeDelete43"><button type="button" id="mobileDeleteEpisode43">현재 회차 삭제</button></div>
+ </div>
+</div>
+
+
+<script id="mobile-writing-tools-js-v042">
+(function(){
+ let moved={};
+ const mobile=()=>matchMedia('(max-width:700px)').matches;
+ function move(kind){
+   if(!mobile()) return;
+   const panel=document.querySelector(kind==='snippets'?'#writingRoom>.toolsPanel':'#writingRoom>.planPanel');
+   const target=document.getElementById(kind==='snippets'?'mobileSnippetsBody42':'mobileEpisodeDataBody42');
+   if(!panel||!target)return;
+   if(!moved[kind]) moved[kind]={panel:panel,parent:panel.parentNode,next:panel.nextSibling};
+   target.appendChild(panel);
+ }
+ function restore(kind){
+   const m=moved[kind]; if(!m)return;
+   if(m.next&&m.next.parentNode===m.parent)m.parent.insertBefore(m.panel,m.next);
+   else m.parent.appendChild(m.panel);
+   delete moved[kind];
+ }
+ function open(kind){
+   move(kind);
+   const el=document.getElementById(kind==='snippets'?'mobileSnippetsDrawer42':'mobileEpisodeDataDrawer42');
+   if(el)el.classList.add('open');
+ }
+ function close(id){
+   const el=document.getElementById(id); if(el)el.classList.remove('open');
+   restore(id==='mobileSnippetsDrawer42'?'snippets':'data');
+ }
+ document.addEventListener('click',e=>{
+   if(e.target.closest('#mobileSnippets42')){e.preventDefault();open('snippets');return}
+   if(e.target.closest('#mobileEpisodeData42')){e.preventDefault();open('data');return}
+   const x=e.target.closest('[data-close42]'); if(x){close(x.dataset.close42);return}
+   if(e.target.classList&&e.target.classList.contains('mobileToolBackdrop42'))close(e.target.id);
+ });
+ window.addEventListener('resize',()=>{
+   if(!mobile()){
+     ['mobileSnippetsDrawer42','mobileEpisodeDataDrawer42'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('open')});
+     restore('snippets');restore('data');
+   }
+ });
+})();
+</script>
+
+
+<script id="mobile-autosave-v043">
+(function(){
+  let saveTimer43=null;
+  function mobile43(){return matchMedia('(max-width:700px)').matches}
+  function commit43(){
+    if(!mobile43() || !document.body.classList.contains('writing-focus')) return;
+    const active=document.activeElement;
+    if(active && active.classList && active.classList.contains('mobilePageBody')){
+      active.dispatchEvent(new Event('input',{bubbles:true}));
+    }
+    /* Existing app persistence is driven by its normal input handler/save path. */
+  }
+  document.addEventListener('input',function(e){
+    if(!mobile43() || !e.target.closest || !e.target.closest('.mobilePageBody')) return;
+    clearTimeout(saveTimer43);
+    saveTimer43=setTimeout(commit43,450);
+  },true);
+  document.addEventListener('compositionend',function(e){
+    if(mobile43() && e.target.closest && e.target.closest('.mobilePageBody')){
+      clearTimeout(saveTimer43); saveTimer43=setTimeout(commit43,60);
+    }
+  },true);
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')commit43()});
+  window.addEventListener('pagehide',commit43);
+})();
+</script>
+
+
+<script id="mobile-delete-js-v043">
+(function(){
+ document.addEventListener('click',function(e){
+   const b=e.target.closest&&e.target.closest('#mobileDeleteEpisode43');
+   if(!b)return;
+   /* Reuse the app's existing episode deletion button/confirmation and data cleanup. */
+   const candidates=[...document.querySelectorAll('button')].filter(x=>
+     x!==b && /회차\s*삭제|삭제/.test((x.textContent||'').trim()) &&
+     !x.closest('#mobileEpisodeDataDrawer42')
+   );
+   const desktopDelete=candidates.find(x=>/회차\s*삭제/.test((x.textContent||'').trim())) || candidates[0];
+   if(desktopDelete) desktopDelete.click();
+ });
+})();
 </script>
 
 </body></html>
